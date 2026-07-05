@@ -18,11 +18,9 @@ import { CheckIcon, CopyIcon } from "lucide-react";
 import type {
   ComponentProps,
   HTMLAttributes,
-  ReactElement,
   ReactNode,
 } from "react";
 import {
-  cloneElement,
   createContext,
   useContext,
   useEffect,
@@ -570,7 +568,6 @@ export type CodeSnippetCopyButtonProps = ComponentProps<typeof Button> & {
 };
 
 export const CodeSnippetCopyButton = ({
-  asChild,
   onCopy,
   onError,
   timeout = 2000,
@@ -585,13 +582,6 @@ export const CodeSnippetCopyButton = ({
   const copyToClipboard = () => {
     copy(code ?? "");
   };
-
-  if (asChild) {
-    return cloneElement(children as ReactElement, {
-      // @ts-expect-error - we know this is a button
-      onClick: copyToClipboard,
-    });
-  }
 
   const Icon = copied ? CheckIcon : CopyIcon;
 

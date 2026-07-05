@@ -139,10 +139,13 @@ export function BlockPreviewPanel({
           <p className="text-sm text-muted-foreground">{packageName}</p>
           <div className="flex items-center h-8">
             {hasPreview ? (
-              <Button size="icon" variant="ghost" asChild>
-                <Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer">
-                  <Maximize className="text-neutral-700 dark:text-neutral-300" />
-                </Link>
+              <Button
+                size="icon"
+                variant="ghost"
+                nativeButton={false}
+                render={<Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer" />}
+              >
+                <Maximize className="text-neutral-700 dark:text-neutral-300" />
               </Button>
             ) : (
               <Button size="icon" variant="ghost" disabled>
@@ -212,10 +215,13 @@ export function BlockPreviewPanel({
               {hasPreview ? (
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button size="icon" variant="ghost" asChild>
-                      <Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer">
-                        <Maximize className="text-neutral-700 dark:text-neutral-300" />
-                      </Link>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      nativeButton={false}
+                      render={<Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer" />}
+                    >
+                      <Maximize className="text-neutral-700 dark:text-neutral-300" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="bottom" sideOffset={8}>
