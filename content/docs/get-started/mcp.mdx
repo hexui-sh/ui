@@ -1,0 +1,47 @@
+---
+title: MCP
+description: Integrating MCP with Hex UI lets you control it via AI.
+---
+
+import { CodeBlockCommand } from "@/components/code-block-command"
+
+Adding the **Model Context Protocol (MCP)** allows AI coding assistants to access the Hex UI registry directly.
+
+Instead of searching through documentation or looking up component names, the AI can automatically discover and install the components your project needs.
+
+## Installation
+
+1. Enable [MCP](https://modelcontextprotocol.io/docs/getting-started/intro) in your project environment (Claude Code, Cursor, and other compatible clients are supported).
+
+<CodeBlockCommand
+  commands={{
+    pnpm: "pnpm dlx shadcn@latest mcp init",
+    npm: "npm shadcn@latest mcp init",
+    yarn: "yarn dlx shadcn@latest mcp init",
+    bun: "bunx --bun shadcn@latest mcp init"
+  }}
+/>
+
+2. Add the registry to your `components.json` file.
+
+```json
+{
+  "registries": {
+    "@hex": "https://hexui.sh/r/{name}.json"
+  }
+}
+```
+
+## Usage
+
+You can now ask your AI coding assistant to install components from the registry.
+
+Examples:
+* "Replace the current hero section with a cleaner version from Hex UI"
+* "Create a sponsor section using the Social Proof components from Hex UI."
+* "Find and add a login form from Hex UI."
+
+## Learn more
+To learn more about using the shadcn MCP server, including manual setup for different clients, please visit the official documentation:  
+  
+[https://ui.shadcn.com/docs/mcp](https://ui.shadcn.com/docs/mcp)

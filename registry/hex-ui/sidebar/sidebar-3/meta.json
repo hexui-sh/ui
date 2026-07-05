@@ -1,0 +1,6 @@
+{
+  "title": "Sidebar-3",
+  "description": "A sidebar designed for AI applications",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-3.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-3.json"
+}

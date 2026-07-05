@@ -1,0 +1,6 @@
+{
+  "title": "Footer-2",
+  "description": "A simple footer with social media buttons and language switching",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-2.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-2.json"
+}

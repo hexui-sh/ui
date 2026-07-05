@@ -1,0 +1,6 @@
+{
+  "title": "Social-Proof-Companies-3",
+  "description": "A social proof section with brand logos arranged in a grid layout and hover interactions that guide user attention",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-3.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-3.json"
+}

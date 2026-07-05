@@ -1,0 +1,308 @@
+{
+  "groups": [
+    {
+      "category": "Banner",
+      "blocks": [
+        {
+          "slug": "banner-1",
+          "title": "Banner-1",
+          "description": "A dismissible announcement bar",
+          "path": "@/registry/hex-ui/banner/banner-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/banner-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/banner-1.json"
+        },
+        {
+          "slug": "banner-2",
+          "title": "Banner-2",
+          "description": "A full-width dismissible announcement bar",
+          "path": "@/registry/hex-ui/banner/banner-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/banner-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/banner-2.json"
+        }
+      ]
+    },
+    {
+      "category": "Cta",
+      "blocks": [
+        {
+          "slug": "cta-1",
+          "title": "Cta-1",
+          "description": "A simple full-width CTA section",
+          "path": "@/registry/hex-ui/cta/cta-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-1.json"
+        },
+        {
+          "slug": "cta-2",
+          "title": "Cta-2",
+          "description": "A simple CTA section with spacious padding",
+          "path": "@/registry/hex-ui/cta/cta-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-2.json"
+        },
+        {
+          "slug": "cta-3",
+          "title": "Cta-3",
+          "description": "A CTA section designed to showcase mobile product mockups",
+          "path": "@/registry/hex-ui/cta/cta-3/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-3.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-3.json"
+        },
+        {
+          "slug": "cta-4",
+          "title": "Cta-4",
+          "description": "A split CTA section built to display large amounts of information",
+          "path": "@/registry/hex-ui/cta/cta-4/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-4.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-4.json"
+        }
+      ]
+    },
+    {
+      "category": "Faq",
+      "blocks": [
+        {
+          "slug": "faq-1",
+          "title": "Faq-1",
+          "description": "A simple and professional FAQ section with collapsible questions and answers",
+          "path": "@/registry/hex-ui/faq/faq-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-1.json"
+        },
+        {
+          "slug": "faq-2",
+          "title": "Faq-2",
+          "description": "A simple and professional FAQ section with categorized collapsible questions and answers",
+          "path": "@/registry/hex-ui/faq/faq-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-2.json"
+        },
+        {
+          "slug": "faq-3",
+          "title": "Faq-3",
+          "description": "A simple FAQ section arranged in a clean grid layout",
+          "path": "@/registry/hex-ui/faq/faq-3/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-3.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-3.json"
+        },
+        {
+          "slug": "faq-4",
+          "title": "Faq-4",
+          "description": "A simple FAQ section with icons arranged in a clean grid layout",
+          "path": "@/registry/hex-ui/faq/faq-4/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-4.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-4.json"
+        }
+      ]
+    },
+    {
+      "category": "Footer",
+      "blocks": [
+        {
+          "slug": "footer-1",
+          "title": "Footer-1",
+          "description": "A simple, professional footer that includes a subscription form",
+          "path": "@/registry/hex-ui/footer/footer-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-1.json"
+        },
+        {
+          "slug": "footer-2",
+          "title": "Footer-2",
+          "description": "A simple footer with social media buttons and language switching",
+          "path": "@/registry/hex-ui/footer/footer-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-2.json"
+        },
+        {
+          "slug": "footer-3",
+          "title": "Footer-3",
+          "description": "Footer for organizations that place typography at the bottom",
+          "path": "@/registry/hex-ui/footer/footer-3/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-3.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-3.json"
+        },
+        {
+          "slug": "footer-4",
+          "title": "Footer-4",
+          "description": "A simple footer for portfolios with a signature",
+          "path": "@/registry/hex-ui/footer/footer-4/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-4.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-4.json"
+        },
+        {
+          "slug": "footer-5",
+          "title": "Footer-5",
+          "description": "A footer with interactive text that responds to pointer movement",
+          "path": "@/registry/hex-ui/footer/footer-5/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-5.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-5.json"
+        }
+      ]
+    },
+    {
+      "category": "Hero",
+      "blocks": [
+        {
+          "slug": "hero-1",
+          "title": "Hero-1",
+          "description": "A simple and versatile hero section",
+          "path": "@/registry/hex-ui/hero/hero-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-1.json"
+        },
+        {
+          "slug": "hero-2",
+          "title": "Hero-2",
+          "description": "A hero section designed to showcase media content",
+          "path": "@/registry/hex-ui/hero/hero-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-2.json"
+        },
+        {
+          "slug": "hero-3",
+          "title": "Hero-3",
+          "description": "A simple horizontally aligned hero sections",
+          "path": "@/registry/hex-ui/hero/hero-3/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-3.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-3.json"
+        },
+        {
+          "slug": "hero-4",
+          "title": "Hero-4",
+          "description": "A hero section with bold visuals that emphasize brand presence",
+          "path": "@/registry/hex-ui/hero/hero-4/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-4.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-4.json"
+        },
+        {
+          "slug": "hero-5",
+          "title": "Hero-5",
+          "description": "A hero section with a large background image and centered content to present a brand or product with impact",
+          "path": "@/registry/hex-ui/hero/hero-5/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-5.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-5.json"
+        }
+      ]
+    },
+    {
+      "category": "Login",
+      "blocks": [
+        {
+          "slug": "login-1",
+          "title": "Login-1",
+          "description": "A simple login form",
+          "path": "@/registry/hex-ui/login/login-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-1.json"
+        },
+        {
+          "slug": "login-2",
+          "title": "Login-2",
+          "description": "A simple login form",
+          "path": "@/registry/hex-ui/login/login-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-2.json"
+        },
+        {
+          "slug": "login-3",
+          "title": "Login-3",
+          "description": "A login form with a customizable side background",
+          "path": "@/registry/hex-ui/login/login-3/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-3.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-3.json"
+        },
+        {
+          "slug": "login-4",
+          "title": "Login-4",
+          "description": "A login form with a customizable side background and a testimonial panel",
+          "path": "@/registry/hex-ui/login/login-4/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-4.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-4.json"
+        }
+      ]
+    },
+    {
+      "category": "Sidebar",
+      "blocks": [
+        {
+          "slug": "sidebar-1",
+          "title": "Sidebar-1",
+          "description": "A sidebar for a note-taking application.",
+          "path": "@/registry/hex-ui/sidebar/sidebar-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-1.json"
+        },
+        {
+          "slug": "sidebar-2",
+          "title": "Sidebar-2",
+          "description": "A sidebar built for developer app dashboards",
+          "path": "@/registry/hex-ui/sidebar/sidebar-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-2.json"
+        },
+        {
+          "slug": "sidebar-3",
+          "title": "Sidebar-3",
+          "description": "A sidebar designed for AI applications",
+          "path": "@/registry/hex-ui/sidebar/sidebar-3/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-3.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-3.json"
+        }
+      ]
+    },
+    {
+      "category": "Social Proof",
+      "blocks": [
+        {
+          "slug": "social-proof-companies-1",
+          "title": "Social-Proof-Companies-1",
+          "description": "A social proof section that displays brand logos in a grid layout",
+          "path": "@/registry/hex-ui/social-proof/social-proof-companies-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-1.json"
+        },
+        {
+          "slug": "social-proof-companies-2",
+          "title": "Social-Proof-Companies-2",
+          "description": "A social proof section with animated brand logos arranged in a grid layout",
+          "path": "@/registry/hex-ui/social-proof/social-proof-companies-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-2.json"
+        },
+        {
+          "slug": "social-proof-companies-3",
+          "title": "Social-Proof-Companies-3",
+          "description": "A social proof section with brand logos arranged in a grid layout and hover interactions that guide user attention",
+          "path": "@/registry/hex-ui/social-proof/social-proof-companies-3/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-3.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-3.json"
+        },
+        {
+          "slug": "social-proof-companies-4",
+          "title": "Social-Proof-Companies-4",
+          "description": "A social proof section that showcases brand logos in a marquee layout",
+          "path": "@/registry/hex-ui/social-proof/social-proof-companies-4/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-4.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-4.json"
+        },
+        {
+          "slug": "social-proof-testimonials-1",
+          "title": "Social-Proof-Testimonials-1",
+          "description": "A social proof section with expert testimonial cards arranged in a grid layout",
+          "path": "@/registry/hex-ui/social-proof/social-proof-testimonials-1/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-testimonials-1.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-testimonials-1.json"
+        },
+        {
+          "slug": "social-proof-testimonials-2",
+          "title": "Social-Proof-Testimonials-2",
+          "description": "A social proof section that displays expert testimonial cards in a marquee layout",
+          "path": "@/registry/hex-ui/social-proof/social-proof-testimonials-2/source/",
+          "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-testimonials-2.json",
+          "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-testimonials-2.json"
+        }
+      ]
+    }
+  ]
+}

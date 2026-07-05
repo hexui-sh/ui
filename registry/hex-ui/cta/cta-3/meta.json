@@ -1,0 +1,6 @@
+{
+  "title": "Cta-3",
+  "description": "A CTA section designed to showcase mobile product mockups",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-3.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-3.json"
+}

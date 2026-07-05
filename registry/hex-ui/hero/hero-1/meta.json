@@ -1,0 +1,6 @@
+{
+  "title": "Hero-1",
+  "description": "A simple and versatile hero section",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-1.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-1.json"
+}

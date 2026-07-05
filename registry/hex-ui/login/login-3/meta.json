@@ -1,0 +1,6 @@
+{
+  "title": "Login-3",
+  "description": "A login form with a customizable side background",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-3.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-3.json"
+}

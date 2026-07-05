@@ -1,0 +1,6 @@
+{
+  "title": "Footer-1",
+  "description": "A simple, professional footer that includes a subscription form",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-1.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-1.json"
+}

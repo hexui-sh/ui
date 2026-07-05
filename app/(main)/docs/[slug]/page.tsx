@@ -1,0 +1,177 @@
+import type { Metadata } from "next"
+import path from "node:path"
+import { readFile } from "node:fs/promises"
+import { notFound } from "next/navigation"
+import { Bug, Pen, TextAlignStart } from "lucide-react"
+import { MdxHeaderActions } from "@/components/mdx-header-actions"
+import { getDocFileEntries, getDocFrontmatter, resolveDocFile } from "@/lib/content"
+import { slugifyHeading } from "@/lib/heading"
+
+type TocHeading = {
+    id: string
+    title: string
+    level: 2 | 3
+}
+
+function stripMdxFormatting(value: string) {
+    return value
+        .replace(/!\[([^\]]*)\]\([^)]+\)/g, "$1")
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+        .replace(/`([^`]+)`/g, "$1")
+        .replace(/<\/?[^>]+>/g, "")
+        .replace(/[*_~]/g, "")
+        .trim()
+}
+
+function getTocHeadings(source: string): TocHeading[] {
+    const contentWithoutFrontmatter = source.replace(
+        /^---\s*\r?\n[\s\S]*?\r?\n---\s*(?:\r?\n|$)/,
+        ""
+    )
+
+    const contentWithoutCodeBlocks = contentWithoutFrontmatter
+        .replace(/```[\s\S]*?```/g, "")
+        .replace(/~~~[\s\S]*?~~~/g, "")
+
+    const headingPattern = /^(#{2,3})\s+(.+?)\s*#*\s*$/gm
+    const tocHeadings: TocHeading[] = []
+    let match: RegExpExecArray | null = null
+
+    while ((match = headingPattern.exec(contentWithoutCodeBlocks)) !== null) {
+        const level = match[1].length as 2 | 3
+        const title = stripMdxFormatting(match[2])
+        if (!title) {
+            continue
+        }
+
+        tocHeadings.push({
+            id: slugifyHeading(title),
+            title,
+            level,
+        })
+    }
+
+    return tocHeadings
+}
+
+function formatSlugToTitle(slug: string) {
+    return slug
+        .replace(/[-_]+/g, " ")
+        .trim()
+        .replace(/\b\w/g, (char) => char.toUpperCase())
+}
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+    const { slug } = await params
+    const frontmatter = await getDocFrontmatter(["docs", slug])
+
+    return {
+        title: frontmatter?.title ?? formatSlugToTitle(slug),
+    }
+}
+
+export default async function DocsPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>
+}) {
+    const { slug } = await params
+    const pagePath = `/docs/${slug}`
+    const docFile = await resolveDocFile(slug)
+    if (!docFile) {
+        notFound()
+    }
+
+    const source = await readFile(
+        path.join(process.cwd(), "content", docFile.relativePath),
+        "utf8"
+    )
+
+    const [{ default: Post }, frontmatter] = await Promise.all([
+        import(`@/content/${docFile.importPath}.mdx`),
+        getDocFrontmatter(["docs", slug]),
+    ])
+
+    const title = frontmatter.title ?? formatSlugToTitle(slug)
+    const tocHeadings = getTocHeadings(source)
+
+    return (
+        <div className="mx-auto mt-16 flex w-full md:mt-14">
+            <article className="min-w-0 w-full py-1">
+                <header className="mb-6 dark:border-neutral-800">
+                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                        <div>
+                            <h1 className="text-3xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">{title}</h1>
+                            {frontmatter.description ? (
+                                <p className="mt-2 max-w-2xl text-base leading-6 text-neutral-600 dark:text-neutral-400">{frontmatter.description}</p>
+                            ) : null}
+                        </div>
+                        <MdxHeaderActions markdown={source} pageUrl={pagePath} />
+                    </div>
+                </header>
+
+                <Post />
+            </article>
+
+            {tocHeadings.length > 0 ? (
+                <aside className="hidden min-w-64 pl-7 pr-1 lg:block">
+                    <div className="sticky top-19">
+                        <p className="mb-1.5 flex items-center gap-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300"><TextAlignStart size={14} />On This Page</p>
+                        <nav aria-label="On this page table of contents">
+                            <ul className="space-y-1.5">
+                                {tocHeadings.map((heading) => (
+                                    <li key={heading.id}>
+                                        <a
+                                            href={`#${heading.id}`}
+                                            className={`block text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100 ${heading.level === 3 ? "pl-3" : ""}`}
+                                        >
+                                            {heading.title}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+
+                        <hr className="my-6.5 border-neutral-200 dark:border-neutral-800" />
+
+                        <nav aria-label="On this page table of contents">
+                            <ul className="space-y-1">
+                                <li>
+                                    <a
+                                        href={"https://github.com/ri0n/ri0n-ui/blob/main/README.md"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-1.5 text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100"
+                                    >
+                                        <Bug size={13} /> Report an Issue
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={"https://github.com/ri0n/ri0n-ui/blob/main/README.md"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-1.5 text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100"
+                                    >
+                                        <Pen size={13} /> Edit this page
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+            ) : null}
+        </div>
+    )
+}
+
+export async function generateStaticParams() {
+    const entries = await getDocFileEntries()
+    return entries.map((entry) => ({ slug: entry.slug }))
+}
+
+export const dynamicParams = false

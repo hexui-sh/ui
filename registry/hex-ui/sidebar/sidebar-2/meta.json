@@ -1,0 +1,6 @@
+{
+  "title": "Sidebar-2",
+  "description": "A sidebar built for developer app dashboards",
+  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-2.json",
+  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-2.json"
+}
