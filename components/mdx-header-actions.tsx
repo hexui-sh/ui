@@ -16,14 +16,33 @@ import { ChevronDown, Copy, Check } from "lucide-react"
 import { SiMdx, SiV0, SiClaude } from "@icons-pack/react-simple-icons"
 import ChatGPTIcon from "@/components/icon/chat-gpt"
 import { useCopyToClipboard } from "@/hooks/use-copy"
+import {
+  type OpenInContext,
+  type OpenInProviderId,
+  openInProviders,
+} from "@/lib/open-in-links"
 
 type MdxHeaderActionsProps = {
   markdown: string
   pageUrl: string
+  registrySlug?: string
+}
+
+const providerIcons: Record<OpenInProviderId, React.ElementType> = {
+  v0: SiV0,
+  chatgpt: ChatGPTIcon,
+  claude: SiClaude,
+}
+
+type OpenInEntry = {
+  id: OpenInProviderId
+  label: string
+  url: string
+  Icon: React.ElementType
 }
 
 export function MdxHeaderActions(props: MdxHeaderActionsProps) {
-  const { pageUrl, markdown } = props
+  const { pageUrl, markdown, registrySlug } = props
   const { copied, copy } = useCopyToClipboard({ timeout: 1400 })
 
   const toAbsoluteUrl = React.useCallback((targetPath: string) => {
@@ -42,29 +61,33 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
     window.open(toAbsoluteUrl(markdownUrl), "_blank", "noopener,noreferrer")
   }, [pageUrl, toAbsoluteUrl])
 
-  const getCanonicalDocUrl = React.useCallback(() => {
-    const absolute = toAbsoluteUrl(pageUrl)
-    const parsed = new URL(absolute)
-    return `https://ui.ri0n.dev${parsed.pathname}`
-  }, [pageUrl, toAbsoluteUrl])
+  const context = React.useMemo<OpenInContext>(
+    () =>
+      registrySlug
+        ? { kind: "registry", slug: registrySlug }
+        : { kind: "doc", pageUrl },
+    [registrySlug, pageUrl],
+  )
 
-  const buildAiPrompt = React.useCallback(() => {
-    const docUrl = getCanonicalDocUrl()
-    return `I'm looking at this ri0n/ui documentation: ${docUrl}. Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.`
-  }, [getCanonicalDocUrl])
-
-  const openIn = React.useCallback((provider: "v0" | "chatgpt" | "claude") => {
-    const prompt = encodeURIComponent(buildAiPrompt())
-
-    const targetUrl =
-      provider === "v0"
-        ? `https://v0.dev/?q=${prompt}`
-        : provider === "chatgpt"
-          ? `https://chatgpt.com/?q=${prompt}`
-          : `https://claude.ai/new?q=${prompt}`
-
-    window.open(targetUrl, "_blank", "noopener,noreferrer")
-  }, [buildAiPrompt])
+  const openInEntries = React.useMemo<OpenInEntry[]>(() => {
+    const entries: OpenInEntry[] = []
+    for (const provider of openInProviders) {
+      if (!provider.isAvailable(context)) {
+        continue
+      }
+      const url = provider.buildUrl(context)
+      if (!url) {
+        continue
+      }
+      entries.push({
+        id: provider.id,
+        label: provider.label,
+        url,
+        Icon: providerIcons[provider.id],
+      })
+    }
+    return entries
+  }, [context])
 
   return (
     <div className="hidden md:flex items-center gap-2">
@@ -100,9 +123,14 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
                 <SiMdx />
                 View as Markdown
               </DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => openIn("v0")}><SiV0 />Open in V0</DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => openIn("chatgpt")}><ChatGPTIcon />Open in ChatGPT</DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => openIn("claude")}><SiClaude />Open in Claude</DropdownMenuItem>
+              {openInEntries.map(({ id, label, url, Icon }) => (
+                <DropdownMenuItem key={id} asChild>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <Icon />
+                    Open in {label}
+                  </a>
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
