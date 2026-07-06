@@ -167,7 +167,7 @@ export function BlockPreviewPanel({
           </div>
         </div>
         <div className="mx-auto mt-4 w-full">
-          <div className="h-[70vh] max-h-[720px] w-full overflow-hidden rounded-lg border-2 border-neutral-900 bg-neutral-50 shadow-xl dark:border-neutral-800 dark:bg-neutral-950">
+          <div className="h-[70vh] max-h-180 w-full overflow-hidden rounded-lg border-2 border-border bg-neutral-50 dark:bg-neutral-950">
             {hasPreview ? (
               previewChildren
             ) : (
