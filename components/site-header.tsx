@@ -55,7 +55,7 @@ export async function SiteHeader() {
               <div className="hidden md:flex items-center">
                 <SearchBar groups={searchGroups} />
               </div>
-              <Separator orientation="vertical" className="hidden md:flex h-5 mx-1 !self-center" />
+              <Separator orientation="vertical" className="hidden md:flex h-5 mx-1 self-center!" />
               <GitHubStars />
               <ThemeToggle />
             </div>
