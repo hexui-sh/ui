@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     creator: "@ri0n_dev",
   },
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
   },
   robots: {
     index: true,
