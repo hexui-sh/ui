@@ -37,16 +37,16 @@ function FlatNavList({
   pathname: string;
 }) {
   return (
-    <ul className="flex flex-col gap-0.5">
+    <ul className="flex flex-col gap-2">
       {items.map((item) => {
         const active = isItemActive(pathname, item.url);
         return (
           <li key={item.url}>
             {item.disabled ? (
-              <span className="flex h-9 w-full items-center gap-2 rounded-md px-4 text-2xl font-medium text-neutral-400 dark:text-neutral-600 cursor-not-allowed">
-                <span className="truncate">{item.title}</span>
+                <span className="flex h-9 w-full items-center gap-2 rounded-md px-4 text-3xl font-medium text-neutral-400 dark:text-neutral-600 cursor-not-allowed">
+                  <span className="truncate">{item.title}</span>
                 {item.count !== undefined && (
-                  <span className="ml-auto text-xs text-muted-foreground/60 tabular-nums">
+                  <span className="ml-auto text-base text-muted-foreground/60 tabular-nums">
                     {item.count}
                   </span>
                 )}
@@ -57,12 +57,12 @@ function FlatNavList({
                   href={item.url}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "flex h-9 w-full items-center gap-2 rounded-md px-3 text-2xl font-medium text-neutral-800 dark:text-neutral-200  transition-colors hover:bg-muted hover:text-foreground",
+                    "flex h-9 w-full items-center gap-2 rounded-md px-3 text-3xl font-medium text-neutral-800 dark:text-neutral-200  transition-colors hover:bg-muted hover:text-foreground",
                   )}
                 >
                   <span className="truncate">{item.title}</span>
                   {item.count !== undefined && (
-                    <span className="ml-auto text-xs text-muted-foreground/60 tabular-nums">
+                    <span className="ml-auto text-base text-muted-foreground/60 tabular-nums">
                       {item.count}
                     </span>
                   )}
@@ -108,7 +108,7 @@ export function MobileNavigation({ data }: MobileNavigationProps) {
           <section aria-labelledby="mobile-main-heading">
             <h2
               id="mobile-main-heading"
-              className="px-3 pb-1 text-xs font-medium text-muted-foreground/70"
+              className="px-3 pb-1 text-base font-medium text-muted-foreground/70"
             >
               Menu
             </h2>
@@ -119,7 +119,7 @@ export function MobileNavigation({ data }: MobileNavigationProps) {
             <section aria-labelledby="mobile-docs-heading">
               <h2
                 id="mobile-docs-heading"
-                className="px-3 pb-1 text-xs font-medium text-muted-foreground/70"
+                className="px-3 pb-1 text-base font-medium text-muted-foreground/70"
               >
                 Docs
               </h2>
@@ -131,7 +131,7 @@ export function MobileNavigation({ data }: MobileNavigationProps) {
             <section aria-labelledby="mobile-blocks-heading">
               <h2
                 id="mobile-blocks-heading"
-                className="px-3 pb-1 text-xs font-medium text-muted-foreground/70"
+                className="px-3 pb-1 text-base font-medium text-muted-foreground/70"
               >
                 Blocks
               </h2>
