@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises"
 import { notFound } from "next/navigation"
 import { Bug, Pen, TextAlignStart } from "lucide-react"
 import { MdxHeaderActions } from "@/components/mdx-header-actions"
+import { buildGitHubEditUrl, buildGitHubIssueUrl } from "@/lib/github-links"
 import { getDocFileEntries, getDocFrontmatter, resolveDocFile } from "@/lib/content"
 import { slugifyHeading } from "@/lib/heading"
 
@@ -99,6 +100,9 @@ export default async function DocsPage({
     const title = frontmatter.title ?? formatSlugToTitle(slug)
     const tocHeadings = getTocHeadings(source)
 
+    const issueUrl = buildGitHubIssueUrl({ title: `[bug]: ${pagePath}` })
+    const editUrl = buildGitHubEditUrl(`content/${docFile.relativePath}`)
+
     return (
         <div className="mx-auto mt-16 flex w-full md:mt-14">
             <article className="min-w-0 w-full py-1">
@@ -142,7 +146,7 @@ export default async function DocsPage({
                             <ul className="space-y-1">
                                 <li>
                                     <a
-                                        href={"https://github.com/ri0n/ri0n-ui/blob/main/README.md"}
+                                        href={issueUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100"
@@ -152,7 +156,7 @@ export default async function DocsPage({
                                 </li>
                                 <li>
                                     <a
-                                        href={"https://github.com/ri0n/ri0n-ui/blob/main/README.md"}
+                                        href={editUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100"

@@ -3,7 +3,7 @@ import { SiGithub } from "@icons-pack/react-simple-icons";
 
 async function getGitHubStars(): Promise<number> {
   try {
-    const res = await fetch("https://api.github.com/repos/ri0n-dev/ri0n-dev", {
+    const res = await fetch("https://api.github.com/repos/ri0n-dev/hex-ui", {
       next: { revalidate: 3600 },
       headers: {
         Accept: "application/vnd.github.v3+json",
@@ -32,7 +32,7 @@ export async function GitHubStars() {
   return (
     <Button variant="ghost" className="border border-border">
       <a
-        href="https://github.com/ri0n-dev/ri0n-dev"
+        href="https://github.com/ri0n-dev/hex-ui"
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${stars} stars on GitHub`}
