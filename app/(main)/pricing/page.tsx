@@ -255,8 +255,8 @@ export default async function PricingPage() {
           </Accordion>
           <p className="text-sm text-muted-foreground text-center">
             Still have questions? email at{" "}
-            <Link className="underline" href="mailto:hey@hexui.com">
-              hey@hexui.com
+            <Link className="underline" href="mailto:info@ri0n.dev">
+              info@ri0n.dev
             </Link>
           </p>
         </div>
