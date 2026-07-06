@@ -1,8 +1,6 @@
 import type { MDXComponents } from "mdx/types"
 import { MdxPre } from "@/components/mdx-pre"
 
-const components: MDXComponents = {}
-
 export function useMDXComponents(): MDXComponents {
   return {
     h2: ({ children, ...props }) => {
@@ -28,7 +26,7 @@ export function useMDXComponents(): MDXComponents {
     p: ({ children, ...props }) => {
       return (
         <p
-          className="leading-7 [&:not(:first-child)]:mt-6 text-neutral-600 dark:text-neutral-300"
+          className="leading-7 not-first:mt-6 text-neutral-600 dark:text-neutral-300"
           {...props}
         >
           {children}
