@@ -98,7 +98,7 @@ export function MobileNavigation({ data }: MobileNavigationProps) {
       <SheetContent
         side="top"
         overlayClassName="bg-transparent supports-backdrop-filter:backdrop-blur-none"
-        className="data-[side=top]:top-15 data-[side=top]:bottom-0 data-[side=top]:h-[calc(100svh-3.75rem)] gap-0 p-0 shadow-2xl duration-300 data-[side=top]:data-open:slide-in-from-top-[10%] data-[side=top]:data-closed:slide-out-to-top-[10%]"
+        className="data-[side=top]:top-15 data-[side=top]:bottom-0 data-[side=top]:h-[calc(100svh-3.75rem)] gap-0 p-0 shadow-2xl bg-background duration-300 data-[side=top]:data-open:slide-in-from-top-[10%] data-[side=top]:data-closed:slide-out-to-top-[10%]"
         showCloseButton={false}
       >
         <nav
