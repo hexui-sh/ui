@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
   metadataBase: new URL("https://hexui.sh"),
   openGraph: {
-    title: "High Quality, Fast, Reliable - Hex UI",
+    title: "Copy. Customize. Launch. - Hex UI",
     description:
       "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
     url: "https://hexui.sh",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "High Quality, Fast, Reliable - Hex UI",
+    title: "Copy. Customize. Launch. - Hex UI",
     description:
       "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
     creator: "@ri0n_dev",
