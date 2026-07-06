@@ -19,7 +19,7 @@ export function LanguageSelect() {
         <Select value={selectedValue} onValueChange={(value) => {
             if (value) setSelectedValue(value)
         }}>
-            <SelectTrigger className="h-9 w-40 rounded-md border-border/70 bg-background/80 px-3 shadow-xs">
+            <SelectTrigger className="h-7 xl:h-9 w-40 rounded-md border-border/70 bg-background/80 px-3 shadow-xs">
                 <div className="flex min-w-0 items-center gap-2">
                     <Languages className="size-4 shrink-0 text-muted-foreground" />
                     <span className="truncate text-sm">{selectedLabel}</span>

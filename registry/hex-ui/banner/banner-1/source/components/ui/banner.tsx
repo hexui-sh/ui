@@ -3,38 +3,39 @@
 import { type ReactNode, useState } from "react"
 import { X } from "lucide-react"
 
+import { cn } from "@/lib/utils"
+
 export interface BannerProps {
-    /** The content to display inside the banner. */
-    children: ReactNode
-    /** Additional CSS classes for the outer section. */
-    className?: string
+  children: ReactNode
+  className?: string
 }
 
 export function Banner({ children, className }: BannerProps) {
-    const [dismissed, setDismissed] = useState(false)
+  const [dismissed, setDismissed] = useState(false)
 
-    if (dismissed) return null
+  if (dismissed) return null
 
-    return (
-        <section
-            aria-label="Promotional announcement"
-            className={`relative w-full border-b text-primary py-2 ${className ?? ""}`}
+  return (
+    <section
+      aria-label="Promotional announcement"
+      className={cn(
+        "relative w-full border-b py-2 text-primary",
+        className
+      )}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 text-sm font-medium">
+        <div className="text-balance text-center text-sm leading-snug">
+          {children}
+        </div>
+        <button
+          type="button"
+          onClick={() => setDismissed(true)}
+          aria-label="Dismiss promotional banner"
+          className="inline-flex size-6 items-center justify-center rounded-full transition-colors hover:bg-current/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current/20"
         >
-            <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm font-medium">
-                <div className="text-center text-balance text-sm leading-snug">
-                    {children}
-                </div>
-
-                {/* Dismiss */}
-                <button
-                    type="button"
-                    onClick={() => setDismissed(true)}
-                    aria-label="Dismiss promotional banner"
-                    className="p-0 sm:p-1.5 rounded-full hover:bg-current/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current/20"
-                >
-                    <X className="size-4" aria-hidden="true" />
-                </button>
-            </div>
-        </section>
-    )
+          <X className="size-4" aria-hidden="true" />
+        </button>
+      </div>
+    </section>
+  )
 }

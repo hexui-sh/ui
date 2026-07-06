@@ -3,14 +3,14 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { SupportContactCard, type SupportAvatar } from "./support-contact-card";
+} from "@/components/ui/accordion"
+import { SupportContactCard, type SupportAvatar } from "./support-contact-card"
 
 type FAQItem = {
-  value: string;
-  question: string;
-  answer: string;
-};
+  value: string
+  question: string
+  answer: string
+}
 
 const faqItems: ReadonlyArray<FAQItem> = [
   {
@@ -49,65 +49,61 @@ const faqItems: ReadonlyArray<FAQItem> = [
     answer:
       "Billing is based on your selected plan and the number of active users in your workspace. You can upgrade, downgrade, or cancel your subscription at any time from the billing settings.",
   },
-];
+]
 
 const supportAvatars: ReadonlyArray<SupportAvatar> = [
   {
     src: "/demo/avatars/avatar-1.svg",
     alt: "@u1",
     fallback: "A1",
-    className: "size-10 border bg-accent z-1",
+    className: "z-1",
   },
   {
     src: "https://avatars.githubusercontent.com/u/114809507",
     alt: "@ri0n_dev",
     fallback: "RI",
-    className: "size-12 border bg-accent z-2",
+    className: "z-2",
   },
   {
     src: "/demo/avatars/avatar-4.svg",
     alt: "@u2",
     fallback: "A4",
-    className: "size-10 border bg-accent z-1",
+    className: "z-1",
   },
-];
+]
 
 export function FAQ() {
   return (
     <section className="relative flex w-full justify-center py-16">
-      <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-10">
-        <div className="flex max-w-3xl flex-col gap-2 text-center">
-          <p className="mx-auto max-w-2xl text-pretty text-sm leading-relaxed text-muted-foreground">
+      <div className="flex w-full max-w-3xl flex-col items-center gap-10">
+        <div className="flex flex-col gap-2 text-center">
+          <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
             FAQ
           </p>
-
-          <h1 className="text-balance text-2xl font-semibold tracking-tight text-foreground md:text-3xl xl:text-4xl">
+          <h1 className="text-balance text-2xl font-semibold tracking-tight md:text-3xl xl:text-4xl">
             Your Questions Answered
           </h1>
-
-          <p className="text-muted-foreground mt-2">
+          <p className="mt-2 text-muted-foreground">
             Need help with something? Here are some of the most common questions
             we get.
           </p>
         </div>
 
-        <div className="w-full max-w-2xl">
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((item) => (
-              <AccordionItem key={item.value} value={item.value}>
-                <AccordionTrigger className="text-sm md:text-base font-medium text-foreground">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base leading-relaxed text-muted-foreground/90">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+        <Accordion type="single" collapsible className="max-w-2xl">
+          {faqItems.map((item) => (
+            <AccordionItem key={item.value} value={item.value}>
+              <AccordionTrigger className="md:text-base">
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="md:text-base leading-relaxed text-muted-foreground/90">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
 
         <SupportContactCard supportAvatars={supportAvatars} />
       </div>
     </section>
-  );
+  )
 }

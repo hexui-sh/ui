@@ -1,9 +1,9 @@
 import { FAQ } from "../../components/faq"
 
 export default function Page() {
-    return (
-        <div className="flex px-6 py-4 w-full mx-auto min-h-screen flex-col items-center">
-            <FAQ />
-        </div>
-    )
+  return (
+    <div className="flex min-h-screen w-full flex-col items-center px-6 py-4">
+      <FAQ />
+    </div>
+  )
 }

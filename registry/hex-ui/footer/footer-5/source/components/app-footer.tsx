@@ -42,10 +42,10 @@ const footerSections = [
 
 export function AppFooter() {
   return (
-    <footer className="relative w-full overflow-visible pt-32">
+    <footer className="relative w-full overflow-visible pt-0 xl:pt-32">
       <div
         aria-hidden
-        className="absolute inset-x-0 z-0 translate-y-[-62.5%]"
+        className="hidden xl:flex absolute inset-x-0 z-0 translate-y-[-62.5%]"
       >
         <FluidGradientText text="Acme" />
       </div>
