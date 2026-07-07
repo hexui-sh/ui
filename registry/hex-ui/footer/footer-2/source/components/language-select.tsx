@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Languages } from "lucide-react"
-import { Select, SelectPopup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select, SelectPopup, SelectItem, SelectTrigger } from "@/components/ui/select"
 
 const items = [
     { label: "English", value: "en" },
