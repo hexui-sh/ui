@@ -1,7 +1,6 @@
 import { AppSidebar } from "../../components/app-sidebar"
 import { AppHeader } from "../../components/app-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { TooltipProvider } from "@/components/ui/tooltip"
 import { MessageCircle } from "lucide-react"
 
 const SIDEBAR_PROVIDER_STYLE = {
@@ -10,11 +9,7 @@ const SIDEBAR_PROVIDER_STYLE = {
 
 export default function Page() {
     return (
-        <SidebarProvider
-            className="min-h-0 flex-1"
-            style={SIDEBAR_PROVIDER_STYLE}
-            desktopBreakpoint="sm"
-        >
+        <SidebarProvider defaultOpen={false} className="min-h-0 flex-1" style={SIDEBAR_PROVIDER_STYLE}>
             <AppSidebar />
             <SidebarInset className="bg-background">
                 <AppHeader />
