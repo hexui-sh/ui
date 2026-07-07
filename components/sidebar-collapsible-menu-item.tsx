@@ -47,7 +47,7 @@ export function SidebarCollapsibleMenuItem({
           <SidebarMenuSub>
             {items.map((subItem) => (
               <SidebarMenuSubItem key={subItem.url}>
-                <SidebarMenuSubButton asChild>
+                <SidebarMenuSubButton>
                   <Link href={subItem.url}>{subItem.title}</Link>
                 </SidebarMenuSubButton>
               </SidebarMenuSubItem>

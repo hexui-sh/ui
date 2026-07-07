@@ -77,7 +77,7 @@ function TreeItem({ node, selectedFile, onSelect }: TreeItemProps) {
                 className="group/collapsible [&[data-state=open]>button>svg:first-child]:rotate-90"
                 defaultOpen
             >
-                <CollapsibleTrigger asChild>
+                <CollapsibleTrigger>
                     <SidebarMenuButton>
                         <ChevronRight className="transition-transform" />
                         <Folder />

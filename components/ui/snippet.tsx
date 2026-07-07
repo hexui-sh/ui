@@ -361,7 +361,6 @@ export const SnippetTabsContent = ({
   ...props
 }: SnippetTabsContentProps) => (
   <TabsContent
-    asChild
     className={cn("mt-0 bg-neutral-50 dark:bg-black p-4 text-sm", className)}
     {...props}
   >

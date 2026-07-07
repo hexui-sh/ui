@@ -36,7 +36,7 @@ export function WorkSpaceSwitcher({
         <SidebarMenu>
             <SidebarMenuItem>
                 <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
+                    <DropdownMenuTrigger>
                         <SidebarMenuButton className="w-fit px-1.5">
                             <div className="flex aspect-square size-5 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
                                 <activeWorkspace.logo className="size-3" />

@@ -42,7 +42,7 @@ export function AppHeader() {
                 <SidebarTrigger className="shrink-0 sm:hidden" />
 
                 <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
+                    <DropdownMenuTrigger>
                         <Button
                             type="button"
                             variant="ghost"

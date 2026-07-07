@@ -40,14 +40,14 @@ function NavRecentsContent({ items }: NavRecentsProps) {
                 <SidebarMenu className="gap-0.5">
                     {items.map((item) => (
                         <SidebarMenuItem key={item.title}>
-                            <SidebarMenuButton asChild isActive={item.isActive} tooltip={item.title}>
+                            <SidebarMenuButton isActive={item.isActive} tooltip={item.title}>
                                 <a href={item.url}>
                                     <span className="shrink-0 w-max whitespace-nowrap">{item.title}</span>
                                 </a>
                             </SidebarMenuButton>
                             {!isCollapsed && (
                                 <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
+                                    <DropdownMenuTrigger>
                                         <SidebarMenuAction
                                             className="mr-1"
                                             showOnHover

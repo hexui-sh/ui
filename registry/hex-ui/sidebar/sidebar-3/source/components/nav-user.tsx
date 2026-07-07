@@ -44,7 +44,7 @@ export function NavUser({
         <SidebarMenu>
             <SidebarMenuItem>
                 <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
+                    <DropdownMenuTrigger>
                         <SidebarMenuButton
                             size="lg"
                             className="relative data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"

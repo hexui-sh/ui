@@ -26,7 +26,7 @@ export function NavMain({ items }: NavMainProps) {
                 <SidebarMenu className="gap-0.5">
                     {items.map((item) => (
                         <SidebarMenuItem key={item.title}>
-                            <SidebarMenuButton asChild isActive={item.isActive} tooltip={item.title}>
+                            <SidebarMenuButton isActive={item.isActive} tooltip={item.title}>
                                 {/* Support both icons and emoji so the same nav renderer can be reused for different demos. */}
                                 <a href={item.url}>
                                     {item.icon ? <item.icon className="size-4" /> : null}

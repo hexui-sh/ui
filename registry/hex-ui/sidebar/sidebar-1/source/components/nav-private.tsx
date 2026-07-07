@@ -29,7 +29,7 @@ export function NavPrivate({ items }: { items: NavPrivateItem[] }) {
                 <SidebarMenu>
                     {items.map((subItem) => (
                         <SidebarMenuItem key={subItem.title}>
-                            <SidebarMenuButton asChild isActive={subItem.isActive}>
+                            <SidebarMenuButton isActive={subItem.isActive}>
                                 <a href={subItem.url}>
                                     {subItem.icon ? <subItem.icon className="size-4" /> : null}
                                     {subItem.emoji ? (
