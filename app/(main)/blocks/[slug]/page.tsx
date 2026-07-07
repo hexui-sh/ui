@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { BlockPreviewPanel } from "@/components/block-preview-panel"
 import { BlockViewer } from "@/components/block-viewer"
-import { categoryToSlug, getBlockCategories, getBlockEntriesByCategory } from "@/lib/blocks"
+import { MdxNavActions } from "@/components/mdx-nav-actions"
+import { categoryToSlug, getBlockCategories, getBlockCategoryNavigationContext, getBlockEntriesByCategory } from "@/lib/blocks"
 import type { BlockEntry } from "@/lib/blocks"
 import { readCodePath } from "@/lib/read-code-path"
 
@@ -41,6 +42,8 @@ export default async function BlockCategoryPage({
 
   const { category, blocks } = result
 
+  const blockCategoryNav = await getBlockCategoryNavigationContext(slug)
+
   const blocksWithCode = await Promise.all(
     blocks.map(async (block: BlockEntry) => ({
       ...block,
@@ -52,10 +55,13 @@ export default async function BlockCategoryPage({
 
   return (
     <div className="mx-auto mt-16 flex w-full max-docs-content-width flex-col gap-5">
-      <header>
+      <header className="flex flex-row gap-4 justify-between md:items-start">
         <h1 className="text-3xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">
           {category}
         </h1>
+        <div className="block xl:hidden">
+          <MdxNavActions previous={blockCategoryNav.previous} next={blockCategoryNav.next} label="block category" />
+        </div>
       </header>
 
       <div className="flex flex-col gap-10">

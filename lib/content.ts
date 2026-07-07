@@ -336,6 +336,19 @@ export async function resolveDocFile(slug: string) {
   return entries.find((entry) => entry.slug === slug) ?? null
 }
 
+export async function getDocNavigationContext(slug: string) {
+  const groups = await getContentNavigation("docs")
+  const items = groups.flatMap((group) =>
+    group.items.map((item) => ({ title: item.title, href: item.url }))
+  )
+  const index = items.findIndex((item) => item.href === `/docs/${slug}`)
+
+  return {
+    previous: index > 0 ? items[index - 1] : undefined,
+    next: index < items.length - 1 ? items[index + 1] : undefined,
+  }
+}
+
 export async function resolveDocSourcePath(segments: string[]): Promise<string | null> {
   if (segments.length === 0) {
     return null

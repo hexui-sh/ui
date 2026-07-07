@@ -4,8 +4,9 @@ import { readFile } from "node:fs/promises"
 import { notFound } from "next/navigation"
 import { Bug, Pen, TextAlignStart } from "lucide-react"
 import { MdxHeaderActions } from "@/components/mdx-header-actions"
+import { MdxNavActions } from "@/components/mdx-nav-actions"
 import { buildGitHubEditUrl, buildGitHubIssueUrl } from "@/lib/github-links"
-import { getDocFileEntries, getDocFrontmatter, resolveDocFile } from "@/lib/content"
+import { getDocFileEntries, getDocFrontmatter, getDocNavigationContext, resolveDocFile } from "@/lib/content"
 import { slugifyHeading } from "@/lib/heading"
 
 type TocHeading = {
@@ -97,6 +98,7 @@ export default async function DocsPage({
         getDocFrontmatter(["docs", slug]),
     ])
 
+    const docNav = await getDocNavigationContext(slug)
     const title = frontmatter.title ?? formatSlugToTitle(slug)
     const tocHeadings = getTocHeadings(source)
 
@@ -114,7 +116,10 @@ export default async function DocsPage({
                                 <p className="mt-2 max-w-2xl text-base leading-6 text-neutral-600 dark:text-neutral-400">{frontmatter.description}</p>
                             ) : null}
                         </div>
-                        <MdxHeaderActions markdown={source} pageUrl={pagePath} />
+                        <div className="flex items-center gap-2">
+                          <MdxHeaderActions markdown={source} pageUrl={pagePath} />
+                          <MdxNavActions previous={docNav.previous} next={docNav.next} label="document" />
+                        </div>
                     </div>
                 </header>
 

@@ -185,6 +185,19 @@ export async function getBlockEntriesByCategory(
   }
 }
 
+export async function getBlockCategoryNavigationContext(slug: string) {
+  const groups = await getBlockNavigationGroups()
+  const categories = groups.flatMap((group) =>
+    group.items.map((item) => ({ title: item.title, href: item.url }))
+  )
+  const index = categories.findIndex((item) => item.href === `/blocks/${slug}`)
+
+  return {
+    previous: index > 0 ? categories[index - 1] : undefined,
+    next: index < categories.length - 1 ? categories[index + 1] : undefined,
+  }
+}
+
 export async function getBlockNavigationGroups(): Promise<BlockNavigationGroup[]> {
   const groups = await getBlockGroups()
 
