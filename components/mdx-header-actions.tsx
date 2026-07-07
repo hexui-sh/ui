@@ -3,6 +3,7 @@
 import * as React from "react"
 import {
   ButtonGroup,
+  ButtonGroupSeparator,
 } from "@/components/ui/button-group"
 import { Button } from "@/components/ui/button"
 import {
@@ -110,8 +111,8 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
           Copy Page
         </Button>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button onClick={handleCopyMarkdown} className="bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 py-3.5" size="sm" aria-label="More Options">
+          <DropdownMenuTrigger>
+            <Button className="bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 py-3.5 rounded-l-none!" size="sm" aria-label="More Options">
               <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
@@ -124,8 +125,8 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
                 View as Markdown
               </DropdownMenuItem>
               {openInEntries.map(({ id, label, url, Icon }) => (
-                <DropdownMenuItem key={id} asChild>
-                  <a href={url} target="_blank" rel="noopener noreferrer">
+                <DropdownMenuItem key={id}>
+                  <a className="flex items-center gap-2" href={url} target="_blank" rel="noopener noreferrer">
                     <Icon />
                     Open in {label}
                   </a>
