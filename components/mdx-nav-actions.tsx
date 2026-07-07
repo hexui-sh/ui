@@ -26,7 +26,7 @@ export function MdxNavActions({ previous, next, label }: MdxNavActionsProps) {
           aria-label={`Previous ${label}`}
           className={cn(
             buttonVariants({ variant: "secondary", size: "icon" }),
-            "size-8 rounded-full"
+            "size-8 bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 rounded-full"
           )}
         >
           <ArrowLeft className="size-4" />
@@ -38,7 +38,7 @@ export function MdxNavActions({ previous, next, label }: MdxNavActionsProps) {
           aria-label={`Previous ${label}`}
           className={cn(
             buttonVariants({ variant: "secondary", size: "icon" }),
-            "size-8 rounded-full pointer-events-none opacity-50"
+            "size-8 bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 rounded-full pointer-events-none opacity-50"
           )}
         >
           <ArrowLeft className="size-4" />
@@ -52,7 +52,7 @@ export function MdxNavActions({ previous, next, label }: MdxNavActionsProps) {
           aria-label={`Next ${label}`}
           className={cn(
             buttonVariants({ variant: "secondary", size: "icon" }),
-            "size-8 rounded-full"
+            "size-8 bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 rounded-full"
           )}
         >
           <ArrowRight className="size-4" />
@@ -64,7 +64,7 @@ export function MdxNavActions({ previous, next, label }: MdxNavActionsProps) {
           aria-label={`Next ${label}`}
           className={cn(
             buttonVariants({ variant: "secondary", size: "icon" }),
-            "size-8 rounded-full pointer-events-none opacity-50"
+            "size-8 bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 rounded-full pointer-events-none opacity-50"
           )}
         >
           <ArrowRight className="size-4" />
