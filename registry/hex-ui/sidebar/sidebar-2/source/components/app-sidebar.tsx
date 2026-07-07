@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
+    DropdownMenuGroup,
     DropdownMenuLabel,
     DropdownMenuRadioGroup,
     DropdownMenuRadioItem,
@@ -151,19 +152,16 @@ export function AppSidebar() {
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <DropdownMenu onOpenChange={handleModeMenuOpenChange}>
-                                    <DropdownMenuTrigger asChild>
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            className="text-muted-foreground"
-                                            aria-label={`Sidebar Control: ${activeMode.label}`}
-                                        >
+                                    <DropdownMenuTrigger>
+                                        <Button variant="ghost" size="icon" className="text-muted-foreground" aria-label={`Sidebar Control: ${activeMode.label}`}>
                                             <PanelLeftDashed />
                                         </Button>
                                     </DropdownMenuTrigger>
 
                                     <DropdownMenuContent side="top" align="end" className="ml-3 w-48">
-                                        <DropdownMenuLabel>Sidebar Control</DropdownMenuLabel>
+                                        <DropdownMenuGroup>
+                                            <DropdownMenuLabel>Sidebar Control</DropdownMenuLabel>
+                                        </DropdownMenuGroup>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuRadioGroup
                                             value={mode}
