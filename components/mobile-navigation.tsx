@@ -52,21 +52,23 @@ function FlatNavList({
                 )}
               </span>
             ) : (
-              <SheetClose asChild>
-                <Link
-                  href={item.url}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "flex h-9 w-full items-center gap-2 rounded-md px-3 text-3xl font-medium text-neutral-800 dark:text-neutral-200  transition-colors hover:bg-muted hover:text-foreground",
-                  )}
-                >
-                  <span className="truncate">{item.title}</span>
-                  {item.count !== undefined && (
-                    <span className="ml-auto text-base text-muted-foreground/60 tabular-nums">
-                      {item.count}
-                    </span>
-                  )}
-                </Link>
+              <SheetClose
+                render={
+                  <Link
+                    href={item.url}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "flex h-9 w-full items-center justify-between gap-2 rounded-md px-3 text-3xl font-medium text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-muted hover:text-foreground",
+                    )}
+                  />
+                }
+              >
+                <span className="truncate">{item.title}</span>
+                {item.count !== undefined && (
+                  <span className="ml-auto text-base text-muted-foreground/60 tabular-nums">
+                    {item.count}
+                  </span>
+                )}
               </SheetClose>
             )}
           </li>
@@ -85,19 +87,20 @@ export function MobileNavigation({ data }: MobileNavigationProps) {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          className="group/menu md:hidden aria-expanded:bg-transparent aria-expanded:shadow-none"
-          aria-label="Open navigation menu"
-        >
-          <HamburgerIcon />
-        </Button>
+      <SheetTrigger
+        render={
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            className="group/menu md:hidden aria-expanded:bg-transparent aria-expanded:shadow-none"
+            aria-label="Open navigation menu"
+          />
+        }
+      >
+        <HamburgerIcon />
       </SheetTrigger>
       <SheetContent
         side="top"
-        overlayClassName="bg-transparent supports-backdrop-filter:backdrop-blur-none"
         className="data-[side=top]:top-15 data-[side=top]:bottom-0 data-[side=top]:h-[calc(100svh-3.75rem)] gap-0 p-0 shadow-2xl bg-background duration-300 data-[side=top]:data-open:slide-in-from-top-[10%] data-[side=top]:data-closed:slide-out-to-top-[10%]"
         showCloseButton={false}
       >
