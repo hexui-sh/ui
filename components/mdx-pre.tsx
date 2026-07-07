@@ -35,7 +35,7 @@ type MdxPreProps = {
 export function MdxPre({ children }: MdxPreProps) {
   if (!isValidElement(children)) {
     return (
-      <pre className="max-h-80 overflow-x-auto rounded-md border bg-foreground/2 p-3 font-mono">
+      <pre className="max-h-80 w-full max-w-full min-w-0 overflow-x-auto rounded-md border bg-foreground/2 p-3 font-mono">
         {children}
       </pre>
     );
@@ -51,11 +51,11 @@ export function MdxPre({ children }: MdxPreProps) {
 
   return (
     <div
-      className="group relative my-6 max-h-80 overflow-hidden rounded-md border bg-foreground/2"
+      className="group relative my-6 max-h-80 w-full max-w-full min-w-0 overflow-hidden rounded-md border bg-foreground/2"
       data-code-container="true"
     >
       <CodeSnippet
-        className="bg-transparent"
+        className="bg-transparent max-w-full min-w-0 overflow-hidden"
         data={snippetData}
         defaultValue={language}
       >
@@ -66,13 +66,15 @@ export function MdxPre({ children }: MdxPreProps) {
           {(item) => (
             <CodeSnippetItem
               key={item.language}
-              className="!bg-transparent"
+              className="bg-transparent! [&_pre]:w-max [&_pre]:min-w-full [&_pre]:max-w-none [&_code]:overflow-x-visible"
               lineNumbers={false}
               value={item.language}
             >
-              <CodeSnippetContent language={item.language as BundledLanguage}>
-                {item.code}
-              </CodeSnippetContent>
+              <div className="w-full max-w-full min-w-0 overflow-x-auto">
+                <CodeSnippetContent language={item.language as BundledLanguage}>
+                  {item.code}
+                </CodeSnippetContent>
+              </div>
             </CodeSnippetItem>
           )}
         </CodeSnippetBody>
