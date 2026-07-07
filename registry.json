@@ -303,7 +303,7 @@
             "description": "A simple footer with social media buttons and language switching",
             "registryDependencies": [
                 "button",
-                "select"
+                "@coss/select"
             ],
             "dependencies": [
                 "@icons-pack/react-simple-icons",
