@@ -185,15 +185,15 @@ export function BlockPreviewPanel({
     <div className="@container w-full">
       <Tabs defaultValue="preview" className="w-full">
         <div className="flex h-8 w-full min-w-0 items-center justify-between gap-2 sm:gap-4">
-          <TabsList>
-            <TabsTrigger value="preview">Preview</TabsTrigger>
-            <TabsTrigger value="code">Code</TabsTrigger>
+          <TabsList className="px-0 py-0.5 bg-transparent">
+            <TabsTrigger className="px-2" value="preview">Preview</TabsTrigger>
+            <TabsTrigger className="px-2" value="code">Code</TabsTrigger>
           </TabsList>
           <div className="flex h-full items-center gap-2">
             <ButtonGroup className="hidden @4xl:flex h-full max-h-7.5 items-center rounded-[min(var(--radius-md),12px)] border border-border">
               {screenOptions.map(({ value, icon: Icon, label }) => (
                 <Tooltip key={value}>
-                  <TooltipTrigger asChild>
+                  <TooltipTrigger>
                     <Button
                       type="button"
                       size="icon"
@@ -214,7 +214,7 @@ export function BlockPreviewPanel({
               <ButtonGroupSeparator />
               {hasPreview ? (
                 <Tooltip>
-                  <TooltipTrigger asChild>
+                  <TooltipTrigger>
                     <Button
                       size="icon"
                       variant="ghost"
@@ -230,7 +230,7 @@ export function BlockPreviewPanel({
                 </Tooltip>
               ) : (
                 <Tooltip>
-                  <TooltipTrigger asChild>
+                  <TooltipTrigger>
                     <Button size="icon" variant="ghost" disabled>
                       <Maximize className="text-neutral-700 dark:text-neutral-300" />
                     </Button>
@@ -242,7 +242,7 @@ export function BlockPreviewPanel({
               )}
               <ButtonGroupSeparator />
               <Tooltip>
-                <TooltipTrigger asChild>
+                <TooltipTrigger>
                   <Button
                     type="button"
                     size="icon"
