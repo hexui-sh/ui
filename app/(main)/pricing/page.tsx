@@ -205,13 +205,15 @@ export default async function PricingPage() {
             <div className="mt-auto h-15 flex flex-col">
               {plan.href ? (
                 <>
-                  <RichButton>
+                  <RichButton disabled>
                     <Link href={plan.href}>{plan.cta}</Link>
                   </RichButton>
                 </>
               ) : (
                 <>
-                  <RichButton color={plan.color}>{plan.cta}</RichButton>
+                  <RichButton color={plan.color} disabled>
+                    {plan.cta}
+                  </RichButton>
                   <label className="text-xs text-neutral-500 mt-2 block">
                     Payments handled by Whop.
                   </label>
@@ -234,9 +236,7 @@ export default async function PricingPage() {
         <div className="flex flex-col gap-4 w-full max-w-2xl">
           <Accordion
             className="w-full"
-            type="single"
-            defaultValue="item-1"
-            collapsible
+            defaultValue={["item-1"]}
           >
             {faq.map((item) => (
               <AccordionItem
