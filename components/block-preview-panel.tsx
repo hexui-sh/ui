@@ -193,18 +193,20 @@ export function BlockPreviewPanel({
             <ButtonGroup className="hidden @4xl:flex h-full max-h-7.5 items-center rounded-[min(var(--radius-md),12px)] border border-border">
               {screenOptions.map(({ value, icon: Icon, label }) => (
                 <Tooltip key={value}>
-                  <TooltipTrigger>
-                    <Button
-                      type="button"
-                      size="icon"
-                      variant={screen === value ? "secondary" : "ghost"}
-                      className="rounded-[min(var(--radius-md),12px)]"
-                      aria-label={label}
-                      aria-pressed={screen === value}
-                      onClick={() => handleScreenChange(value)}
-                    >
-                      <Icon className="text-neutral-700 dark:text-neutral-300" />
-                    </Button>
+                  <TooltipTrigger
+                    render={
+                      <Button
+                        type="button"
+                        size="icon"
+                        variant={screen === value ? "secondary" : "ghost"}
+                        className="rounded-[min(var(--radius-md),12px)]"
+                        aria-label={label}
+                        aria-pressed={screen === value}
+                        onClick={() => handleScreenChange(value)}
+                      />
+                    }
+                  >
+                    <Icon className="text-neutral-700 dark:text-neutral-300" />
                   </TooltipTrigger>
                   <TooltipContent side="bottom" sideOffset={8}>
                     {label}: {screenWidthLabelMap[value]}
@@ -214,15 +216,17 @@ export function BlockPreviewPanel({
               <ButtonGroupSeparator />
               {hasPreview ? (
                 <Tooltip>
-                  <TooltipTrigger>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      nativeButton={false}
-                      render={<Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer" />}
-                    >
-                      <Maximize className="text-neutral-700 dark:text-neutral-300" />
-                    </Button>
+                  <TooltipTrigger
+                    render={
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        nativeButton={false}
+                        render={<Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer" />}
+                      />
+                    }
+                  >
+                    <Maximize className="text-neutral-700 dark:text-neutral-300" />
                   </TooltipTrigger>
                   <TooltipContent side="bottom" sideOffset={8}>
                     Open in New Tab
@@ -230,10 +234,10 @@ export function BlockPreviewPanel({
                 </Tooltip>
               ) : (
                 <Tooltip>
-                  <TooltipTrigger>
-                    <Button size="icon" variant="ghost" disabled>
-                      <Maximize className="text-neutral-700 dark:text-neutral-300" />
-                    </Button>
+                  <TooltipTrigger
+                    render={<Button size="icon" variant="ghost" disabled />}
+                  >
+                    <Maximize className="text-neutral-700 dark:text-neutral-300" />
                   </TooltipTrigger>
                   <TooltipContent side="bottom" sideOffset={8}>
                     Open in New Tab
@@ -242,17 +246,19 @@ export function BlockPreviewPanel({
               )}
               <ButtonGroupSeparator />
               <Tooltip>
-                <TooltipTrigger>
-                  <Button
-                    type="button"
-                    size="icon"
-                    variant="ghost"
-                    aria-label="Refresh preview"
-                    disabled={!hasPreview}
-                    onClick={() => setRefreshKey((k) => k + 1)}
-                  >
-                    <RefreshCw className="text-neutral-700 dark:text-neutral-300" />
-                  </Button>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="ghost"
+                      aria-label="Refresh preview"
+                      disabled={!hasPreview}
+                      onClick={() => setRefreshKey((k) => k + 1)}
+                    />
+                  }
+                >
+                  <RefreshCw className="text-neutral-700 dark:text-neutral-300" />
                 </TooltipTrigger>
                 <TooltipContent side="bottom" sideOffset={8}>
                   Refresh Preview
