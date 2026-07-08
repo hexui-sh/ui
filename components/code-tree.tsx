@@ -58,6 +58,8 @@ type TreeItemProps = {
 }
 
 function TreeItem({ node, selectedFile, onSelect }: TreeItemProps) {
+    const [open, setOpen] = React.useState(true)
+
     if (node.type === "file") {
         return (
             <SidebarMenuButton
@@ -74,15 +76,16 @@ function TreeItem({ node, selectedFile, onSelect }: TreeItemProps) {
     return (
         <SidebarMenuItem>
             <Collapsible
-                className="group/collapsible [&[data-state=open]>button>svg:first-child]:rotate-90"
-                defaultOpen
+                className="group/collapsible"
+                open={open}
+                onOpenChange={setOpen}
             >
-                <CollapsibleTrigger>
-                    <SidebarMenuButton>
-                        <ChevronRight className="transition-transform" />
-                        <Folder />
-                        {node.name}
-                    </SidebarMenuButton>
+                <CollapsibleTrigger render={<SidebarMenuButton />}>
+                    <ChevronRight
+                        className={cn("origin-center transition-transform", open && "rotate-90")}
+                    />
+                    <Folder />
+                    {node.name}
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                     <SidebarMenuSub>
