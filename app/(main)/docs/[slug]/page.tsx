@@ -106,7 +106,7 @@ export default async function DocsPage({
     const editUrl = buildGitHubEditUrl(`content/${docFile.relativePath}`)
 
     return (
-        <div className="mx-auto mt-16 flex w-full md:mt-14">
+        <div className="mx-auto mt-16 flex w-full min-w-0 md:mt-14">
             <article className="min-w-0 w-full py-1">
                 <header className="mb-6 dark:border-neutral-800">
                     <div className="flex gap-4 items-start justify-between">
