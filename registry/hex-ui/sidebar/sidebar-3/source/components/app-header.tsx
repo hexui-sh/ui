@@ -46,7 +46,7 @@ export function AppHeader() {
                         <Button
                             type="button"
                             variant="ghost"
-                            className="h-9 min-w-0 max-w-[220px] justify-start gap-2 px-2.5 sm:max-w-[260px]"
+                            className="h-9 min-w-0 max-w-55 justify-start gap-2 px-2.5 sm:max-w-65"
                         >
                             <span className="truncate text-base font-medium">{activeModel.label}</span>
                             <ChevronDown className="size-4 shrink-0 text-muted-foreground" />

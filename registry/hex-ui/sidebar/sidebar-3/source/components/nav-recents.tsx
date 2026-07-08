@@ -34,7 +34,7 @@ function NavRecentsContent({ items }: NavRecentsProps) {
 
     return (
         <SidebarGroup className="p-0 transition-opacity duration-200 ease-linear delay-100 group-data-[collapsible=icon]:pointer-events-none group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:delay-0">
-            <SidebarGroupLabel className="px-2 delay-100 group-data-[collapsible=icon]:delay-0 group-data-[collapsible=icon]:!mt-0">Recent</SidebarGroupLabel>
+            <SidebarGroupLabel className="px-2 delay-100 group-data-[collapsible=icon]:delay-0 group-data-[collapsible=icon]:mt-0!">Recent</SidebarGroupLabel>
 
             <SidebarGroupContent className="pt-1">
                 <SidebarMenu className="gap-0.5">
