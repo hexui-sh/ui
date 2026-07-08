@@ -244,7 +244,7 @@ export default async function PricingPage() {
                 value={item.value}
                 className="rounded-xl border-0 bg-card px-4 mb-2"
               >
-                <AccordionTrigger className="text-card-foreground/90 pt-3">
+                <AccordionTrigger className="text-card-foreground/90 py-3">
                   {item.trigger}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
