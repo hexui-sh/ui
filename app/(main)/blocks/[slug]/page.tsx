@@ -55,14 +55,14 @@ export default async function BlockCategoryPage({
 
   return (
     <div className="mx-auto mt-16 flex w-full max-docs-content-width flex-col gap-5">
-      <header className="flex flex-row gap-4 justify-between md:items-start">
+      <div className="flex gap-4 items-start justify-between">
         <h1 className="text-3xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">
           {category}
         </h1>
         <div className="block xl:hidden">
           <MdxNavActions previous={blockCategoryNav.previous} next={blockCategoryNav.next} label="block category" />
         </div>
-      </header>
+      </div>
 
       <div className="flex flex-col gap-10">
         {blocksWithCode.map((block) => (

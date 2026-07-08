@@ -109,7 +109,7 @@ export default async function DocsPage({
         <div className="mx-auto mt-16 flex w-full md:mt-14">
             <article className="min-w-0 w-full py-1">
                 <header className="mb-6 dark:border-neutral-800">
-                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                    <div className="flex gap-4 items-start justify-between">
                         <div>
                             <h1 className="text-3xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">{title}</h1>
                             {frontmatter.description ? (
@@ -117,8 +117,8 @@ export default async function DocsPage({
                             ) : null}
                         </div>
                         <div className="flex items-center gap-2">
-                          <MdxHeaderActions markdown={source} pageUrl={pagePath} />
-                          <MdxNavActions previous={docNav.previous} next={docNav.next} label="document" />
+                            <MdxHeaderActions markdown={source} pageUrl={pagePath} />
+                            <MdxNavActions previous={docNav.previous} next={docNav.next} label="document" />
                         </div>
                     </div>
                 </header>
