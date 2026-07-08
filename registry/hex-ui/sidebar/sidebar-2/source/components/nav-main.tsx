@@ -28,7 +28,7 @@ export function NavMain({ items }: NavMainProps) {
                         <SidebarMenuItem key={item.title}>
                             <SidebarMenuButton isActive={item.isActive} tooltip={item.title}>
                                 {/* Support both icons and emoji so the same nav renderer can be reused for different demos. */}
-                                <a href={item.url}>
+                                <a className="flex items-center gap-2" href={item.url}>
                                     {item.icon ? <item.icon className="size-4" /> : null}
                                     {item.emoji ? (
                                         <span aria-hidden="true" className="text-[14px] leading-none">

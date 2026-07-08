@@ -37,7 +37,7 @@ const data = {
             logo: Globe,
         },
         {
-            name: "Hex Studio",
+            name: "Nova Inc",
             plan: "Enterprise",
             logo: Globe,
         },

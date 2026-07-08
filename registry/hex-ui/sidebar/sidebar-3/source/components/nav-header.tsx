@@ -20,7 +20,7 @@ function NavHeaderContent({ items }: SidebarHeaderMenuProps) {
             {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton isActive={item.isActive} tooltip={item.title}>
-                        <a href={item.url}>
+                        <a className="flex items-center gap-2" href={item.url}>
                             <item.icon className="size-4 shrink-0" />
                             <span className="shrink-0 w-max whitespace-nowrap transition-opacity duration-200 ease-linear delay-100 group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:delay-0">
                                 {item.title}

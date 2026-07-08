@@ -36,51 +36,15 @@ function NavRecentsContent({ items }: NavRecentsProps) {
         <SidebarGroup className="p-0 transition-opacity duration-200 ease-linear delay-100 group-data-[collapsible=icon]:pointer-events-none group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:delay-0">
             <SidebarGroupLabel className="px-2 delay-100 group-data-[collapsible=icon]:delay-0 group-data-[collapsible=icon]:!mt-0">Recent</SidebarGroupLabel>
 
-            <SidebarGroupContent className="space-y-1 pt-1">
+            <SidebarGroupContent className="pt-1">
                 <SidebarMenu className="gap-0.5">
                     {items.map((item) => (
-                        <SidebarMenuItem key={item.title}>
+                        <SidebarMenuItem className="h-8" key={item.title}>
                             <SidebarMenuButton isActive={item.isActive} tooltip={item.title}>
-                                <a href={item.url}>
+                                <a className="flex items-center gap-2" href={item.url}>
                                     <span className="shrink-0 w-max whitespace-nowrap">{item.title}</span>
                                 </a>
                             </SidebarMenuButton>
-                            {!isCollapsed && (
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger>
-                                        <SidebarMenuAction
-                                            className="mr-1"
-                                            showOnHover
-                                        >
-                                            <Ellipsis className="size-4" />
-                                        </SidebarMenuAction>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent
-                                        className="w-auto"
-                                        side="right"
-                                        align="start"
-                                        onCloseAutoFocus={(e) => e.preventDefault()}
-                                    >
-                                        <DropdownMenuItem>
-                                            <Star />
-                                            <span>Star</span>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <Pencil />
-                                            <span>Rename</span>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <GalleryVerticalEnd />
-                                            <span>Add to project</span>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuItem variant="destructive">
-                                            <Trash2 />
-                                            <span>Delete</span>
-                                        </DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                            )}
                         </SidebarMenuItem>
                     ))}
                 </SidebarMenu>

@@ -109,7 +109,7 @@ function SidebarHeaderContent() {
 
     if (isCollapsed) {
         return (
-            <div className="flex h-8 items-center justify-center">
+            <div className="flex h-8 items-center justify-start">
                 <button
                     type="button"
                     className="group flex size-8 items-center justify-center transition-colors"
@@ -126,12 +126,12 @@ function SidebarHeaderContent() {
     }
 
     return (
-        <div className="flex h-8 items-center justify-between gap-2">
-            <div className="flex items-center gap-2">
+        <div className="flex h-8 items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2">
                 <AppBrand className="ml-1 size-5" />
             </div>
 
-            <>
+            <div className="ml-auto flex items-center gap-1">
                 <Button
                     type="button"
                     variant="ghost"
@@ -144,7 +144,7 @@ function SidebarHeaderContent() {
                 </Button>
 
                 <SidebarTrigger className="hidden text-muted-foreground md:flex" />
-            </>
+            </div>
         </div>
     )
 }
