@@ -190,7 +190,7 @@ export function BlockPreviewPanel({
             <TabsTrigger className="px-2" value="code">Code</TabsTrigger>
           </TabsList>
           <div className="flex h-full items-center gap-2">
-            <ButtonGroup className="hidden @4xl:flex h-full max-h-7.5 items-center rounded-[min(var(--radius-md),12px)] border border-border">
+            <ButtonGroup className="rounded-md border border-border">
               {screenOptions.map(({ value, icon: Icon, label }) => (
                 <Tooltip key={value}>
                   <TooltipTrigger
@@ -199,7 +199,7 @@ export function BlockPreviewPanel({
                         type="button"
                         size="icon"
                         variant={screen === value ? "secondary" : "ghost"}
-                        className="rounded-[min(var(--radius-md),12px)]"
+                        className="rounded-md"
                         aria-label={label}
                         aria-pressed={screen === value}
                         onClick={() => handleScreenChange(value)}
@@ -252,6 +252,7 @@ export function BlockPreviewPanel({
                       type="button"
                       size="icon"
                       variant="ghost"
+                      className="rounded-md"
                       aria-label="Refresh preview"
                       disabled={!hasPreview}
                       onClick={() => setRefreshKey((k) => k + 1)}
