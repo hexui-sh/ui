@@ -111,10 +111,16 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
           Copy Page
         </Button>
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button className="bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 py-3.5 rounded-l-none!" size="sm" aria-label="More Options">
-              <ChevronDown />
-            </Button>
+          <DropdownMenuTrigger
+            render={
+              <Button
+                className="bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 py-3.5 rounded-l-none!"
+                size="sm"
+                aria-label="More Options"
+              />
+            }
+          >
+            <ChevronDown />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-43">
             <DropdownMenuGroup className="flex flex-col gap-2">
