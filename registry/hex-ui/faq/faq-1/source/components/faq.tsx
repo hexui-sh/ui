@@ -89,7 +89,7 @@ export function FAQ() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="max-w-2xl">
+        <Accordion className="max-w-2xl">
           {faqItems.map((item) => (
             <AccordionItem key={item.value} value={item.value}>
               <AccordionTrigger className="md:text-base">

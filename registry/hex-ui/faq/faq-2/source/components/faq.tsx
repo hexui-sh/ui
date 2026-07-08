@@ -115,7 +115,7 @@ export function FAQ() {
               <h2 className="text-sm font-semibold tracking-wide text-foreground/80 md:text-base">
                 {category.title}
               </h2>
-              <Accordion type="single" collapsible>
+              <Accordion>
                 {category.items.map((item) => (
                   <AccordionItem key={item.value} value={item.value}>
                     <AccordionTrigger className="md:text-base">
