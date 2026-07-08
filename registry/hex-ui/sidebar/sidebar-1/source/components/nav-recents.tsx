@@ -30,7 +30,7 @@ export function NavRecents({ items }: { items: NavRecentsItem[] }) {
                     {items.map((subItem) => (
                         <SidebarMenuItem key={subItem.title}>
                             <SidebarMenuButton isActive={subItem.isActive}>
-                                <a href={subItem.url}>
+                                <a className="flex items-center gap-2" href={subItem.url}>
                                     {subItem.icon ? <subItem.icon className="size-4" /> : null}
                                     {subItem.emoji ? (
                                         <span aria-hidden="true" className="text-[14px] leading-none">

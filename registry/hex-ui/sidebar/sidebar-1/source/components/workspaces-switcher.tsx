@@ -5,6 +5,7 @@ import { ChevronDown, Plus, type LucideIcon } from "lucide-react"
 import {
     DropdownMenu,
     DropdownMenuContent,
+    DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
@@ -36,14 +37,14 @@ export function WorkSpaceSwitcher({
         <SidebarMenu>
             <SidebarMenuItem>
                 <DropdownMenu>
-                    <DropdownMenuTrigger>
-                        <SidebarMenuButton className="w-fit px-1.5">
-                            <div className="flex aspect-square size-5 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
-                                <activeWorkspace.logo className="size-3" />
-                            </div>
-                            <span className="truncate font-medium">{activeWorkspace.name}</span>
-                            <ChevronDown className="opacity-50" />
-                        </SidebarMenuButton>
+                    <DropdownMenuTrigger
+                        render={<SidebarMenuButton className="w-fit px-1.5" />}
+                    >
+                        <div className="flex aspect-square size-5 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
+                            <activeWorkspace.logo className="size-3" />
+                        </div>
+                        <span className="truncate font-medium">{activeWorkspace.name}</span>
+                        <ChevronDown className="opacity-50" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                         className="w-64 rounded-lg"
@@ -51,22 +52,24 @@ export function WorkSpaceSwitcher({
                         side="bottom"
                         sideOffset={4}
                     >
-                        <DropdownMenuLabel className="text-xs text-muted-foreground">
-                            Workspaces
-                        </DropdownMenuLabel>
-                        {workspaces.map((workspace, index) => (
-                            <DropdownMenuItem
-                                key={workspace.name}
-                                onClick={() => setActiveWorkspace(workspace)}
-                                className="gap-2 p-2"
-                            >
-                                <div className="flex size-6 items-center justify-center rounded-xs border">
-                                    <workspace.logo className="size-4 shrink-0" />
-                                </div>
-                                {workspace.name}
-                                <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
-                            </DropdownMenuItem>
-                        ))}
+                        <DropdownMenuGroup>
+                            <DropdownMenuLabel className="text-xs text-muted-foreground">
+                                Workspaces
+                            </DropdownMenuLabel>
+                            {workspaces.map((workspace, index) => (
+                                <DropdownMenuItem
+                                    key={workspace.name}
+                                    onClick={() => setActiveWorkspace(workspace)}
+                                    className="gap-2 p-2"
+                                >
+                                    <div className="flex size-6 items-center justify-center rounded-xs border">
+                                        <workspace.logo className="size-4 shrink-0" />
+                                    </div>
+                                    {workspace.name}
+                                    <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="gap-2 p-2">
                             <div className="flex size-6 items-center justify-center rounded-md border bg-background">
