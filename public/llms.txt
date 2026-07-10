@@ -1,0 +1,90 @@
+# Hex UI
+
+> Hex UI provides copy-and-paste and shadcn CLI-installable interface sections for developers building modern web applications. It is intended for front-end developers and AI coding assistants that need discoverable, editable UI source code. The primary goals are to reduce section-building time, expose reusable registry items, and keep the blocks open source and customizable.
+
+## Overview
+
+- [Introduction](https://hexui.sh/docs-md/introduction) - Markdown documentation introducing Hex UI, its purpose, supported stack, and open-source status.
+- [MCP](https://hexui.sh/docs-md/mcp) - Markdown documentation for connecting AI coding assistants to the Hex UI registry through MCP.
+
+## Registry
+
+- [Registry Index](https://hexui.sh/r/registry.json) - shadcn registry index containing all Hex UI registry items.
+
+## Blocks
+
+- [Banner Blocks](https://hexui.sh/blocks/banner) - Announcement bar block examples and install commands.
+- [CTA Blocks](https://hexui.sh/blocks/cta) - Call-to-action section examples and install commands.
+- [FAQ Blocks](https://hexui.sh/blocks/faq) - FAQ section examples and install commands.
+- [Footer Blocks](https://hexui.sh/blocks/footer) - Footer section examples and install commands.
+- [Hero Blocks](https://hexui.sh/blocks/hero) - Hero section examples and install commands.
+- [Login Blocks](https://hexui.sh/blocks/login) - Login form examples and install commands.
+- [Sidebar Blocks](https://hexui.sh/blocks/sidebar) - Sidebar layout examples and install commands.
+- [Social Proof Blocks](https://hexui.sh/blocks/social-proof) - Logo and testimonial social proof section examples and install commands.
+
+### Banner
+
+- [Banner-1 Registry Item](https://hexui.sh/r/banner-1.json) - A dismissible announcement bar.
+- [Banner-2 Registry Item](https://hexui.sh/r/banner-2.json) - A full-width dismissible announcement bar.
+
+### CTA
+
+- [Cta-1 Registry Item](https://hexui.sh/r/cta-1.json) - A simple full-width CTA section.
+- [Cta-2 Registry Item](https://hexui.sh/r/cta-2.json) - A simple CTA section with spacious padding.
+- [Cta-3 Registry Item](https://hexui.sh/r/cta-3.json) - A CTA section designed to showcase mobile product mockups.
+- [Cta-4 Registry Item](https://hexui.sh/r/cta-4.json) - A split CTA section built to display large amounts of information.
+
+### FAQ
+
+- [Faq-1 Registry Item](https://hexui.sh/r/faq-1.json) - A simple and professional FAQ section with collapsible questions and answers.
+- [Faq-2 Registry Item](https://hexui.sh/r/faq-2.json) - A simple and professional FAQ section with categorized collapsible questions and answers.
+- [Faq-3 Registry Item](https://hexui.sh/r/faq-3.json) - A simple FAQ section arranged in a clean grid layout.
+- [Faq-4 Registry Item](https://hexui.sh/r/faq-4.json) - A simple FAQ section with icons arranged in a clean grid layout.
+
+### Footer
+
+- [Footer-1 Registry Item](https://hexui.sh/r/footer-1.json) - A simple, professional footer that includes a subscription form.
+- [Footer-2 Registry Item](https://hexui.sh/r/footer-2.json) - A simple footer with social media buttons and language switching.
+- [Footer-3 Registry Item](https://hexui.sh/r/footer-3.json) - Footer for organizations that place typography at the bottom.
+- [Footer-4 Registry Item](https://hexui.sh/r/footer-4.json) - A simple footer for portfolios with a signature.
+- [Footer-5 Registry Item](https://hexui.sh/r/footer-5.json) - A footer with interactive text that responds to pointer movement.
+
+### Hero
+
+- [Hero-1 Registry Item](https://hexui.sh/r/hero-1.json) - A simple and versatile hero section.
+- [Hero-2 Registry Item](https://hexui.sh/r/hero-2.json) - A hero section designed to showcase media content.
+- [Hero-3 Registry Item](https://hexui.sh/r/hero-3.json) - A simple horizontally aligned hero section.
+- [Hero-4 Registry Item](https://hexui.sh/r/hero-4.json) - A hero section with bold visuals that emphasize brand presence.
+- [Hero-5 Registry Item](https://hexui.sh/r/hero-5.json) - A hero section with a large background image and centered content to present a brand or product with impact.
+
+### Login
+
+- [Login-1 Registry Item](https://hexui.sh/r/login-1.json) - A simple login form.
+- [Login-2 Registry Item](https://hexui.sh/r/login-2.json) - A simple login form.
+- [Login-3 Registry Item](https://hexui.sh/r/login-3.json) - A login form with a customizable side background.
+- [Login-4 Registry Item](https://hexui.sh/r/login-4.json) - A login form with a customizable side background and a testimonial panel.
+
+### Sidebar
+
+- [Sidebar-1 Registry Item](https://hexui.sh/r/sidebar-1.json) - A sidebar for a note-taking application.
+- [Sidebar-2 Registry Item](https://hexui.sh/r/sidebar-2.json) - A sidebar built for developer app dashboards.
+- [Sidebar-3 Registry Item](https://hexui.sh/r/sidebar-3.json) - A sidebar designed for AI applications.
+
+### Social Proof
+
+- [Social-Proof-Companies-1 Registry Item](https://hexui.sh/r/social-proof-companies-1.json) - A social proof section that displays brand logos in a grid layout.
+- [Social-Proof-Companies-2 Registry Item](https://hexui.sh/r/social-proof-companies-2.json) - A social proof section with animated brand logos arranged in a grid layout.
+- [Social-Proof-Companies-3 Registry Item](https://hexui.sh/r/social-proof-companies-3.json) - A social proof section with brand logos arranged in a grid layout and hover interactions that guide user attention.
+- [Social-Proof-Companies-4 Registry Item](https://hexui.sh/r/social-proof-companies-4.json) - A social proof section that showcases brand logos in a marquee layout.
+- [Social-Proof-Testimonials-1 Registry Item](https://hexui.sh/r/social-proof-testimonials-1.json) - A social proof section with expert testimonial cards arranged in a grid layout.
+- [Social-Proof-Testimonials-2 Registry Item](https://hexui.sh/r/social-proof-testimonials-2.json) - A social proof section that displays expert testimonial cards in a marquee layout.
+
+## UI Components
+
+- [Marquee Registry Item](https://hexui.sh/r/marquee.json) - A marquee component that infinitely scrolls content in a horizontal or vertical direction.
+
+## Project Resources
+
+- [GitHub Repository](https://github.com/ri0n-dev/hex-ui) - Source repository for Hex UI code, issues, and pull requests.
+- [License](https://github.com/ri0n-dev/hex-ui/blob/main/LICENSE.md) - MIT license for Hex UI.
+- [Contributing](https://github.com/ri0n-dev/hex-ui/blob/main/CONTRIBUTING.md) - Pull request entry point for contributing fixes, documentation, or new blocks.
