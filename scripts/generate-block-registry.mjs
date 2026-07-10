@@ -1,9 +1,8 @@
-import { readFile, readdir, stat, writeFile } from "node:fs/promises"
+import { readFile, stat, writeFile } from "node:fs/promises"
 import path from "node:path"
 
 const root = process.cwd()
-const registryRoot = path.join(root, "registry", "hex-ui")
-const outputPath = path.join(root, "content", "blocks", "registry.json")
+const registryPath = path.join(root, "registry.json")
 const previewMapPath = path.join(
   root,
   "app",
@@ -27,10 +26,6 @@ function compareByTitle(a, b) {
   return a.title.localeCompare(b.title, "en", { sensitivity: "base" })
 }
 
-function compareByCategory(a, b) {
-  return a.category.localeCompare(b.category, "en", { sensitivity: "base" })
-}
-
 function toTitle(value) {
   return value
     .split("-")
@@ -49,19 +44,11 @@ function toPascalCase(value) {
 
 async function fileExists(filePath) {
   try {
-    await stat(filePath)
-    return true
+    const stats = await stat(filePath)
+    return stats.isFile()
   } catch {
     return false
   }
-}
-
-function buildDefaultInstallCommand(slug) {
-  return `pnpm dlx shadcn@latest add https://hexui.sh/r/${slug}.json`
-}
-
-function buildDefaultV0Url(slug) {
-  return `https://v0.dev/chat/import?url=https://hexui.dev/r/${slug}.json`
 }
 
 async function readJson(filePath) {
@@ -69,111 +56,93 @@ async function readJson(filePath) {
   return JSON.parse(raw)
 }
 
-async function readSortedDirectories(dirPath) {
-  return (await readdir(dirPath, { withFileTypes: true }))
-    .filter((entry) => entry.isDirectory())
-    .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }))
-}
-
-async function hasPreviewPage(categoryPath, category, slug) {
-  const pageTsx = path.join(categoryPath, slug, "source", "app", category, "page.tsx")
-  const pageTs = path.join(categoryPath, slug, "source", "app", category, "page.ts")
-  const [hasTsx, hasTs] = await Promise.all([fileExists(pageTsx), fileExists(pageTs)])
-
-  return hasTsx || hasTs
-}
-
-async function collectBlockEntries() {
-  const categoryDirs = await readSortedDirectories(registryRoot)
-
-  const groups = []
-
-  for (const categoryDir of categoryDirs) {
-    const categoryPath = path.join(registryRoot, categoryDir.name)
-    const blockDirs = await readSortedDirectories(categoryPath)
-
-    const blocks = []
-
-    for (const blockDir of blockDirs) {
-      const metaPath = path.join(categoryPath, blockDir.name, "meta.json")
-
-      try {
-        const meta = await readJson(metaPath)
-        const slug = blockDir.name
-
-        blocks.push({
-          slug,
-          title: meta.title ?? toTitle(slug),
-          description: meta.description,
-          path: `@/registry/hex-ui/${categoryDir.name}/${slug}/source/`,
-          installCommand: meta.installCommand ?? buildDefaultInstallCommand(slug),
-          previewUrl: meta.previewUrl,
-          v0Url: meta.v0Url ?? buildDefaultV0Url(slug),
-          previewPath: meta.previewPath,
-          codePath: meta.codePath,
-          files: Array.isArray(meta.files) ? meta.files : undefined,
-          reference: Array.isArray(meta.reference) ? meta.reference : undefined,
-        })
-      } catch {
-        continue
-      }
-    }
-
-    if (blocks.length > 0) {
-      groups.push({
-        category: toTitle(categoryDir.name),
-        blocks: blocks.sort(compareByTitle),
-      })
-    }
+function getBlockItems(registry) {
+  if (!Array.isArray(registry.items)) {
+    throw new Error("Root registry.json must include an items array.")
   }
 
-  return groups.sort(compareByCategory)
-}
-
-async function collectPreviewEntries() {
-  const categoryDirs = await readSortedDirectories(registryRoot)
-
-  const groups = []
-
-  for (const categoryDir of categoryDirs) {
-    const categoryPath = path.join(registryRoot, categoryDir.name)
-    const blockDirs = await readSortedDirectories(categoryPath)
-
-    const entries = []
-
-    for (const blockDir of blockDirs) {
-      const slug = blockDir.name
-
-      if (!(await hasPreviewPage(categoryPath, categoryDir.name, slug))) {
-        continue
+  return registry.items
+    .filter((item) => item.type === "registry:block")
+    .map((item) => {
+      if (!item.name || !Array.isArray(item.categories) || item.categories.length === 0) {
+        throw new Error(`Block registry item "${item.name ?? "(unknown)"}" must include a category.`)
       }
 
-      entries.push({
-        slug,
-        importName: `${toPascalCase(slug)}Preview`,
-        importPath: `@/registry/hex-ui/${categoryDir.name}/${slug}/source/app/${categoryDir.name}/page`,
-      })
-    }
+      if (!Array.isArray(item.files) || item.files.length === 0) {
+        throw new Error(`Block registry item "${item.name}" must include files.`)
+      }
 
-    if (entries.length > 0) {
-      groups.push({
-        category: categoryDir.name,
-        entries,
-      })
-    }
-  }
-
-  return groups
+      return {
+        name: item.name,
+        title: item.title ?? toTitle(item.name),
+        category: item.categories[0],
+        files: item.files,
+      }
+    })
+    .sort(compareByTitle)
 }
 
-async function collectCategoryPreviewEntries() {
-  const categoryDirs = await readSortedDirectories(registryRoot)
+function getSourcePageFile(block) {
+  return block.files.find((file) => {
+    if (typeof file.path !== "string" || file.type !== "registry:page") {
+      return false
+    }
 
-  return categoryDirs.map((categoryDir) => ({
-    slug: categoryDir.name,
-    title: toTitle(categoryDir.name),
-    componentName: `${toPascalCase(categoryDir.name)}CategoryPreview`,
-  }))
+    return file.path.includes("/source/app/") && /\/page\.tsx?$/.test(file.path)
+  })
+}
+
+async function validateReferencedFiles(blocks) {
+  for (const block of blocks) {
+    for (const file of block.files) {
+      if (typeof file.path !== "string" || !(await fileExists(path.join(root, file.path)))) {
+        throw new Error(`Registry item "${block.name}" references a missing file: ${file.path}`)
+      }
+    }
+  }
+}
+
+async function collectPreviewEntries(blocks) {
+  const grouped = new Map()
+
+  for (const block of blocks) {
+    const sourcePageFile = getSourcePageFile(block)
+
+    if (!sourcePageFile || !(await fileExists(path.join(root, sourcePageFile.path)))) {
+      continue
+    }
+
+    const group = grouped.get(block.category) ?? {
+      category: block.category,
+      entries: [],
+    }
+
+    group.entries.push({
+      slug: block.name,
+      importName: `${toPascalCase(block.name)}Preview`,
+      importPath: `@/${sourcePageFile.path.replace(/\.tsx?$/, "")}`,
+    })
+    grouped.set(block.category, group)
+  }
+
+  return Array.from(grouped.values())
+    .sort((a, b) => compareByTitle({ title: toTitle(a.category) }, { title: toTitle(b.category) }))
+    .map((group) => ({
+      ...group,
+      entries: group.entries.sort((a, b) => a.slug.localeCompare(b.slug, "en", { sensitivity: "base" })),
+    }))
+}
+
+function collectCategoryPreviewEntries(blocks) {
+  const categorySlugs = Array.from(new Set(blocks.map((block) => block.category)))
+
+  return categorySlugs
+    .sort((a, b) => toTitle(a).localeCompare(toTitle(b), "en", { sensitivity: "base" }))
+    .map((slug) => ({
+      slug,
+      title: toTitle(slug),
+      componentName: `${toPascalCase(slug)}CategoryPreview`,
+    }))
 }
 
 async function collectAvailableCategoryPreviewComponents() {
@@ -267,26 +236,20 @@ function renderCategoryPreviewMap(categories, availableComponentNames) {
 }
 
 async function main() {
-  const groups = await collectBlockEntries()
+  const registry = await readJson(registryPath)
+  const blocks = getBlockItems(registry)
 
-  if (groups.length === 0) {
-    throw new Error(`No block meta files were found under ${registryRoot}`)
+  if (blocks.length === 0) {
+    throw new Error("No block items were found in root registry.json.")
   }
 
-  const registry = {
-    groups,
-  }
+  await validateReferencedFiles(blocks)
 
-  await writeFile(outputPath, `${JSON.stringify(registry, null, 2)}\n`, "utf8")
-  console.log(`Wrote ${groups.length} groups to ${path.relative(root, outputPath)}`)
-
-  const previewGroups = await collectPreviewEntries()
-  const previewCount = previewGroups.reduce((sum, g) => sum + g.entries.length, 0)
+  const previewGroups = await collectPreviewEntries(blocks)
+  const previewCount = previewGroups.reduce((sum, group) => sum + group.entries.length, 0)
 
   if (previewCount === 0) {
-    throw new Error(
-      `No previewable blocks were found under ${registryRoot}`,
-    )
+    throw new Error("No previewable blocks were found in root registry.json.")
   }
 
   await writeFile(previewMapPath, renderPreviewMap(previewGroups), "utf8")
@@ -295,7 +258,7 @@ async function main() {
   )
 
   const [categoryPreviewEntries, availableCategoryPreviewComponents] = await Promise.all([
-    collectCategoryPreviewEntries(),
+    collectCategoryPreviewEntries(blocks),
     collectAvailableCategoryPreviewComponents(),
   ])
 
@@ -309,7 +272,7 @@ async function main() {
   )
 
   console.log(
-    `√ Successfully generated block registry with ${groups.length} groups and ${previewCount} previews.`,
+    `Successfully generated preview maps from ${blocks.length} root registry blocks.`,
   )
 }
 

@@ -1,6 +1,0 @@
-{
-  "title": "Social-Proof-Testimonials-1",
-  "description": "A social proof section with expert testimonial cards arranged in a grid layout",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-testimonials-1.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-testimonials-1.json"
-}

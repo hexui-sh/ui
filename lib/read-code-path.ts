@@ -82,7 +82,7 @@ async function readDirRecursive(dirPath: string, relativeTo: string = dirPath): 
 }
 
 export async function readCodePath(codePath: string): Promise<CodeFile[]> {
-  const absolutePath = path.join(process.cwd(), codePath)
+  const absolutePath = path.join(/* turbopackIgnore: true */ process.cwd(), codePath)
   try {
     return await readDirRecursive(absolutePath)
   } catch {

@@ -1,6 +1,0 @@
-{
-  "title": "Faq-2",
-  "description": "A simple and professional FAQ section with categorized collapsible questions and answers",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-2.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-2.json"
-}

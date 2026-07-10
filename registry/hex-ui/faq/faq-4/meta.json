@@ -1,6 +1,0 @@
-{
-  "title": "Faq-4",
-  "description": "A simple FAQ section with icons arranged in a clean grid layout",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-4.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-4.json"
-}

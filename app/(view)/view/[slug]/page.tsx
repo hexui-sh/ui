@@ -1,32 +1,31 @@
+import { Suspense } from "react"
 import { previewMap } from "./preview-map"
+import { PreviewFrame } from "./preview-frame"
+import { getBlockPreviewStaticParams } from "@/lib/blocks"
 
 export default async function PreviewPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ slug: string }>
-  searchParams: Promise<{ center?: string }>
 }) {
   const { slug } = await params
-  const { center } = await searchParams
   const PreviewComponent = previewMap[slug]
-  const shouldCenterVertically = center === "1" || center === "true"
 
   if (!PreviewComponent) {
     return null
   }
 
-  if (!shouldCenterVertically) {
-    return <PreviewComponent />
-  }
-
   return (
-    <div className="flex min-h-dvh w-full items-center">
-      <PreviewComponent />
-    </div>
+    <Suspense fallback={<PreviewComponent />}>
+      <PreviewFrame>
+        <PreviewComponent />
+      </PreviewFrame>
+    </Suspense>
   )
 }
 
 export function generateStaticParams() {
-  return Object.keys(previewMap).map((slug) => ({ slug }))
+  return getBlockPreviewStaticParams()
 }
+
+export const dynamicParams = false

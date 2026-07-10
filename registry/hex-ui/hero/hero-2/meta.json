@@ -1,6 +1,0 @@
-{
-  "title": "Hero-2",
-  "description": "A hero section designed to showcase media content",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-2.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-2.json"
-}

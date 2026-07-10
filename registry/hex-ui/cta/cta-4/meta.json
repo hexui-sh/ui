@@ -1,6 +1,0 @@
-{
-  "title": "Cta-4",
-  "description": "A split CTA section built to display large amounts of information",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-4.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-4.json"
-}

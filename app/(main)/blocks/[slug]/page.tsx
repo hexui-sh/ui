@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { BlockPreviewPanel } from "@/components/block-preview-panel"
 import { BlockViewer } from "@/components/block-viewer"
 import { MdxNavActions } from "@/components/mdx-nav-actions"
-import { categoryToSlug, getBlockCategories, getBlockCategoryNavigationContext, getBlockEntriesByCategory } from "@/lib/blocks"
+import { getBlockCategoryNavigationContext, getBlockCategoryStaticParams, getBlockEntriesByCategory } from "@/lib/blocks"
 import type { BlockEntry } from "@/lib/blocks"
 import { readCodePath } from "@/lib/read-code-path"
 
@@ -82,9 +82,7 @@ export default async function BlockCategoryPage({
               hasPreview={Boolean(block.path)}
               slug={block.slug}
               centerVertically
-              installCommand={
-                block.installCommand ?? `pnpm dlx shadcn@latest add https://hexui.sh/r/${block.slug}.json`
-              }
+              installCommand={block.installCommand}
               v0Url={block.v0Url}
               codeFiles={block.codeFiles}
             >
@@ -98,8 +96,7 @@ export default async function BlockCategoryPage({
 }
 
 export async function generateStaticParams() {
-  const categories = await getBlockCategories()
-  return categories.map((category) => ({ slug: categoryToSlug(category) }))
+  return getBlockCategoryStaticParams()
 }
 
 export const dynamicParams = false

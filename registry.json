@@ -1,1041 +1,1107 @@
 {
-    "$schema": "https://ui.shadcn.com/schema/registry.json",
-    "name": "hex-ui",
-    "homepage": "https://hexui.sh",
-    "items": [
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "hex-ui",
+  "homepage": "https://hexui.sh",
+  "items": [
+    {
+      "name": "banner-1",
+      "type": "registry:block",
+      "title": "Banner-1",
+      "description": "A dismissible announcement bar",
+      "registryDependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
         {
-            "name": "banner-1",
-            "type": "registry:block",
-            "title": "Banner-1",
-            "description": "A dismissible announcement bar",
-            "registryDependencies": [],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/banner/banner-1/source/app/banner/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/banner/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/banner/banner-1/source/components/ui/banner.tsx",
-                    "type": "registry:ui"
-                }
-            ],
-            "categories": [
-                "banner"
-            ]
+          "path": "registry/hex-ui/banner/banner-1/source/app/banner/page.tsx",
+          "type": "registry:page",
+          "target": "app/banner/page.tsx"
         },
         {
-            "name": "banner-2",
-            "type": "registry:block",
-            "title": "Banner-2",
-            "description": "A full-width dismissible announcement bar",
-            "registryDependencies": [],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/banner/banner-2/source/app/banner/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/banner/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/banner/banner-2/source/components/ui/banner.tsx",
-                    "type": "registry:ui"
-                }
-            ],
-            "categories": [
-                "banner"
-            ]
-        },
-        {
-            "name": "cta-1",
-            "type": "registry:block",
-            "title": "Cta-1",
-            "description": "A simple full-width CTA section",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/cta/cta-1/source/app/cta/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/cta/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/cta/cta-1/source/components/cta.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "cta"
-            ]
-        },
-        {
-            "name": "cta-2",
-            "type": "registry:block",
-            "title": "Cta-2",
-            "description": "A simple CTA section with spacious padding",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/cta/cta-2/source/app/cta/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/cta/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/cta/cta-2/source/components/cta.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "cta"
-            ]
-        },
-        {
-            "name": "cta-3",
-            "type": "registry:block",
-            "title": "Cta-3",
-            "description": "A CTA section designed to showcase mobile product mockups",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/cta/cta-3/source/app/cta/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/cta/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/cta/cta-3/source/components/cta.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "cta"
-            ]
-        },
-        {
-            "name": "cta-4",
-            "type": "registry:block",
-            "title": "Cta-4",
-            "description": "A split CTA section built to display large amounts of information",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/cta/cta-4/source/app/cta/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/cta/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/cta/cta-4/source/components/cta.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "cta"
-            ]
-        },
-        {
-            "name": "faq-1",
-            "type": "registry:block",
-            "title": "Faq-1",
-            "description": "A simple and professional FAQ section with collapsible questions and answers",
-            "registryDependencies": [
-                "accordion",
-                "avatar",
-                "button"
-            ],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/faq/faq-1/source/app/faq/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/faq/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/faq/faq-1/source/components/faq.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/faq/faq-1/source/components/support-contact-card.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "faq"
-            ]
-        },
-        {
-            "name": "faq-2",
-            "type": "registry:block",
-            "title": "Faq-2",
-            "description": "A simple and professional FAQ section with categorized collapsible questions and answers",
-            "registryDependencies": [
-                "accordion",
-                "avatar",
-                "button"
-            ],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/faq/faq-2/source/app/faq/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/faq/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/faq/faq-2/source/components/faq.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/faq/faq-2/source/components/support-contact-card.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "faq"
-            ]
-        },
-        {
-            "name": "faq-3",
-            "type": "registry:block",
-            "title": "Faq-3",
-            "description": "A simple FAQ section arranged in a clean grid layout",
-            "registryDependencies": [],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/faq/faq-3/source/app/faq/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/faq/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/faq/faq-3/source/components/faq.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "faq"
-            ]
-        },
-        {
-            "name": "faq-4",
-            "type": "registry:block",
-            "title": "Faq-4",
-            "description": "A simple FAQ section with icons arranged in a clean grid layout",
-            "registryDependencies": [],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/faq/faq-4/source/app/faq/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/faq/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/faq/faq-4/source/components/faq.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "faq"
-            ]
-        },
-        {
-            "name": "footer-1",
-            "type": "registry:block",
-            "title": "Footer-1",
-            "description": "A simple, professional footer that includes a subscription form",
-            "registryDependencies": [
-                "button",
-                "input"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/footer/footer-1/source/app/footer/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/footer/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-1/source/components/app-footer.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-1/source/components/nav-links.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-1/source/components/subscribe-form.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "footer"
-            ]
-        },
-        {
-            "name": "footer-2",
-            "type": "registry:block",
-            "title": "Footer-2",
-            "description": "A simple footer with social media buttons and language switching",
-            "registryDependencies": [
-                "button",
-                "@coss/select"
-            ],
-            "dependencies": [
-                "@icons-pack/react-simple-icons",
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/footer/footer-2/source/app/footer/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/footer/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-2/source/components/app-footer.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-2/source/components/language-select.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-2/source/components/nav-links.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-2/source/components/social-links.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "footer"
-            ]
-        },
-        {
-            "name": "footer-3",
-            "type": "registry:block",
-            "title": "Footer-3",
-            "description": "Footer for organizations that place typography at the bottom",
-            "registryDependencies": [],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/footer/footer-3/source/app/footer/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/footer/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-3/source/components/app-footer.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-3/source/components/nav-links.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-3/source/components/typographic-approach.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "footer"
-            ]
-        },
-        {
-            "name": "footer-4",
-            "type": "registry:block",
-            "title": "Footer-4",
-            "description": "A simple footer for portfolios with a signature",
-            "registryDependencies": [
-                "@spell/signature"
-            ],
-            "dependencies": [
-                "@icons-pack/react-simple-icons"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/footer/footer-4/source/app/footer/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/footer/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-4/source/components/app-footer.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-4/source/components/nav-sns.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-4/source/public/LastoriaBoldRegular.otf",
-                    "type": "registry:file",
-                    "target": "public/LastoriaBoldRegular.otf"
-                }
-            ],
-            "categories": [
-                "footer"
-            ]
-        },
-        {
-            "name": "footer-5",
-            "type": "registry:block",
-            "title": "Footer-5",
-            "description": "A footer with interactive text that responds to pointer movement",
-            "registryDependencies": [],
-            "dependencies": [
-                "motion"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/footer/footer-5/source/app/footer/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/footer/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-5/source/components/app-footer.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-5/source/components/fluid-gradient-text.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/footer/footer-5/source/components/nav-links.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "footer"
-            ]
-        },
-        {
-            "name": "hero-1",
-            "type": "registry:block",
-            "title": "Hero-1",
-            "description": "A simple and versatile hero section",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/hero/hero-1/source/app/hero/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/hero/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-1/source/components/app-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-1/source/components/app-hero.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-1/source/components/cta-buttons.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-1/source/components/social-proof.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "hero"
-            ]
-        },
-        {
-            "name": "hero-2",
-            "type": "registry:block",
-            "title": "Hero-2",
-            "description": "A hero section designed to showcase media content",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/hero/hero-2/source/app/hero/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/hero/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-2/source/components/app-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-2/source/components/app-hero.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-2/source/components/waitlist-form.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "hero"
-            ]
-        },
-        {
-            "name": "hero-3",
-            "type": "registry:block",
-            "title": "Hero-3",
-            "description": "A simple horizontally aligned hero sections",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/hero/hero-3/source/app/hero/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/hero/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-3/source/components/app-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-3/source/components/app-hero.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-3/source/components/waitlist-form.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "hero"
-            ]
-        },
-        {
-            "name": "hero-4",
-            "type": "registry:block",
-            "title": "Hero-4",
-            "description": "A hero section with bold visuals that emphasize brand presence",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/hero/hero-4/source/app/hero/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/hero/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-4/source/components/app-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-4/source/components/app-hero.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "hero"
-            ]
-        },
-        {
-            "name": "hero-5",
-            "type": "registry:block",
-            "title": "Hero-5",
-            "description": "A hero section with a large background image and centered content to present a brand or product with impact",
-            "registryDependencies": [
-                "button"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/hero/hero-5/source/app/hero/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/hero/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-5/source/components/app-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/hero/hero-5/source/components/app-hero.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "hero"
-            ]
-        },
-        {
-            "name": "login-1",
-            "type": "registry:block",
-            "title": "Login-1",
-            "description": "A simple login form",
-            "registryDependencies": [
-                "button",
-                "field",
-                "input"
-            ],
-            "dependencies": [
-                "@icons-pack/react-simple-icons",
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/login/login-1/source/app/login/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/login/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/login/login-1/source/components/login-form.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "login"
-            ]
-        },
-        {
-            "name": "login-2",
-            "type": "registry:block",
-            "title": "Login-2",
-            "description": "A simple login form",
-            "registryDependencies": [
-                "button",
-                "field",
-                "input"
-            ],
-            "dependencies": [
-                "@icons-pack/react-simple-icons",
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/login/login-2/source/app/login/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/login/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/login/login-2/source/components/login-form.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "login"
-            ]
-        },
-        {
-            "name": "login-3",
-            "type": "registry:block",
-            "title": "Login-3",
-            "description": "A login form with a customizable side background",
-            "registryDependencies": [
-                "button",
-                "field",
-                "input"
-            ],
-            "dependencies": [
-                "@icons-pack/react-simple-icons",
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/login/login-3/source/app/login/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/login/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/login/login-3/source/components/login-form.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "login"
-            ]
-        },
-        {
-            "name": "login-4",
-            "type": "registry:block",
-            "title": "Login-4",
-            "description": "A login form with a customizable side background and a testimonial panel",
-            "registryDependencies": [
-                "avatar",
-                "button",
-                "field",
-                "input"
-            ],
-            "dependencies": [
-                "@icons-pack/react-simple-icons",
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/login/login-4/source/app/login/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/login/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/login/login-4/source/components/login-form.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "login"
-            ]
-        },
-        {
-            "name": "sidebar-1",
-            "type": "registry:block",
-            "title": "Sidebar-1",
-            "description": "A sidebar for a note-taking application.",
-            "registryDependencies": [
-                "button",
-                "dropdown-menu",
-                "sidebar"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/app/sidebar/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/sidebar/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/app-sidebar.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-favorites.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-main.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-private.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-recents.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-secondary.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/site-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-1/source/components/workspaces-switcher.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "sidebar"
-            ]
-        },
-        {
-            "name": "sidebar-2",
-            "type": "registry:block",
-            "title": "Sidebar-2",
-            "description": "A sidebar built for developer app dashboards",
-            "registryDependencies": [
-                "avatar",
-                "button",
-                "dropdown-menu",
-                "sidebar",
-                "tooltip"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-2/source/app/sidebar/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/sidebar/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-2/source/components/app-brand.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-2/source/components/app-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-2/source/components/app-sidebar.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-2/source/components/nav-main.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "sidebar"
-            ]
-        },
-        {
-            "name": "sidebar-3",
-            "type": "registry:block",
-            "title": "Sidebar-3",
-            "description": "A sidebar designed for AI applications",
-            "registryDependencies": [
-                "avatar",
-                "button",
-                "dropdown-menu",
-                "sidebar",
-                "tooltip"
-            ],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-3/source/app/sidebar/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/sidebar/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-3/source/components/app-brand.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-3/source/components/app-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-3/source/components/app-sidebar.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-3/source/components/nav-header.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-3/source/components/nav-recents.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/sidebar/sidebar-3/source/components/nav-user.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "sidebar"
-            ]
-        },
-        {
-            "name": "social-proof-companies-1",
-            "type": "registry:block",
-            "title": "Social-Proof-Companies-1",
-            "description": "A social proof section that displays brand logos in a grid layout",
-            "registryDependencies": [],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-1/source/app/social-proof/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/social-proof/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-1/source/components/social-proof.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "social-proof"
-            ]
-        },
-        {
-            "name": "social-proof-companies-2",
-            "type": "registry:block",
-            "title": "Social-Proof-Companies-2",
-            "description": "A social proof section with animated brand logos arranged in a grid layout",
-            "registryDependencies": [],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-2/source/app/social-proof/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/social-proof/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-2/source/components/social-proof.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "social-proof"
-            ]
-        },
-        {
-            "name": "social-proof-companies-3",
-            "type": "registry:block",
-            "title": "Social-Proof-Companies-3",
-            "description": "A social proof section with brand logos arranged in a grid layout and hover interactions that guide user attention",
-            "registryDependencies": [],
-            "dependencies": [
-                "lucide-react"
-            ],
-            "files": [
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-3/source/app/social-proof/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/social-proof/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-3/source/components/social-proof.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "social-proof"
-            ]
-        },
-        {
-            "name": "social-proof-companies-4",
-            "type": "registry:block",
-            "title": "Social-Proof-Companies-4",
-            "description": "A social proof section that showcases brand logos in a marquee layout",
-            "registryDependencies": [],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-4/source/app/social-proof/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/social-proof/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-companies-4/source/components/social-proof.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/marquee.tsx",
-                    "type": "registry:ui"
-                }
-            ],
-            "categories": [
-                "social-proof"
-            ]
-        },
-        {
-            "name": "social-proof-testimonials-1",
-            "type": "registry:block",
-            "title": "Social-Proof-Testimonials-1",
-            "description": "A social proof section with expert testimonial cards arranged in a grid layout",
-            "registryDependencies": [
-                "avatar",
-                "button",
-                "card"
-            ],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-testimonials-1/source/app/social-proof/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/social-proof/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-testimonials-1/source/components/social-proof.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-testimonials-1/source/components/testimonials-card.tsx",
-                    "type": "registry:component"
-                }
-            ],
-            "categories": [
-                "social-proof"
-            ]
-        },
-        {
-            "name": "social-proof-testimonials-2",
-            "type": "registry:block",
-            "title": "Social-Proof-Testimonials-2",
-            "description": "A social proof section that displays expert testimonial cards in a marquee layout",
-            "registryDependencies": [
-                "avatar",
-                "card"
-            ],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-testimonials-2/source/app/social-proof/page.tsx",
-                    "type": "registry:page",
-                    "target": "app/social-proof/page.tsx"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-testimonials-2/source/components/social-proof.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/social-proof/social-proof-testimonials-2/source/components/testimonials-card.tsx",
-                    "type": "registry:component"
-                },
-                {
-                    "path": "registry/hex-ui/marquee.tsx",
-                    "type": "registry:ui"
-                }
-            ],
-            "categories": [
-                "social-proof"
-            ]
-        },
-        {
-            "name": "marquee",
-            "type": "registry:ui",
-            "title": "Marquee",
-            "description": "A marquee component that infinitely scrolls content in a horizontal or vertical direction.",
-            "registryDependencies": [],
-            "dependencies": [],
-            "files": [
-                {
-                    "path": "registry/hex-ui/marquee.tsx",
-                    "type": "registry:ui"
-                }
-            ]
+          "path": "registry/hex-ui/banner/banner-1/source/components/ui/banner.tsx",
+          "type": "registry:ui"
         }
-    ]
+      ],
+      "categories": [
+        "banner"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/banner-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/banner-1.json"
+    },
+    {
+      "name": "banner-2",
+      "type": "registry:block",
+      "title": "Banner-2",
+      "description": "A full-width dismissible announcement bar",
+      "registryDependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/banner/banner-2/source/app/banner/page.tsx",
+          "type": "registry:page",
+          "target": "app/banner/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/banner/banner-2/source/components/ui/banner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "banner"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/banner-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/banner-2.json"
+    },
+    {
+      "name": "cta-1",
+      "type": "registry:block",
+      "title": "Cta-1",
+      "description": "A simple full-width CTA section",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/cta/cta-1/source/app/cta/page.tsx",
+          "type": "registry:page",
+          "target": "app/cta/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/cta/cta-1/source/components/cta.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cta"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-1.json"
+    },
+    {
+      "name": "cta-2",
+      "type": "registry:block",
+      "title": "Cta-2",
+      "description": "A simple CTA section with spacious padding",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/cta/cta-2/source/app/cta/page.tsx",
+          "type": "registry:page",
+          "target": "app/cta/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/cta/cta-2/source/components/cta.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cta"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-2.json"
+    },
+    {
+      "name": "cta-3",
+      "type": "registry:block",
+      "title": "Cta-3",
+      "description": "A CTA section designed to showcase mobile product mockups",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/cta/cta-3/source/app/cta/page.tsx",
+          "type": "registry:page",
+          "target": "app/cta/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/cta/cta-3/source/components/cta.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cta"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-3.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-3.json"
+    },
+    {
+      "name": "cta-4",
+      "type": "registry:block",
+      "title": "Cta-4",
+      "description": "A split CTA section built to display large amounts of information",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/cta/cta-4/source/app/cta/page.tsx",
+          "type": "registry:page",
+          "target": "app/cta/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/cta/cta-4/source/components/cta.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cta"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-4.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-4.json"
+    },
+    {
+      "name": "faq-1",
+      "type": "registry:block",
+      "title": "Faq-1",
+      "description": "A simple and professional FAQ section with collapsible questions and answers",
+      "registryDependencies": [
+        "accordion",
+        "avatar",
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/faq/faq-1/source/app/faq/page.tsx",
+          "type": "registry:page",
+          "target": "app/faq/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/faq/faq-1/source/components/faq.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/faq/faq-1/source/components/support-contact-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "faq"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-1.json"
+    },
+    {
+      "name": "faq-2",
+      "type": "registry:block",
+      "title": "Faq-2",
+      "description": "A simple and professional FAQ section with categorized collapsible questions and answers",
+      "registryDependencies": [
+        "accordion",
+        "avatar",
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/faq/faq-2/source/app/faq/page.tsx",
+          "type": "registry:page",
+          "target": "app/faq/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/faq/faq-2/source/components/faq.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/faq/faq-2/source/components/support-contact-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "faq"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-2.json"
+    },
+    {
+      "name": "faq-3",
+      "type": "registry:block",
+      "title": "Faq-3",
+      "description": "A simple FAQ section arranged in a clean grid layout",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/faq/faq-3/source/app/faq/page.tsx",
+          "type": "registry:page",
+          "target": "app/faq/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/faq/faq-3/source/components/faq.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "faq"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-3.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-3.json"
+    },
+    {
+      "name": "faq-4",
+      "type": "registry:block",
+      "title": "Faq-4",
+      "description": "A simple FAQ section with icons arranged in a clean grid layout",
+      "registryDependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/faq/faq-4/source/app/faq/page.tsx",
+          "type": "registry:page",
+          "target": "app/faq/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/faq/faq-4/source/components/faq.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "faq"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/faq-4.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-4.json"
+    },
+    {
+      "name": "footer-1",
+      "type": "registry:block",
+      "title": "Footer-1",
+      "description": "A simple, professional footer that includes a subscription form",
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/footer/footer-1/source/app/footer/page.tsx",
+          "type": "registry:page",
+          "target": "app/footer/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-1/source/components/app-footer.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-1/source/components/nav-links.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-1/source/components/subscribe-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "footer"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-1.json"
+    },
+    {
+      "name": "footer-2",
+      "type": "registry:block",
+      "title": "Footer-2",
+      "description": "A simple footer with social media buttons and language switching",
+      "registryDependencies": [
+        "button",
+        "@coss/select"
+      ],
+      "dependencies": [
+        "@icons-pack/react-simple-icons",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/footer/footer-2/source/app/footer/page.tsx",
+          "type": "registry:page",
+          "target": "app/footer/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-2/source/components/app-footer.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-2/source/components/language-select.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-2/source/components/nav-links.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-2/source/components/social-links.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "footer"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-2.json"
+    },
+    {
+      "name": "footer-3",
+      "type": "registry:block",
+      "title": "Footer-3",
+      "description": "Footer for organizations that place typography at the bottom",
+      "registryDependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/footer/footer-3/source/app/footer/page.tsx",
+          "type": "registry:page",
+          "target": "app/footer/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-3/source/components/app-footer.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-3/source/components/nav-links.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-3/source/components/typographic-approach.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "footer"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-3.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-3.json"
+    },
+    {
+      "name": "footer-4",
+      "type": "registry:block",
+      "title": "Footer-4",
+      "description": "A simple footer for portfolios with a signature",
+      "registryDependencies": [
+        "@spell/signature"
+      ],
+      "dependencies": [
+        "@icons-pack/react-simple-icons"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/footer/footer-4/source/app/footer/page.tsx",
+          "type": "registry:page",
+          "target": "app/footer/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-4/source/components/app-footer.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-4/source/components/nav-sns.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-4/source/public/LastoriaBoldRegular.otf",
+          "type": "registry:file",
+          "target": "public/LastoriaBoldRegular.otf"
+        }
+      ],
+      "categories": [
+        "footer"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-4.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-4.json"
+    },
+    {
+      "name": "footer-5",
+      "type": "registry:block",
+      "title": "Footer-5",
+      "description": "A footer with interactive text that responds to pointer movement",
+      "registryDependencies": [],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/footer/footer-5/source/app/footer/page.tsx",
+          "type": "registry:page",
+          "target": "app/footer/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-5/source/components/app-footer.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-5/source/components/fluid-gradient-text.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/footer/footer-5/source/components/nav-links.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "footer"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-5.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-5.json"
+    },
+    {
+      "name": "hero-1",
+      "type": "registry:block",
+      "title": "Hero-1",
+      "description": "A simple and versatile hero section",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/hero/hero-1/source/app/hero/page.tsx",
+          "type": "registry:page",
+          "target": "app/hero/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-1/source/components/app-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-1/source/components/app-hero.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-1/source/components/cta-buttons.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-1/source/components/social-proof.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-1.json"
+    },
+    {
+      "name": "hero-2",
+      "type": "registry:block",
+      "title": "Hero-2",
+      "description": "A hero section designed to showcase media content",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/hero/hero-2/source/app/hero/page.tsx",
+          "type": "registry:page",
+          "target": "app/hero/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-2/source/components/app-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-2/source/components/app-hero.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-2/source/components/waitlist-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-2.json"
+    },
+    {
+      "name": "hero-3",
+      "type": "registry:block",
+      "title": "Hero-3",
+      "description": "A simple horizontally aligned hero sections",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/hero/hero-3/source/app/hero/page.tsx",
+          "type": "registry:page",
+          "target": "app/hero/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-3/source/components/app-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-3/source/components/app-hero.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-3/source/components/waitlist-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-3.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-3.json"
+    },
+    {
+      "name": "hero-4",
+      "type": "registry:block",
+      "title": "Hero-4",
+      "description": "A hero section with bold visuals that emphasize brand presence",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/hero/hero-4/source/app/hero/page.tsx",
+          "type": "registry:page",
+          "target": "app/hero/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-4/source/components/app-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-4/source/components/app-hero.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-4.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-4.json"
+    },
+    {
+      "name": "hero-5",
+      "type": "registry:block",
+      "title": "Hero-5",
+      "description": "A hero section with a large background image and centered content to present a brand or product with impact",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/hero/hero-5/source/app/hero/page.tsx",
+          "type": "registry:page",
+          "target": "app/hero/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-5/source/components/app-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/hero/hero-5/source/components/app-hero.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-5.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-5.json"
+    },
+    {
+      "name": "login-1",
+      "type": "registry:block",
+      "title": "Login-1",
+      "description": "A simple login form",
+      "registryDependencies": [
+        "button",
+        "field",
+        "input"
+      ],
+      "dependencies": [
+        "@icons-pack/react-simple-icons",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/login/login-1/source/app/login/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/login/login-1/source/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "login"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-1.json"
+    },
+    {
+      "name": "login-2",
+      "type": "registry:block",
+      "title": "Login-2",
+      "description": "A simple login form",
+      "registryDependencies": [
+        "button",
+        "field",
+        "input"
+      ],
+      "dependencies": [
+        "@icons-pack/react-simple-icons",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/login/login-2/source/app/login/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/login/login-2/source/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "login"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-2.json"
+    },
+    {
+      "name": "login-3",
+      "type": "registry:block",
+      "title": "Login-3",
+      "description": "A login form with a customizable side background",
+      "registryDependencies": [
+        "button",
+        "field",
+        "input"
+      ],
+      "dependencies": [
+        "@icons-pack/react-simple-icons",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/login/login-3/source/app/login/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/login/login-3/source/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "login"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-3.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-3.json"
+    },
+    {
+      "name": "login-4",
+      "type": "registry:block",
+      "title": "Login-4",
+      "description": "A login form with a customizable side background and a testimonial panel",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "field",
+        "input"
+      ],
+      "dependencies": [
+        "@icons-pack/react-simple-icons",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/login/login-4/source/app/login/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/login/login-4/source/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "login"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/login-4.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-4.json"
+    },
+    {
+      "name": "sidebar-1",
+      "type": "registry:block",
+      "title": "Sidebar-1",
+      "description": "A sidebar for a note-taking application.",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "sidebar"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/app/sidebar/page.tsx",
+          "type": "registry:page",
+          "target": "app/sidebar/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-favorites.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-private.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-recents.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/site-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-1/source/components/workspaces-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "sidebar"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-1.json"
+    },
+    {
+      "name": "sidebar-2",
+      "type": "registry:block",
+      "title": "Sidebar-2",
+      "description": "A sidebar built for developer app dashboards",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "dropdown-menu",
+        "sidebar",
+        "tooltip"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-2/source/app/sidebar/page.tsx",
+          "type": "registry:page",
+          "target": "app/sidebar/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-2/source/components/app-brand.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-2/source/components/app-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-2/source/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-2/source/components/nav-main.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "sidebar"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-2.json"
+    },
+    {
+      "name": "sidebar-3",
+      "type": "registry:block",
+      "title": "Sidebar-3",
+      "description": "A sidebar designed for AI applications",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "dropdown-menu",
+        "sidebar",
+        "tooltip"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-3/source/app/sidebar/page.tsx",
+          "type": "registry:page",
+          "target": "app/sidebar/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-3/source/components/app-brand.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-3/source/components/app-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-3/source/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-3/source/components/nav-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-3/source/components/nav-recents.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/sidebar/sidebar-3/source/components/nav-user.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "sidebar"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/sidebar-3.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-3.json"
+    },
+    {
+      "name": "social-proof-companies-1",
+      "type": "registry:block",
+      "title": "Social-Proof-Companies-1",
+      "description": "A social proof section that displays brand logos in a grid layout",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-1/source/app/social-proof/page.tsx",
+          "type": "registry:page",
+          "target": "app/social-proof/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-1/source/components/social-proof.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "social-proof"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-1.json"
+    },
+    {
+      "name": "social-proof-companies-2",
+      "type": "registry:block",
+      "title": "Social-Proof-Companies-2",
+      "description": "A social proof section with animated brand logos arranged in a grid layout",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-2/source/app/social-proof/page.tsx",
+          "type": "registry:page",
+          "target": "app/social-proof/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-2/source/components/social-proof.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "social-proof"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-2.json"
+    },
+    {
+      "name": "social-proof-companies-3",
+      "type": "registry:block",
+      "title": "Social-Proof-Companies-3",
+      "description": "A social proof section with brand logos arranged in a grid layout and hover interactions that guide user attention",
+      "registryDependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-3/source/app/social-proof/page.tsx",
+          "type": "registry:page",
+          "target": "app/social-proof/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-3/source/components/social-proof.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "social-proof"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-3.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-3.json"
+    },
+    {
+      "name": "social-proof-companies-4",
+      "type": "registry:block",
+      "title": "Social-Proof-Companies-4",
+      "description": "A social proof section that showcases brand logos in a marquee layout",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-4/source/app/social-proof/page.tsx",
+          "type": "registry:page",
+          "target": "app/social-proof/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-companies-4/source/components/social-proof.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "social-proof"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-4.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-4.json"
+    },
+    {
+      "name": "social-proof-testimonials-1",
+      "type": "registry:block",
+      "title": "Social-Proof-Testimonials-1",
+      "description": "A social proof section with expert testimonial cards arranged in a grid layout",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "card"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-testimonials-1/source/app/social-proof/page.tsx",
+          "type": "registry:page",
+          "target": "app/social-proof/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-testimonials-1/source/components/social-proof.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-testimonials-1/source/components/testimonials-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "social-proof"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-testimonials-1.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-testimonials-1.json"
+    },
+    {
+      "name": "social-proof-testimonials-2",
+      "type": "registry:block",
+      "title": "Social-Proof-Testimonials-2",
+      "description": "A social proof section that displays expert testimonial cards in a marquee layout",
+      "registryDependencies": [
+        "avatar",
+        "card"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-testimonials-2/source/app/social-proof/page.tsx",
+          "type": "registry:page",
+          "target": "app/social-proof/page.tsx"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-testimonials-2/source/components/social-proof.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/social-proof/social-proof-testimonials-2/source/components/testimonials-card.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hex-ui/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "social-proof"
+      ],
+      "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-testimonials-2.json",
+      "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-testimonials-2.json"
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "A marquee component that infinitely scrolls content in a horizontal or vertical direction.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/hex-ui/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
 }

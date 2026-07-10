@@ -1,6 +1,0 @@
-{
-  "title": "Cta-1",
-  "description": "A simple full-width CTA section",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/cta-1.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-1.json"
-}

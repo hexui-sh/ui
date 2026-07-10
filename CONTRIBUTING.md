@@ -35,8 +35,7 @@ hex-ui/
 │   ├── block-viewer.tsx       # Block preview and code viewer
 │   ├── block-category-previews.tsx  # Hand-written category preview components
 │   └── ...                    # Header, footer, navigation, MDX components
-├── content/                   # MDX content and generated block metadata
-│   ├── blocks/registry.json   # Generated — do not edit manually
+├── content/                   # MDX documentation content
 │   └── docs/                  # Documentation MDX files
 ├── hooks/                     # React hooks (use-mobile, use-copy, use-theme-toggle, ...)
 ├── lib/                       # Utilities and data helpers
@@ -44,15 +43,14 @@ hex-ui/
 │   ├── blocks.ts              # Block data access and navigation
 │   ├── content.ts             # MDX content resolution
 │   └── read-code-path.ts      # Reads block source files for the code viewer
-├── registry/hex-ui/           # Block source files and meta.json
+├── registry/hex-ui/           # Block source files
 │   └── <category>/<slug>/
-│       ├── meta.json          # Block metadata consumed by the generator
 │       └── source/            # app/<category>/page.tsx + components/*.tsx
 ├── scripts/                   # Build scripts
-│   └── generate-block-registry.mjs  # Generates registry, preview-map, category map
+│   └── generate-block-registry.mjs  # Generates preview and category maps
 ├── public/                    # Static assets and demos
 ├── components.json            # shadcn configuration (style: base-nova)
-├── registry.json              # shadcn registry definition (items, dependencies, files)
+├── registry.json              # Source of truth for registry items and block metadata
 ├── eslint.config.mjs          # ESLint configuration
 ├── next.config.ts             # Next.js configuration
 ├── tsconfig.json              # TypeScript configuration
@@ -62,9 +60,9 @@ hex-ui/
 
 A few important notes:
 
-- `registry/hex-ui/` holds the **source of truth** for every block. Each block's `source/` folder mirrors the structure users get when they install it (`app/<category>/page.tsx` and `components/*.tsx`).
-- `content/blocks/registry.json`, `app/(view)/view/[slug]/preview-map.ts`, and `components/block-category-preview-map.ts` are **auto-generated** by `pnpm generate`. Do not edit them by hand.
-- `registry.json` (at the repository root) is the shadcn registry definition that the CLI reads. It lists every item with its `dependencies`, `registryDependencies`, `files`, and `categories`.
+- `registry.json` is the **source of truth** for every registry item and block metadata field. It lists each item with its `title`, `description`, `dependencies`, `registryDependencies`, `files`, `categories`, `installCommand`, and `v0Url`.
+- `registry/hex-ui/` holds the source files for every block. Each block's `source/` folder mirrors the structure users get when they install it (`app/<category>/page.tsx` and `components/*.tsx`).
+- `app/(view)/view/[slug]/preview-map.ts` and `components/block-category-preview-map.ts` are **auto-generated** by `pnpm generate`. Do not edit them by hand.
 
 ## Local Development
 
@@ -109,11 +107,10 @@ This section describes the actual workflow used by Hex UI. Use an existing block
 
 ### 1. Create the block source files
 
-Blocks are grouped by category under `registry/hex-ui/<category>/<slug>/`. Create a new folder with a `meta.json` file and a `source/` directory:
+Blocks are grouped by category under `registry/hex-ui/<category>/<slug>/`. Create a new folder with a `source/` directory:
 
 ```text
 registry/hex-ui/hero/hero-6/
-├── meta.json
 └── source/
     ├── app/hero/page.tsx        # Preview page (also imported by the site)
     └── components/              # Block components
@@ -124,22 +121,7 @@ registry/hex-ui/hero/hero-6/
 - The preview page at `source/app/<category>/page.tsx` is what the site renders at `/view/<slug>` and what users see when they install the block. Keep it self-contained and import only from the sibling `components/` folder or from `@/components/ui`.
 - Component files live in `source/components/`. Use relative imports between them (e.g. `./cta-buttons`), as shown in existing blocks.
 
-### 2. Add a `meta.json` file
-
-Every block needs a `meta.json` with at least a `title` and `description`. The generator reads this file to build the site's block metadata.
-
-```json
-{
-  "title": "Hero-6",
-  "description": "A centered hero section with a product mockup",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/hero-6.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-6.json"
-}
-```
-
-`installCommand` and `v0Url` are optional — when omitted, the generator fills in sensible defaults based on the slug. The generator also supports optional `previewPath`, `codePath`, `files`, and `reference` fields, but the existing blocks only rely on `title`, `description`, `installCommand`, and `v0Url`.
-
-### 3. Register the item in `registry.json`
+### 2. Register the item in `registry.json`
 
 Add a new entry to the `items` array in the root [`registry.json`](./registry.json). This is the definition the shadcn CLI reads when a user runs `pnpm dlx shadcn@latest add`.
 
@@ -166,12 +148,14 @@ Add a new entry to the `items` array in the root [`registry.json`](./registry.js
 }
 ```
 
+- **`title`** and **`description`** — displayed on the blocks page and included in the registry item.
 - **`dependencies`** — npm packages the block requires (e.g. `lucide-react`, `motion`).
 - **`registryDependencies`** — other registry items the block depends on, referenced by their registry name (e.g. `button`, `accordion`, `@coss/select`). These resolve to other entries in `registry.json` or to configured external registries in `components.json`.
 - **`files`** — each file the CLI should copy into the user's project, with its `type` (`registry:page`, `registry:component`, `registry:ui`, `registry:file`) and optional `target`.
 - **`categories`** — the category the block belongs to (matches the folder name under `registry/hex-ui/`).
+- **`installCommand`** and **`v0Url`** — optional custom values. When omitted, the site derives default links from the item name.
 
-### 4. Generate the registry files
+### 3. Generate the preview maps
 
 After adding or changing a block, run the generator:
 
@@ -179,19 +163,18 @@ After adding or changing a block, run the generator:
 pnpm generate
 ```
 
-This script (`scripts/generate-block-registry.mjs`) scans `registry/hex-ui/` and writes three files:
+This script (`scripts/generate-block-registry.mjs`) reads the root `registry.json` and writes two generated files:
 
-- `content/blocks/registry.json` — block metadata used by the site navigation and block pages.
 - `app/(view)/view/[slug]/preview-map.ts` — imports each block's preview page so it can be rendered at `/view/<slug>`.
 - `components/block-category-preview-map.ts` — maps each category to its preview component.
 
 These files are clearly marked with `// THIS FILE IS AUTO-GENERATED by \`pnpm generate\`. DO NOT EDIT MANUALLY.` **Never edit them by hand** — always re-run `pnpm generate` instead.
 
-### 5. (Optional) Add a category preview
+### 4. (Optional) Add a category preview
 
 The block category index pages use preview components defined in `components/block-category-previews.tsx`. If you add a brand-new category and want a custom preview (rather than the generic fallback), add a new `<Name>CategoryPreview` function in that file. The generator detects exported functions matching the `*CategoryPreview` pattern and wires them up automatically in `components/block-category-preview-map.ts`.
 
-### 6. Verify the block
+### 5. Verify the block
 
 - Run `pnpm dev` and open `/blocks/<category>` to confirm the block appears in the listing.
 - Open `/view/<slug>` (for example `/view/hero-6`) to confirm the preview renders correctly on desktop and mobile, and in both Light Mode and Dark Mode.
@@ -307,7 +290,7 @@ pnpm lint
 pnpm build
 ```
 
-- `pnpm generate` — regenerates the registry metadata and preview maps.
+- `pnpm generate` — regenerates the preview maps from the root registry.
 - `pnpm lint` — runs ESLint over the codebase.
 - `pnpm build` — runs the Next.js production build, which also performs TypeScript type checking.
 
@@ -325,7 +308,7 @@ Pre-submission checklist:
 - [ ] The change has been tested in **Light Mode** and **Dark Mode**.
 - [ ] Keyboard interaction has been tested (focus, Tab/Shift+Tab, Escape, Enter/Space).
 - [ ] Related documentation has been updated.
-- [ ] Generated registry files (`content/blocks/registry.json`, `preview-map.ts`, `block-category-preview-map.ts`) are up to date and have not been hand-edited.
+- [ ] Generated preview map files (`preview-map.ts`, `block-category-preview-map.ts`) are up to date and have not been hand-edited.
 - [ ] Existing functionality has not been broken.
 
 ## Pull Request Guidelines

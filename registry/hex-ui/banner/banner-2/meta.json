@@ -1,6 +1,0 @@
-{
-  "title": "Banner-2",
-  "description": "A full-width dismissible announcement bar",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/banner-2.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/banner-2.json"
-}

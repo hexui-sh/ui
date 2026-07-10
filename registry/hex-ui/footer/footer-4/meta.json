@@ -1,6 +1,0 @@
-{
-  "title": "Footer-4",
-  "description": "A simple footer for portfolios with a signature",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-4.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-4.json"
-}

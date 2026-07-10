@@ -1,6 +1,0 @@
-{
-  "title": "Footer-5",
-  "description": "A footer with interactive text that responds to pointer movement",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/footer-5.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-5.json"
-}

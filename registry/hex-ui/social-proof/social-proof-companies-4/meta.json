@@ -1,6 +1,0 @@
-{
-  "title": "Social-Proof-Companies-4",
-  "description": "A social proof section that showcases brand logos in a marquee layout",
-  "installCommand": "pnpm dlx shadcn@latest add https://hexui.sh/r/social-proof-companies-4.json",
-  "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-4.json"
-}
