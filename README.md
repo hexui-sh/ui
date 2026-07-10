@@ -4,8 +4,11 @@ Check out these beautiful and sophisticated UI blocks and templates. You can eas
 ## Documentation
 Visit [docs](https://hexui.sh/docs) to view the documation.
 
+## Contributing
+Please read the [contributing guide](https://github.com/ri0n-dev/hex-ui/blob/main/CONTRIBUTING.md).
+
 ## Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=ri0n-dev/hex-ui&type=Date)](https://www.star-history.com/#ri0n-dev/hex-ui&Date)
 
 ## License
-Licensed under the [MIT license](https://github.com/ri0n-dev/hex-ui/blob/main/LICENSE)
+Licensed under the [MIT license](https://github.com/ri0n-dev/hex-ui/blob/main/LICENSE).
