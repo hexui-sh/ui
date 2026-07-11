@@ -11,6 +11,7 @@ import {
     useSidebar,
 } from "@/components/ui/sidebar"
 import {
+    PanelLeftIcon,
     Search,
     SquarePen,
     Telescope,
@@ -118,7 +119,7 @@ function SidebarHeaderContent() {
                 >
                     <div className="relative flex size-8 items-center justify-center">
                         <AppBrand className="transition-opacity group-hover:opacity-0" size={20} />
-                        <SidebarTrigger className="absolute size-8 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                        <PanelLeftIcon className="cn-rtl-flip absolute size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                     </div>
                 </button>
             </div>

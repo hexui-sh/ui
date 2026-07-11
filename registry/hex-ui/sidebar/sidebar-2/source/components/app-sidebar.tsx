@@ -152,10 +152,17 @@ export function AppSidebar() {
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <DropdownMenu onOpenChange={handleModeMenuOpenChange}>
-                                    <DropdownMenuTrigger>
-                                        <Button variant="ghost" size="icon" className="text-muted-foreground" aria-label={`Sidebar Control: ${activeMode.label}`}>
-                                            <PanelLeftDashed />
-                                        </Button>
+                                    <DropdownMenuTrigger
+                                        render={
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                className="text-muted-foreground"
+                                                aria-label={`Sidebar Control: ${activeMode.label}`}
+                                            />
+                                        }
+                                    >
+                                        <PanelLeftDashed />
                                     </DropdownMenuTrigger>
 
                                     <DropdownMenuContent side="top" align="end" className="ml-3 w-48">

@@ -42,15 +42,17 @@ export function AppHeader() {
                 <SidebarTrigger className="shrink-0 sm:hidden" />
 
                 <DropdownMenu>
-                    <DropdownMenuTrigger>
-                        <Button
-                            type="button"
-                            variant="ghost"
-                            className="h-9 min-w-0 max-w-55 justify-start gap-2 px-2.5 sm:max-w-65"
-                        >
-                            <span className="truncate text-base font-medium">{activeModel.label}</span>
-                            <ChevronDown className="size-4 shrink-0 text-muted-foreground" />
-                        </Button>
+                    <DropdownMenuTrigger
+                        render={
+                            <Button
+                                type="button"
+                                variant="ghost"
+                                className="h-9 min-w-0 max-w-55 justify-start gap-2 px-2.5 sm:max-w-65"
+                            />
+                        }
+                    >
+                        <span className="truncate text-base font-medium">{activeModel.label}</span>
+                        <ChevronDown className="size-4 shrink-0 text-muted-foreground" />
                     </DropdownMenuTrigger>
 
                     <DropdownMenuContent align="start" className="w-72">
