@@ -35,13 +35,13 @@ hex-ui/
 │   ├── block-viewer.tsx       # Block preview and code viewer
 │   ├── block-category-previews.tsx  # Hand-written category preview components
 │   └── ...                    # Header, footer, navigation, MDX components
-├── content/                   # MDX documentation content
-│   └── docs/                  # Documentation MDX files
+├── docs/                      # MDX documentation content
+│   └── get-started/           # Getting Started documentation MDX files
 ├── hooks/                     # React hooks (use-mobile, use-copy, use-theme-toggle, ...)
 ├── lib/                       # Utilities and data helpers
 │   ├── utils.ts               # `cn()` class-name merge helper
 │   ├── blocks.ts              # Block data access and navigation
-│   ├── content.ts             # MDX content resolution
+│   ├── content.ts             # MDX docs resolution (source of truth: docs/)
 │   └── read-code-path.ts      # Reads block source files for the code viewer
 ├── registry/hex-ui/           # Block source files
 │   └── <category>/<slug>/
@@ -189,7 +189,7 @@ The block category index pages use preview components defined in `components/blo
 
 ### Adding documentation for a block
 
-Block pages on the site are generated from the registry metadata and the block's source files — there is no separate MDX file required for each block. If your block introduces a new concept or needs usage notes, consider adding or updating a page under `content/docs/` instead (see [Documentation Guidelines](#documentation-guidelines)).
+Block pages on the site are generated from the registry metadata and the block's source files — there is no separate MDX file required for each block. If your block introduces a new concept or needs usage notes, consider adding or updating a page under `docs/` instead (see [Documentation Guidelines](#documentation-guidelines)).
 
 ## Component Guidelines
 
@@ -218,7 +218,7 @@ Follow the patterns already used in the codebase. When in doubt, look at an exis
 
 ## Documentation Guidelines
 
-When you add or change a component, block, or workflow, update the related documentation so it stays accurate. Documentation lives in `content/docs/` as MDX files with frontmatter:
+When you add or change a component, block, or workflow, update the related documentation so it stays accurate. Documentation lives in `docs/` as MDX files with frontmatter:
 
 ```mdx
 ---
@@ -230,7 +230,7 @@ Content goes here.
 ```
 
 - The `title` and `description` frontmatter fields drive the navigation label and page metadata.
-- The file's path under `content/docs/` determines its URL. For example, `content/docs/get-started/introduction.mdx` is served at `/docs/introduction`.
+- The file's path under `docs/` determines its URL. For example, `docs/get-started/introduction.mdx` is served at `/docs/introduction`.
 - You can import and use site components inside MDX (for example `CodeBlockCommand` from `@/components/code-block-command`).
 
 When adding or changing a block or component, verify the documentation covers (where applicable):

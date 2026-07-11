@@ -17,7 +17,7 @@ export async function GET(
   }
 
   const content = await readFile(
-    path.join(process.cwd(), "content", relativePath),
+    path.join(process.cwd(), "docs", relativePath),
     "utf8"
   )
 

@@ -69,7 +69,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>
 }): Promise<Metadata> {
     const { slug } = await params
-    const frontmatter = await getDocFrontmatter(["docs", slug])
+    const frontmatter = await getDocFrontmatter(slug)
 
     return {
         title: frontmatter?.title ?? formatSlugToTitle(slug),
@@ -89,13 +89,13 @@ export default async function DocsPage({
     }
 
     const source = await readFile(
-        path.join(process.cwd(), "content", docFile.relativePath),
+        path.join(process.cwd(), "docs", docFile.relativePath),
         "utf8"
     )
 
     const [{ default: Post }, frontmatter] = await Promise.all([
-        import(`@/content/${docFile.importPath}.mdx`),
-        getDocFrontmatter(["docs", slug]),
+        import(`@/docs/${docFile.importPath}.mdx`),
+        getDocFrontmatter(slug),
     ])
 
     const docNav = await getDocNavigationContext(slug)
@@ -103,7 +103,7 @@ export default async function DocsPage({
     const tocHeadings = getTocHeadings(source)
 
     const issueUrl = buildGitHubIssueUrl({ title: `[bug]: ${pagePath}` })
-    const editUrl = buildGitHubEditUrl(`content/${docFile.relativePath}`)
+    const editUrl = buildGitHubEditUrl(`docs/${docFile.relativePath}`)
 
     return (
         <div className="mx-auto mt-16 flex w-full min-w-0 md:mt-14">

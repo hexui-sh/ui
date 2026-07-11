@@ -17,6 +17,7 @@ type ContentGroup = {
   }>
 }
 
+const DOCS_DIR_NAME = "docs"
 const CONTENT_EXTENSIONS = new Set([".mdx"])
 const FRONTMATTER_BLOCK_PATTERN = /^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n|$)/
 
@@ -24,6 +25,10 @@ type Frontmatter = {
   title?: string
   description?: string
   category?: string
+}
+
+function getDocsRoot() {
+  return path.join(process.cwd(), DOCS_DIR_NAME)
 }
 
 function normalizeFrontmatterValue(value: string) {
@@ -81,20 +86,6 @@ function toTitle(value: string) {
     .replace(/\b\w/g, (char) => char.toUpperCase())
 }
 
-function normalizeFileToSlug(relativePath: string) {
-  const normalizedPath = relativePath.replace(/\\/g, "/")
-  const parsed = path.posix.parse(normalizedPath)
-  if (!CONTENT_EXTENSIONS.has(parsed.ext)) {
-    return null
-  }
-
-  const dirSegments = parsed.dir ? parsed.dir.split("/").filter(Boolean) : []
-  const baseName = parsed.name.toLowerCase()
-  const slug = baseName === "page" ? dirSegments : [...dirSegments, parsed.name]
-
-  return slug
-}
-
 function deriveDocSlugAndCategory(relativePath: string) {
   const normalizedPath = relativePath.replace(/\\/g, "/")
   const parsed = path.posix.parse(normalizedPath)
@@ -103,15 +94,10 @@ function deriveDocSlugAndCategory(relativePath: string) {
   }
 
   const dirSegments = parsed.dir ? parsed.dir.split("/").filter(Boolean) : []
-  if (dirSegments[0] !== "docs") {
-    return null
-  }
-
-  const categorySegments = dirSegments.slice(1)
   const folderCategory =
-    categorySegments.length > 0 ? toTitle(categorySegments.join(" ")) : undefined
+    dirSegments.length > 0 ? toTitle(dirSegments.join(" ")) : undefined
 
-  const slug = ["docs", parsed.name]
+  const slug = [DOCS_DIR_NAME, parsed.name]
 
   return { slug, folderCategory }
 }
@@ -124,7 +110,7 @@ function makeItemTitle(slug: string[]) {
   if (slug.length === 0) {
     return "Home"
   }
-  if (slug.length === 1 && slug[0] === "docs") {
+  if (slug.length === 1 && slug[0] === DOCS_DIR_NAME) {
     return "Get Started"
   }
   return toTitle(slug[slug.length - 1])
@@ -162,47 +148,44 @@ function compareGroups(a: { title: string }, b: { title: string }) {
 }
 
 export async function getContentEntries() {
-  const contentRoot = path.join(process.cwd(), "content")
+  const docsRoot = getDocsRoot()
   let files: string[] = []
   try {
-    files = await collectContentFiles(contentRoot)
+    files = await collectContentFiles(docsRoot)
   } catch {
     return []
   }
   const routeMap = new Map<string, ContentEntry>()
 
   for (const filePath of files) {
-    const docDerived = deriveDocSlugAndCategory(filePath)
-    const slug = docDerived?.slug ?? normalizeFileToSlug(filePath)
-    if (!slug || slug.length === 0) {
+    if (!filePath.endsWith(".mdx")) {
       continue
     }
 
-    const routeKey = slug.join("/")
-    const existing = routeMap.get(routeKey)
-    const isMdx = filePath.endsWith(".mdx")
-    const frontmatter = isMdx
-      ? await readFrontmatterFromFile(path.join(contentRoot, filePath))
-      : {}
-
-    if (!existing || isMdx) {
-      routeMap.set(routeKey, {
-        slug,
-        title: frontmatter.title ?? makeItemTitle(slug),
-        description: frontmatter.description,
-        category: frontmatter.category ?? docDerived?.folderCategory,
-      })
+    const derived = deriveDocSlugAndCategory(filePath)
+    if (!derived) {
+      continue
     }
+
+    const routeKey = derived.slug.join("/")
+    const frontmatter = await readFrontmatterFromFile(path.join(docsRoot, filePath))
+
+    routeMap.set(routeKey, {
+      slug: derived.slug,
+      title: frontmatter.title ?? makeItemTitle(derived.slug),
+      description: frontmatter.description,
+      category: frontmatter.category ?? derived.folderCategory,
+    })
   }
 
   return Array.from(routeMap.values()).sort((a, b) => compareByTitle(a, b))
 }
 
 export async function getDocFileEntries() {
-  const contentRoot = path.join(process.cwd(), "content")
+  const docsRoot = getDocsRoot()
   let files: string[] = []
   try {
-    files = await collectContentFiles(contentRoot)
+    files = await collectContentFiles(docsRoot)
   } catch {
     return []
   }
@@ -282,7 +265,7 @@ export async function getContentNavigation(section: string) {
 export async function getUnifiedNavigation() {
   const entries = await getContentEntries()
   const docsEntries = entries
-    .filter((entry) => entry.slug[0] === "docs" && entry.slug.length >= 2)
+    .filter((entry) => entry.slug[0] === DOCS_DIR_NAME && entry.slug.length >= 2)
     .map((entry) => ({
       title: entry.title || entry.slug.slice(1).map(toTitle).join(" / "),
       url: makeUrl(entry.slug),
@@ -306,26 +289,18 @@ export async function getUnifiedNavigation() {
 
 export async function getDocFrontmatter(slug: string | string[]) {
   const slugSegments = Array.isArray(slug) ? slug : [slug]
-  const contentRoot = path.join(process.cwd(), "content")
+  const docSlug = slugSegments[slugSegments.length - 1]
+  const docsRoot = getDocsRoot()
 
-  const candidates: string[] = [
-    path.join(contentRoot, ...slugSegments) + ".mdx",
-    path.join(contentRoot, ...slugSegments, "page.mdx"),
-  ]
-
-  if (slugSegments[0] === "docs" && slugSegments.length === 2) {
-    const docEntries = await getDocFileEntries()
-    const match = docEntries.find((entry) => entry.slug === slugSegments[1])
-    if (match) {
-      candidates.unshift(path.join(contentRoot, match.relativePath))
-    }
+  const entries = await getDocFileEntries()
+  const match = entries.find((entry) => entry.slug === docSlug)
+  if (!match) {
+    return {}
   }
 
-  for (const candidate of candidates) {
-    const frontmatter = await readFrontmatterFromFile(candidate)
-    if (frontmatter.title || frontmatter.description) {
-      return frontmatter
-    }
+  const frontmatter = await readFrontmatterFromFile(path.join(docsRoot, match.relativePath))
+  if (frontmatter.title || frontmatter.description) {
+    return frontmatter
   }
 
   return {}
@@ -337,7 +312,7 @@ export async function resolveDocFile(slug: string) {
 }
 
 export async function getDocNavigationContext(slug: string) {
-  const groups = await getContentNavigation("docs")
+  const groups = await getContentNavigation(DOCS_DIR_NAME)
   const items = groups.flatMap((group) =>
     group.items.map((item) => ({ title: item.title, href: item.url }))
   )
@@ -357,9 +332,9 @@ export async function resolveDocSourcePath(segments: string[]): Promise<string |
     return null
   }
 
-  const contentRoot = path.join(process.cwd(), "content")
-  const directRelative = `docs/${segments.join("/")}.mdx`
-  const directStats = await stat(path.join(contentRoot, directRelative)).catch(() => null)
+  const docsRoot = getDocsRoot()
+  const directRelative = `${segments.join("/")}.mdx`
+  const directStats = await stat(path.join(docsRoot, directRelative)).catch(() => null)
   if (directStats?.isFile()) {
     return directRelative
   }
