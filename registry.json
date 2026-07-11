@@ -173,9 +173,9 @@
       "title": "Faq-1",
       "description": "A simple and professional FAQ section with collapsible questions and answers",
       "registryDependencies": [
-        "accordion",
         "avatar",
-        "button"
+        "button",
+        "@coss/accordion"
       ],
       "dependencies": [],
       "files": [
@@ -205,9 +205,9 @@
       "title": "Faq-2",
       "description": "A simple and professional FAQ section with categorized collapsible questions and answers",
       "registryDependencies": [
-        "accordion",
         "avatar",
-        "button"
+        "button",
+        "@coss/accordion"
       ],
       "dependencies": [],
       "files": [
