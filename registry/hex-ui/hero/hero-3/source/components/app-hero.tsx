@@ -7,10 +7,10 @@ export function AppHero() {
         <section className="relative flex w-full pt-16 justify-center">
             <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] items-center gap-14 mx-auto w-full h-full text-center xl:text-left">
                 <div className="flex flex-col items-center xl:items-start text-left pb-8 gap-3 md:gap-4 xl:gap-5">
-                    <p className="flex items-center gap-2 rounded-4xl bg-accent/50 px-4 py-1 text-sm text-muted-foreground">
-                        <Sparkles size={14} />
+                    <div className="inline-flex items-center gap-2 rounded-4xl bg-accent px-4 py-1 text-xs text-accent-foreground lg:text-sm">
+                        <Sparkles className="size-3 sm:size-3.5" />
                         Early access waitlist
-                    </p>
+                    </div>
 
                     <h1 className="text-balance text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-foreground">
                         Plan smarter. Ship faster.
@@ -28,7 +28,7 @@ export function AppHero() {
 
                 <Image
                     src="/demo/mockups/app-hand-hero.png"
-                    alt="Background"
+                    alt="mockup"
                     width={864}
                     height={1080}
                     unoptimized

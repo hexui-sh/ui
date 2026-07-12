@@ -6,10 +6,10 @@ export function AppHero() {
         <section className="relative flex w-full pt-20 justify-center">
             <div className="mx-auto flex flex-col items-center gap-14 text-center">
                 <div className="flex max-w-2xl flex-col items-center gap-4">
-                    <p className="flex items-center gap-2 rounded-4xl bg-accent/50 px-4 py-1 text-sm text-muted-foreground">
-                        <Sparkles size={14} />
+                    <div className="inline-flex items-center gap-2 rounded-4xl bg-accent px-4 py-1 text-xs text-accent-foreground/80 lg:text-sm">
+                        <Sparkles className="size-3 sm:size-3.5" />
                         New: Private Beta Open
-                    </p>
+                    </div>
 
                     <h1 className="text-balance text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-foreground">
                         Automate Your Workflow Ship Faster Than Ever

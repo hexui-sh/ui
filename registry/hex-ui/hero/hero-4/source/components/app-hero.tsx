@@ -5,11 +5,6 @@ export function AppHero() {
     return (
         <section className="relative flex h-screen w-full items-end justify-start">
             <div className="relative max-w-xl z-10 flex flex-col items-start gap-6 pb-24 text-left">
-                <p className="flex items-center gap-2 rounded-4xl bg-accent/90 px-4 py-1 text-sm text-muted-foreground">
-                    <Blocks size={14} />
-                    New Feature Released
-                </p>
-
                 <h1 className="text-balance text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-foreground">
                     The Fastest Way to Get Things Done
                 </h1>
