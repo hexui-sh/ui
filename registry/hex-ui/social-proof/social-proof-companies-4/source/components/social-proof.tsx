@@ -40,7 +40,7 @@ export function SocialProof() {
                         width={96}
                         height={96}
                         loading="eager"
-                        className="mx-8 h-6 md:h-12 w-24 md:w-30 object-contain opacity-80 not-dark:invert-100 pointer-events-none select-none"
+                        className="mx-4 md:mx-8 h-6 md:h-12 w-24 md:w-30 object-contain opacity-80 not-dark:invert-100 pointer-events-none select-none"
                         unoptimized
                     />
                 ))}
