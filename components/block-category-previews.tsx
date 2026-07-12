@@ -136,7 +136,7 @@ export function HeroCategoryPreview(props: BlockCategoryPreviewProps) {
           <MiniLine size="lg" className="w-3/4" />
           <MiniLine size="xl" className="mt-4 w-18" />
         </div>
-        <div className="relative aspect-square rounded-lg bg-muted/50" />
+        <div className="relative aspect-square rounded-lg bg-muted-foreground/15 dark:bg-muted/50" />
       </div>
     </PreviewShell>
   )
@@ -157,7 +157,7 @@ export function LoginCategoryPreview(props: BlockCategoryPreviewProps) {
             </div>
             <MiniLine size="xl" className="mt-1 w-18" />
           </div>
-          <div className="relative aspect-square rounded-lg bg-muted/50" />
+          <div className="relative aspect-square rounded-lg bg-muted-foreground/15 dark:bg-muted/50" />
         </div>
       </div>
     </PreviewShell>
