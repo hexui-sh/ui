@@ -3,16 +3,33 @@ import Link from "next/link";
 import { getBlockCategoryPreview } from "@/components/block-category-preview-map";
 import { Card, CardContent } from "@/components/ui/card";
 import { categoryToSlug, getBlockGroups } from "@/lib/blocks";
+import { pageMetadata, collectionPageJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blocks",
-};
+  description:
+    "Browse 50+ free, copy-and-paste UI blocks for React, Next.js, and Tailwind CSS. Installable via the shadcn CLI, fully open source, and ready to customize.",
+  path: "/blocks",
+});
 
 export default async function BlocksPage() {
   const groups = await getBlockGroups();
 
   return (
     <div className="mt-20 flex w-full flex-col gap-17 md:mt-30">
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: "Hex UI Blocks",
+          description:
+            "Free, copy-and-paste UI blocks for React, Next.js, and Tailwind CSS, installable via the shadcn CLI.",
+          path: "/blocks",
+          items: groups.map((group) => ({
+            name: group.category,
+            path: `/blocks/${group.categorySlug}`,
+          })),
+        })}
+      />
       <div className="mx-auto w-full max-w-xl self-start text-center">
         <h1 className="mb-4 text-4xl font-bold text-neutral-800 dark:text-neutral-200">
           Building Blocks for the Web

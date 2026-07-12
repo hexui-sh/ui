@@ -24,7 +24,8 @@ export async function GET(
         return new Response(file, {
             headers: {
                 "Content-Type": contentType,
-                "Cache-Control": "no-store, max-age=0",
+                "Cache-Control": "public, max-age=31536000, immutable",
+                "X-Robots-Tag": "noindex",
             },
         })
     } catch {

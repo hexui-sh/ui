@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { getBlockCategoryPreview } from "@/components/block-category-preview-map";
 import { Card, CardContent } from "@/components/ui/card";
 import { categoryToSlug, getBlockGroups } from "@/lib/blocks";
-
-export const metadata: Metadata = {
-  title: "Blocks",
-};
 
 export default async function Blocks() {
   const groups = await getBlockGroups();

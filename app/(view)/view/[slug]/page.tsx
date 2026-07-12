@@ -1,7 +1,16 @@
+import type { Metadata } from "next"
 import { Suspense } from "react"
 import { previewMap } from "./preview-map"
 import { PreviewFrame } from "./preview-frame"
 import { getBlockPreviewStaticParams } from "@/lib/blocks"
+
+export const metadata: Metadata = {
+  title: "Preview",
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default async function PreviewPage({
   params,

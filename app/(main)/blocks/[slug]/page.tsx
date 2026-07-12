@@ -6,6 +6,8 @@ import { MdxNavActions } from "@/components/mdx-nav-actions"
 import { getBlockCategoryNavigationContext, getBlockCategoryStaticParams, getBlockEntriesByCategory } from "@/lib/blocks"
 import type { BlockEntry } from "@/lib/blocks"
 import { readCodePath } from "@/lib/read-code-path"
+import { pageMetadata, collectionPageJsonLd, breadcrumbJsonLd } from "@/lib/seo"
+import { JsonLd } from "@/components/json-ld"
 
 function resolveRegistryPath(registryPath: string): string {
   return registryPath.replace(/^@\//, "").replace(/\/$/, "")
@@ -25,9 +27,11 @@ export async function generateMetadata({
     return {}
   }
 
-  return {
-    title: result.category,
-  }
+  return pageMetadata({
+    title: `${result.category} Blocks`,
+    description: `Free ${result.category.toLowerCase()} UI blocks for React, Next.js, and Tailwind CSS. Copy and paste or install with the shadcn CLI. ${result.blocks.length} open-source ${result.category.toLowerCase()} sections ready to customize.`,
+    path: `/blocks/${slug}`,
+  })
 }
 
 export default async function BlockCategoryPage({
@@ -55,6 +59,24 @@ export default async function BlockCategoryPage({
 
   return (
     <div className="mx-auto mt-16 flex w-full max-docs-content-width flex-col gap-5">
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: `${category} Blocks`,
+          description: `Free ${category.toLowerCase()} UI blocks for React, Next.js, and Tailwind CSS.`,
+          path: `/blocks/${slug}`,
+          items: blocks.map((block) => ({
+            name: block.title,
+            path: `/blocks/${slug}#${block.slug}`,
+          })),
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blocks", path: "/blocks" },
+          { name: category, path: `/blocks/${slug}` },
+        ])}
+      />
       <div className="flex gap-4 items-start justify-between">
         <h1 className="text-3xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">
           {category}

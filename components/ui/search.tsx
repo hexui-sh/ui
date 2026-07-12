@@ -64,7 +64,11 @@ export function SearchBar({ groups }: SearchBarProps) {
     return (
         <CommandDialog onOpenChange={setOpen} open={open}>
             <CommandDialogTrigger>
-                <div className="flex items-center text-neutral-500 dark:text-neutral-400 border border-neutral-300 dark:border-neutral-800 w-64 py-1.5 pl-2.5 pr-1.5 rounded-md justify-between cursor-pointer max-w-xs">
+                <div
+                    role="search"
+                    aria-label="Search documentation and blocks"
+                    className="flex items-center text-neutral-500 dark:text-neutral-400 border border-neutral-300 dark:border-neutral-800 w-64 py-1.5 pl-2.5 pr-1.5 rounded-md justify-between cursor-pointer max-w-xs"
+                >
                     <div className="flex items-center gap-2">
                         <Search size={16.5} />
                         <p className="text-sm">Search documentation...</p>

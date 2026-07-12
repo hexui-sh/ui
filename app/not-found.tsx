@@ -1,14 +1,23 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+
+export const metadata: Metadata = {
+    title: "404",
+    robots: {
+        index: false,
+        follow: true,
+    },
+}
 
 export default function NotFound() {
     return (
         <div className="w-full mx-auto mt-30 px-4 flex flex-col items-center justify-center gap-4">
             <Image
                 src="/assets/404-computer.png"
-                alt="404"
+                alt="Illustration of a computer displaying a 404 error, indicating the page was not found"
                 width={280}
                 height={280}
                 className="mx-auto invert-80 dark:invert-0 drop-shadow-2xl select-none pointer-events-none"

@@ -11,9 +11,14 @@ export async function GET(
   const { name } = await context.params
   const itemName = name.replace(/\.json$/, "")
 
-  try {
+    try {
     const item = await loadRegistryItem(itemName)
-    return Response.json(item)
+    return Response.json(item, {
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+        "X-Robots-Tag": "noindex",
+      },
+    })
   } catch (error) {
     if (error instanceof RegistryItemNotFoundError) {
       return Response.json(

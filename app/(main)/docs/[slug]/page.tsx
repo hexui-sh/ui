@@ -8,6 +8,8 @@ import { MdxNavActions } from "@/components/mdx-nav-actions"
 import { buildGitHubEditUrl, buildGitHubIssueUrl } from "@/lib/github-links"
 import { getDocFileEntries, getDocFrontmatter, getDocNavigationContext, resolveDocFile } from "@/lib/content"
 import { slugifyHeading } from "@/lib/heading"
+import { pageMetadata, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo"
+import { JsonLd } from "@/components/json-ld"
 
 type TocHeading = {
     id: string
@@ -70,10 +72,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params
     const frontmatter = await getDocFrontmatter(slug)
+    const title = frontmatter?.title ?? formatSlugToTitle(slug)
+    const description = frontmatter?.description
+        ?? `Read the ${title} guide in the Hex UI documentation.`
 
-    return {
-        title: frontmatter?.title ?? formatSlugToTitle(slug),
-    }
+    return pageMetadata({
+        title,
+        description,
+        path: `/docs/${slug}`,
+        type: "article",
+    })
 }
 
 export default async function DocsPage({
@@ -107,6 +115,21 @@ export default async function DocsPage({
 
     return (
         <div className="mx-auto mt-16 flex w-full min-w-0 md:mt-14">
+            <JsonLd
+                data={articleJsonLd({
+                    title,
+                    description: frontmatter.description
+                        ?? `Read the ${title} guide in the Hex UI documentation.`,
+                    path: pagePath,
+                })}
+            />
+            <JsonLd
+                data={breadcrumbJsonLd([
+                    { name: "Home", path: "/" },
+                    { name: "Docs", path: "/docs/introduction" },
+                    { name: title, path: pagePath },
+                ])}
+            />
             <article className="min-w-0 w-full py-1">
                 <header className="mb-6 dark:border-neutral-800">
                     <div className="flex gap-4 items-start justify-between">

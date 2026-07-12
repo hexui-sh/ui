@@ -22,6 +22,10 @@ export async function GET(
   )
 
   return new Response(content, {
-    headers: { "Content-Type": "text/markdown; charset=utf-8" },
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+      "X-Robots-Tag": "noindex",
+    },
   })
 }

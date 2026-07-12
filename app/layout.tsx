@@ -3,6 +3,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { JsonLd } from "@/components/json-ld";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css"
 
 const geistSans = Geist({
@@ -16,13 +18,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hexui.sh"),
   title: {
     default: "Hex UI",
     template: "%s - Hex UI",
   },
   description:
     "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
-  metadataBase: new URL("https://hexui.sh"),
+  applicationName: "Hex UI",
+  alternates: {
+    canonical: "https://hexui.sh",
+  },
   openGraph: {
     title: "Copy. Customize. Launch. - Hex UI",
     description:
@@ -34,6 +40,7 @@ export const metadata: Metadata = {
         url: "/ogp.webp",
         width: 1200,
         height: 630,
+        alt: "Hex UI - Copy. Customize. Launch.",
       },
     ],
     locale: "en_US",
@@ -45,6 +52,7 @@ export const metadata: Metadata = {
     description:
       "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
     creator: "@ri0n_dev",
+    images: ["https://hexui.sh/ogp.webp"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -52,19 +60,32 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
-  publisher: "@ri0n_dev",
-  creator: "@ri0n_dev",
+  authors: [{ name: "Rion", url: "https://x.com/ri0n_dev" }],
+  creator: "Rion",
+  publisher: "Rion",
   keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
+    "Hex UI",
+    "UI blocks",
+    "React components",
+    "Next.js sections",
+    "Tailwind CSS blocks",
+    "shadcn registry",
+    "copy paste UI",
+    "open source UI",
     "Components",
     "Sections",
     "Blocks",
     "Templates",
-    "Hex UI",
   ],
+  category: "technology",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode; }) {
@@ -78,6 +99,8 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
       <body
         className={`${geistSans.className} ${geistMono.variable} font-sans antialiased bg-neutral-50 dark:bg-neutral-950`}
       >
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

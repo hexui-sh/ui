@@ -9,10 +9,15 @@ import {
 import { RichButton, type Color } from "@/components/ui/rich-button";
 import { SiteFooter } from "@/components/site-footer";
 import { Check } from "lucide-react";
+import { pageMetadata, faqPageJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Pricing",
-};
+  description:
+    "Unlock all Hex UI templates with a single one-time payment. Compare the Individual and Full Access plans, including lifetime updates, commercial use, and lifetime access.",
+  path: "/pricing",
+});
 
 const plans: {
   name: string;
@@ -150,6 +155,17 @@ const faq = [
 export default async function PricingPage() {
   return (
     <div className="flex flex-col gap-14 w-full mt-30">
+      <JsonLd
+        data={faqPageJsonLd(
+          faq.map((item) => ({ question: item.trigger, answer: item.content }))
+        )}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Pricing", path: "/pricing" },
+        ])}
+      />
       <div className="w-full max-w-xl mx-auto text-center self-start">
         <h1 className="text-4xl font-bold mb-4 text-neutral-800 dark:text-neutral-200">
           Unlock All Access
