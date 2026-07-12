@@ -18,9 +18,14 @@ import {
     CommandPanel,
     CommandSeparator,
 } from "@/components/ui/command";
-import { Search, ArrowDownIcon, ArrowUpIcon, CornerDownLeftIcon } from "lucide-react"
+import { Search, ArrowDownIcon, ArrowUpIcon, CornerDownLeftIcon, Book, Cuboid } from "lucide-react"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
-import type { SearchGroup, SearchItem } from "@/lib/search"
+import type { SearchGroup, SearchItem, SearchItemType } from "@/lib/search"
+
+const searchItemIcon: Record<SearchItemType, typeof Book> = {
+  docs: Book,
+  blocks: Cuboid,
+}
 
 export interface SearchBarProps {
     groups: SearchGroup[]
@@ -78,22 +83,24 @@ export function SearchBar({ groups }: SearchBarProps) {
                                     <CommandGroup items={group.items}>
                                         <CommandGroupLabel>{group.value}</CommandGroupLabel>
                                         <CommandCollection>
-                                            {(item: SearchItem) => (
-                                                <CommandItem
-                                                    key={item.value}
-                                                    value={item.value}
-                                                    onClick={() => handleSelect(item)}
-                                                >
-                                                    <div className="flex flex-col min-w-0">
-                                                        <span className="truncate">{item.label}</span>
-                                                        {item.description && (
-                                                            <span className="truncate text-xs text-muted-foreground">
-                                                                {item.description}
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                </CommandItem>
-                                            )}
+                                            {(item: SearchItem) => {
+                                                const Icon = searchItemIcon[item.type]
+                                                return (
+                                                    <CommandItem
+                                                        key={item.value}
+                                                        value={item.value}
+                                                        onClick={() => handleSelect(item)}
+                                                    >
+                                                        <div className="flex items-center gap-2 min-w-0">
+                                                            <Icon
+                                                                size={16}
+                                                                className="shrink-0 text-muted-foreground"
+                                                            />
+                                                            <span className="truncate">{item.label}</span>
+                                                        </div>
+                                                    </CommandItem>
+                                                )
+                                            }}
                                         </CommandCollection>
                                     </CommandGroup>
                                     <CommandSeparator />
