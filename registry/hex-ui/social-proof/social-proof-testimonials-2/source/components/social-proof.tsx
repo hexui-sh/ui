@@ -59,25 +59,11 @@ const secondRow = testimonials.slice(testimonials.length / 2)
 
 export function SocialProof() {
     return (
-        <section className="flex items-center w-full min-h-dvh bg-background">
-            <style jsx>{`
-                .testimonials-grid-collapsed {
-                    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
-                    mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
-                }
-
-                @media (min-width: 768px) {
-                    .testimonials-grid-collapsed {
-                        -webkit-mask-image: none;
-                        mask-image: none;
-                    }
-                }
-            `}</style>
-
-            <div className="max-w-7xl py-16 px-8 mx-auto">
+        <section className="flex w-full min-h-dvh items-center overflow-x-hidden bg-background">
+            <div className="mx-auto w-full min-w-0 max-w-7xl px-4 py-10 md:px-8 md:py-16">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-2xl xl:text-3xl font-bold text-foreground mb-2 text-balance">
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 text-balance">
                         Trusted by Industry Leaders
                     </h2>
                     <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto text-pretty">
@@ -86,8 +72,8 @@ export function SocialProof() {
                 </div>
 
                 {/* Testimonials Marquee */}
-                <div className='flex flex-col gap-2'>
-                    <Marquee pauseOnHover className="flex">
+                <div className='flex min-w-0 flex-col gap-2'>
+                    <Marquee pauseOnHover className="w-full min-w-0">
                         {firstRow.map((testimonial, index) => (
                             <TestimonialCard
                                 key={index}
@@ -95,7 +81,7 @@ export function SocialProof() {
                             />
                         ))}
                     </Marquee>
-                    <Marquee reverse pauseOnHover className="flex">
+                    <Marquee reverse pauseOnHover className="w-full min-w-0">
                         {secondRow.map((testimonial, index) => (
                             <TestimonialCard
                                 key={index}

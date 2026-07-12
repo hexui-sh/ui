@@ -15,7 +15,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
     return (
-        <Card className="p-6 max-w-sm flex flex-col">
+        <Card className="p-4 sm:p-6 max-w-sm flex flex-col">
             {/* Author Info */}
             <div className="flex items-center border-b pb-3 text-xs text-muted-foreground">
                 <Avatar className="w-7 h-7 bg-muted-foreground/36 mr-2 inline-block">
