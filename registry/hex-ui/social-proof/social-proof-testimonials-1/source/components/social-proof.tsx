@@ -1,8 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { TestimonialsCard } from './testimonials-card';
+
+const INITIAL_MOBILE_CARDS = 3;
+const MOBILE_CARDS_PER_LOAD = 3;
+const TESTIMONIALS_GRID_ID = 'testimonials-grid';
 
 interface Testimonial {
     avatar: string;
@@ -64,7 +69,21 @@ const testimonials: Testimonial[] = [
 ];
 
 export function SocialProof() {
-    const [showAll, setShowAll] = useState(false);
+    const [visibleMobileCards, setVisibleMobileCards] = useState(INITIAL_MOBILE_CARDS);
+    const prefersReducedMotion = useReducedMotion();
+    const visibleTestimonials = testimonials.slice(0, visibleMobileCards);
+    const hasHiddenTestimonials = visibleMobileCards < testimonials.length;
+    const hasExpandedTestimonials = visibleMobileCards > INITIAL_MOBILE_CARDS;
+
+    const loadMoreTestimonials = () => {
+        setVisibleMobileCards((currentCount) =>
+            Math.min(currentCount + MOBILE_CARDS_PER_LOAD, testimonials.length)
+        );
+    };
+
+    const showFewerTestimonials = () => {
+        setVisibleMobileCards(INITIAL_MOBILE_CARDS);
+    };
 
     return (
         <section className="flex items-center w-full min-h-dvh bg-background">
@@ -74,10 +93,26 @@ export function SocialProof() {
                     mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
                 }
 
+                .testimonials-grid-desktop {
+                    display: none;
+                }
+
+                .testimonials-grid-mobile {
+                    display: grid;
+                }
+
                 @media (min-width: 768px) {
                     .testimonials-grid-collapsed {
                         -webkit-mask-image: none;
                         mask-image: none;
+                    }
+
+                    .testimonials-grid-desktop {
+                        display: grid;
+                    }
+
+                    .testimonials-grid-mobile {
+                        display: none;
                     }
                 }
             `}</style>
@@ -93,24 +128,68 @@ export function SocialProof() {
                     </p>
                 </div>
 
-                {/* Testimonials Grid */}
-                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 xl:gap-5 ${!showAll ? 'testimonials-grid-collapsed' : ''}`}>
-                    {testimonials.map((testimonial, index) => (
-                        <TestimonialsCard
-                            key={index}
-                            testimonial={testimonial}
-                            hidden={!showAll && index >= 3}
-                        />
+                {/* The complete grid stays visible on desktop. */}
+                <div className="testimonials-grid-desktop grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 xl:gap-5">
+                    {testimonials.map((testimonial) => (
+                        <TestimonialsCard key={testimonial.name} testimonial={testimonial} />
                     ))}
                 </div>
 
-                {!showAll && testimonials.length > 3 && (
-                    <div className="mt-2 mb-4 flex justify-center md:hidden">
-                        <Button type="button" variant="secondary" className="rounded-4xl p-4" onClick={() => setShowAll(true)}>
+                {/* Mobile uses a slice so testimonials are added in predictable batches. */}
+                <div
+                    id={TESTIMONIALS_GRID_ID}
+                    className={`testimonials-grid-mobile grid-cols-1 gap-3
+                        ${hasExpandedTestimonials ? '' : 'testimonials-grid-collapsed'}`}
+                >
+                    <AnimatePresence initial={false}>
+                        {visibleTestimonials.map((testimonial, index) => (
+                            <motion.div
+                                key={testimonial.name}
+                                initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
+                                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                transition={
+                                    prefersReducedMotion
+                                        ? { duration: 0 }
+                                        : {
+                                            duration: 0.25,
+                                            delay: Math.max(0, index - INITIAL_MOBILE_CARDS) * 0.1,
+                                            ease: 'easeOut',
+                                        }
+                                }
+                            >
+                                <TestimonialsCard testimonial={testimonial} />
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </div>
+
+                <div className="mt-4 flex flex-col items-center gap-3 md:hidden">
+                    {hasHiddenTestimonials && (
+                        <Button
+                            type="button"
+                            variant="secondary"
+                            className="min-h-11 rounded-4xl px-5"
+                            aria-controls={TESTIMONIALS_GRID_ID}
+                            aria-expanded={hasExpandedTestimonials}
+                            onClick={loadMoreTestimonials}
+                        >
                             See More
                         </Button>
-                    </div>
-                )}
+                    )}
+
+                    {hasExpandedTestimonials && (
+                        <Button
+                            type="button"
+                            variant="secondary"
+                            className="min-h-11 rounded-4xl px-5"
+                            aria-controls={TESTIMONIALS_GRID_ID}
+                            aria-expanded="true"
+                            onClick={showFewerTestimonials}
+                        >
+                            Show Less
+                        </Button>
+                    )}
+                </div>
             </div>
         </section>
     );
