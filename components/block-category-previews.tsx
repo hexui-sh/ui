@@ -107,16 +107,16 @@ export function FooterCategoryPreview(props: BlockCategoryPreviewProps) {
       <div className="flex flex-1 items-center overflow-hidden">
         <div className="flex flex-col w-full min-w-0 justify-center items-center gap-2">
           <Text className="mx-auto">Footer</Text>
-          <CardPreviewShell className="w-full max-w-80 sm:max-w-full grid grid-cols-4 gap-1.5 rounded-xl w-full p-3 overflow-hidden">
+          <CardPreviewShell className="w-full max-w-80 sm:max-w-full grid grid-cols-4 gap-1.5 rounded-xl p-3 overflow-hidden">
             <div className="col-span-1 space-y-2 min-w-0">
-              <MiniLine className="w-full max-w-[3rem]" />
-              <MiniLine className="w-4/5 max-w-[2.5rem]" />
+              <MiniLine className="w-full max-w-12" />
+              <MiniLine className="w-4/5 max-w-10" />
             </div>
             {[0, 1, 2].map((column) => (
               <div key={column} className="space-y-1.5 min-w-0 overflow-hidden">
-                <MiniLine size="xs" className="w-full max-w-[2rem] bg-foreground/25" />
-                <MiniLine className="w-4/5 max-w-[1.75rem]" />
-                <MiniLine className="w-full max-w-[2rem]" />
+                <MiniLine size="xs" className="w-full max-w-8 bg-foreground/25" />
+                <MiniLine className="w-4/5 max-w-12" />
+                <MiniLine className="w-full max-w-8" />
               </div>
             ))}
           </CardPreviewShell>
