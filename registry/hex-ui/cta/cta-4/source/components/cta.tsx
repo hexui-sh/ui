@@ -50,7 +50,7 @@ export function Cta() {
               className="h-11 rounded-4xl px-6 text-sm md:text-base"
             >
               Get Started
-              <ArrowRight className="ml-2 transition-transform group-hover/button:translate-x-1" />
+              <ArrowRight className="ml-2" />
             </Button>
           </div>
         </CtaCard>

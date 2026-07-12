@@ -8,11 +8,11 @@ export function Cta() {
         <div className="mx-auto max-w-xl text-center">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-foreground md:text-3xl xl:text-4xl"
+            className="text-balance text-2xl font-bold text-foreground md:text-3xl xl:text-4xl"
           >
             Ready to get started?
           </h2>
-          <p className="mt-4 text-sm text-muted-foreground md:text-base xl:text-lg">
+          <p className="mt-4 text-pretty text-sm text-muted-foreground md:text-base xl:text-lg">
             Empower your team to create at the speed of thought. Ship faster,
             iterate smarter, and scale effortlessly.
           </p>
@@ -22,7 +22,7 @@ export function Cta() {
               className="h-11 rounded-4xl px-6 text-sm md:text-base"
             >
               Get Started
-              <ArrowRight className="ml-2 transition-transform group-hover/button:translate-x-1" />
+              <ArrowRight className="ml-2" />
             </Button>
             <Button
               variant="outline"
