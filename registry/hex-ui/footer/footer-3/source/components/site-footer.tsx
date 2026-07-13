@@ -41,7 +41,7 @@ const footerSections = [
     },
 ]
 
-export function AppFooter() {
+export function SiteFooter() {
     return (
         <footer className="w-full border-t border-border">
             <div className="flex flex-col gap-6 mx-auto max-w-7xl px-6 pt-8 xl:pt-12 md:px-8">

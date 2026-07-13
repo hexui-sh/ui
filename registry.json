@@ -300,7 +300,7 @@
           "target": "app/footer/page.tsx"
         },
         {
-          "path": "registry/hex-ui/footer/footer-1/source/components/app-footer.tsx",
+          "path": "registry/hex-ui/footer/footer-1/source/components/site-footer.tsx",
           "type": "registry:component"
         },
         {
@@ -338,7 +338,7 @@
           "target": "app/footer/page.tsx"
         },
         {
-          "path": "registry/hex-ui/footer/footer-2/source/components/app-footer.tsx",
+          "path": "registry/hex-ui/footer/footer-2/source/components/site-footer.tsx",
           "type": "registry:component"
         },
         {
@@ -376,7 +376,7 @@
           "target": "app/footer/page.tsx"
         },
         {
-          "path": "registry/hex-ui/footer/footer-3/source/components/app-footer.tsx",
+          "path": "registry/hex-ui/footer/footer-3/source/components/site-footer.tsx",
           "type": "registry:component"
         },
         {
@@ -412,7 +412,7 @@
           "target": "app/footer/page.tsx"
         },
         {
-          "path": "registry/hex-ui/footer/footer-4/source/components/app-footer.tsx",
+          "path": "registry/hex-ui/footer/footer-4/source/components/site-footer.tsx",
           "type": "registry:component"
         },
         {
@@ -447,7 +447,7 @@
           "target": "app/footer/page.tsx"
         },
         {
-          "path": "registry/hex-ui/footer/footer-5/source/components/app-footer.tsx",
+          "path": "registry/hex-ui/footer/footer-5/source/components/site-footer.tsx",
           "type": "registry:component"
         },
         {

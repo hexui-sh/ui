@@ -40,7 +40,7 @@ const footerSections = [
   },
 ];
 
-export function AppFooter() {
+export function SiteFooter() {
   return (
     <footer className="relative w-full overflow-visible pt-0 xl:pt-32">
       <div

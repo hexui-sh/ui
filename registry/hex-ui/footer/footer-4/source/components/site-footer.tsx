@@ -10,7 +10,7 @@ const socialLinks = [
 
 const currentYear = new Date().getFullYear()
 
-export function AppFooter() {
+export function SiteFooter() {
     return (
         <footer className="w-full border-t border-border">
             <div className="mx-auto text-muted-foreground max-w-7xl px-8 py-2 md:py-4 xl:py-5">
