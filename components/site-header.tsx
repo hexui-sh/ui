@@ -39,7 +39,7 @@ export async function SiteHeader() {
                     ) : (
                       <li key={item.url}>
                         <Link
-                          className="hover:text-neutral-300 transition-colors"
+                          className="hover:text-neutral-500 dark:hover:text-neutral-300 transition-colors"
                           href={item.url}
                         >
                           {item.title}
