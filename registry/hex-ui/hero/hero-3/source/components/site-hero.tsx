@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Sparkles } from "lucide-react"
 import { WaitlistForm } from "./waitlist-form"
 
-export function AppHero() {
+export function SiteHero() {
     return (
         <section className="relative flex w-full pt-16 justify-center">
             <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] items-center gap-14 mx-auto w-full h-full text-center xl:text-left">

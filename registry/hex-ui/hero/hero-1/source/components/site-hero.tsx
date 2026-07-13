@@ -2,7 +2,7 @@ import { Command } from "lucide-react"
 import { CTAButtons } from "./cta-buttons"
 import { SocialProof } from "./social-proof"
 
-export function AppHero() {
+export function SiteHero() {
     return (
         <section className="relative flex w-full justify-center pt-20">
             <div className="z-10 mx-auto flex max-w-5xl flex-col items-center gap-10 text-center">

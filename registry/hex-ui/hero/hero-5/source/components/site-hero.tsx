@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-export function AppHero() {
+export function SiteHero() {
     return (
         <section className="relative flex w-full h-160 mt-1 py-20 bg-accent/40 rounded-4xl justify-center">
             <div className="z-2 mx-auto flex flex-col items-center gap-14 text-center">

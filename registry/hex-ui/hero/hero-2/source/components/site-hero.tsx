@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react"
 import { WaitlistForm } from "./waitlist-form"
 
-export function AppHero() {
+export function SiteHero() {
     return (
         <section className="relative flex w-full pt-20 justify-center">
             <div className="mx-auto flex flex-col items-center gap-14 text-center">

@@ -8,9 +8,9 @@ const NAV_ITEMS = [
     { href: "#blog", label: "Blog" },
 ]
 
-export function AppHeader() {
+export function SiteHeader() {
     return (
-        <header className="w-full py-4">
+        <header className="w-full">
             <div className="mx-auto flex w-full items-center justify-between">
                 <div className="flex gap-6">
                     <Link href="#" className="flex items-center gap-2 text-foreground">

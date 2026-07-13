@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Blocks } from "lucide-react"
 
-export function AppHero() {
+export function SiteHero() {
     return (
         <section className="relative flex h-screen w-full items-end justify-start">
             <div className="relative max-w-xl z-10 flex flex-col items-start gap-6 pb-24 text-left">

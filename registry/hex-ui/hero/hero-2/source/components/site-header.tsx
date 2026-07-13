@@ -8,7 +8,7 @@ const NAV_ITEMS = [
     { href: "#blog", label: "Blog" },
 ]
 
-export function AppHeader() {
+export function SiteHeader() {
     return (
         <header className="w-full">
             <div className="mx-auto flex w-full items-center justify-between">

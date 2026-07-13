@@ -483,11 +483,11 @@
           "target": "app/hero/page.tsx"
         },
         {
-          "path": "registry/hex-ui/hero/hero-1/source/components/app-header.tsx",
+          "path": "registry/hex-ui/hero/hero-1/source/components/site-header.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/hex-ui/hero/hero-1/source/components/app-hero.tsx",
+          "path": "registry/hex-ui/hero/hero-1/source/components/site-hero.tsx",
           "type": "registry:component"
         },
         {
@@ -523,11 +523,11 @@
           "target": "app/hero/page.tsx"
         },
         {
-          "path": "registry/hex-ui/hero/hero-2/source/components/app-header.tsx",
+          "path": "registry/hex-ui/hero/hero-2/source/components/site-header.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/hex-ui/hero/hero-2/source/components/app-hero.tsx",
+          "path": "registry/hex-ui/hero/hero-2/source/components/site-hero.tsx",
           "type": "registry:component"
         },
         {
@@ -559,11 +559,11 @@
           "target": "app/hero/page.tsx"
         },
         {
-          "path": "registry/hex-ui/hero/hero-3/source/components/app-header.tsx",
+          "path": "registry/hex-ui/hero/hero-3/source/components/site-header.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/hex-ui/hero/hero-3/source/components/app-hero.tsx",
+          "path": "registry/hex-ui/hero/hero-3/source/components/site-hero.tsx",
           "type": "registry:component"
         },
         {
@@ -595,11 +595,11 @@
           "target": "app/hero/page.tsx"
         },
         {
-          "path": "registry/hex-ui/hero/hero-4/source/components/app-header.tsx",
+          "path": "registry/hex-ui/hero/hero-4/source/components/site-header.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/hex-ui/hero/hero-4/source/components/app-hero.tsx",
+          "path": "registry/hex-ui/hero/hero-4/source/components/site-hero.tsx",
           "type": "registry:component"
         }
       ],
@@ -627,11 +627,11 @@
           "target": "app/hero/page.tsx"
         },
         {
-          "path": "registry/hex-ui/hero/hero-5/source/components/app-header.tsx",
+          "path": "registry/hex-ui/hero/hero-5/source/components/site-header.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/hex-ui/hero/hero-5/source/components/app-hero.tsx",
+          "path": "registry/hex-ui/hero/hero-5/source/components/site-hero.tsx",
           "type": "registry:component"
         }
       ],
