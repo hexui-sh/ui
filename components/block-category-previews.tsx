@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import { X, ChevronDown, Plus } from "lucide-react"
+import { X, ChevronDown } from "lucide-react"
 
 export type BlockCategoryPreviewProps = {
   category: string
@@ -167,10 +167,9 @@ export function LoginCategoryPreview(props: BlockCategoryPreviewProps) {
 export function SidebarCategoryPreview(props: BlockCategoryPreviewProps) {
   return (
     <PreviewShell {...props}>
-      <div className="flex flex-1 items-center">
+      <div className="flex flex-1 px-4 items-center">
         <CardPreviewShell className="flex w-full max-w-80 sm:max-w-full h-full max-h-48 sm:max-h-full mx-4">
-          <div className="relative w-24 bg-muted/50 border-r" />
-          <div className="relative rounded-md m-2.5 w-full border border-dashed" />
+          <div className="relative w-20 sm:w-16 bg-muted/50" />
         </CardPreviewShell>
       </div>
     </PreviewShell>
