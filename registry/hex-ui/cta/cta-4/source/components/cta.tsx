@@ -3,6 +3,7 @@ import { ArrowRight, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
+// Highlight features shown as a checklist in the secondary CTA card.
 const features = [
   "Organize notes, tasks, and projects in one place",
   "Real-time collaboration with your team",
@@ -10,6 +11,7 @@ const features = [
   "Powerful search and instant access to information",
 ]
 
+// Presentational wrapper shared by both CTA cards for consistent padding/alignment.
 function CtaCard({
   className,
   children,
@@ -32,6 +34,7 @@ function CtaCard({
 export function Cta() {
   return (
     <section aria-labelledby="cta-heading" className="relative w-full">
+      {/* Primary card spans two columns on large screens; secondary card holds the feature list. */}
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-2 md:gap-4 lg:grid-cols-3">
         <CtaCard className="gap-4 lg:col-span-2 lg:gap-6">
           <h2 className="text-3xl font-medium leading-tight sm:text-4xl md:text-5xl lg:text-6xl">

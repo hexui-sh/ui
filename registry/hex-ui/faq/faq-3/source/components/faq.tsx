@@ -56,6 +56,7 @@ export function FAQ() {
           </p>
         </div>
 
+        {/* Two-column grid of Q&A items. Each item gets an `id` so it can be deep-linked. */}
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           {faqItems.map((item, index) => (
             <div
@@ -63,6 +64,7 @@ export function FAQ() {
               id={`faq-${index + 1}`}
               className="flex items-start gap-4"
             >
+              {/* Two-digit, tabular-nums index keeps the numbered badges aligned. */}
               <div
                 className="inline-flex size-7 shrink-0 items-center justify-center rounded-sm bg-accent text-xs font-medium tabular-nums text-muted-foreground"
                 aria-hidden="true"

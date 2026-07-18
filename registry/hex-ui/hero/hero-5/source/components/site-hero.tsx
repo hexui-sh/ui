@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 export function SiteHero() {
     return (
         <section className="relative flex w-full h-160 mt-1 py-20 bg-accent/40 rounded-4xl justify-center">
+            {/* Content (z-2) is rendered first but stacks above the absolutely-positioned background (z-1). */}
             <div className="z-2 mx-auto flex flex-col items-center gap-14 text-center">
                 <div className="flex h-full max-w-xl md:max-w-2xl xl:max-w-4xl flex-col justify-center items-center gap-4">
                     <h1 className="text-balance text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">

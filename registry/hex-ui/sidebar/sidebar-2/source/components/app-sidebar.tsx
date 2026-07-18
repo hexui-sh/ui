@@ -56,6 +56,8 @@ const NAV_ITEMS = [
     { title: "Analytics", url: "#", icon: ChartArea },
 ] satisfies NavMainItem[]
 
+// In hover mode, a negative right margin lets the expanded panel overlap adjacent content
+// instead of pushing it, so the surrounding layout doesn't shift on hover.
 function getSidebarShellClassName(mode: SidebarMode, isExpandedInHoverMode: boolean) {
     if (mode !== "hover") {
         return "w-full"

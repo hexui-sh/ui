@@ -29,9 +29,11 @@ export function SocialProof() {
                     <div
                         key={logo.alt}
                         className="logo-item flex items-center justify-center w-full aspect-video"
+                        // Stagger each logo's reveal by 120ms so they cascade in.
                         style={{ animationDelay: `${index * 120}ms` }}
                     >
                         <div className="flex items-center justify-center relative w-28 md:w-26 lg:w-30 aspect-video">
+                            {/* Invert logos in light mode only; assumes SVGs are white-on-transparent. */}
                             <Image
                                 src={logo.src}
                                 alt={logo.alt}
@@ -44,6 +46,8 @@ export function SocialProof() {
                 ))}
             </div>
 
+            {/* Scoped reveal animation: each logo fades/blurs in with a staggered delay,
+                disabled under prefers-reduced-motion. */}
             <style jsx>{`
                 .logo-item {
                     opacity: 0;

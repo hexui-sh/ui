@@ -65,6 +65,7 @@ export function NavUser({
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                         className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+                        // Open downward on mobile, to the right on desktop, to keep the menu on screen.
                         side={isMobile ? "bottom" : "right"}
                         align="end"
                         sideOffset={4}

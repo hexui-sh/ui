@@ -35,6 +35,7 @@ export function SocialProof() {
                                 fill
                                 sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 20vw"
                                 loading="eager"
+                                // Invert logos in light mode only; assumes SVGs are white-on-transparent.
                                 className="object-contain opacity-80 not-dark:invert-100"
                             />
                         </div>

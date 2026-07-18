@@ -22,6 +22,7 @@ export function SupportContactCard({ supportAvatars }: SupportContactCardProps) 
   return (
     <div className="flex w-full flex-col items-center rounded-lg border px-4 py-14">
       <div className="flex max-w-lg flex-col items-center gap-5">
+        {/* `grayscale` mutes the avatars so the CTA button remains the visual focus. */}
         <AvatarGroup className="grayscale">
           {supportAvatars.map((avatar) => (
             <Avatar

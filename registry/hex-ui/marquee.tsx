@@ -43,6 +43,7 @@ export function Marquee({
   style,
   ...props
 }: MarqueeProps) {
+  // Edge-fade mask applied via CSS mask-image so content fades out at both ends.
   const fadeMask = vertical
     ? "linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%)"
     : "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)"
@@ -61,6 +62,7 @@ export function Marquee({
         className
       )}
     >
+      {/* Duplicate children N times so the marquee loops seamlessly without a visible gap. */}
       {Array.from({ length: repeat }).map((_, i) => (
         <div
           key={i}

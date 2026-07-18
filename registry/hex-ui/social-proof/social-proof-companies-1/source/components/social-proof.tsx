@@ -29,6 +29,7 @@ export function SocialProof() {
                         className="logo-item flex items-center justify-center w-full aspect-video"
                     >
                         <div className="flex items-center justify-center relative w-28 md:w-26 lg:w-30 aspect-video">
+                            {/* Invert logos in light mode only; assumes SVGs are white-on-transparent. */}
                             <Image
                                 src={logo.src}
                                 alt={logo.alt}

@@ -3,6 +3,7 @@ import { AppHeader } from "../../components/app-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { MessageCircle } from "lucide-react"
 
+// Customize the expanded sidebar width via the `--sidebar-width` CSS variable.
 const SIDEBAR_PROVIDER_STYLE = {
     "--sidebar-width": "17rem",
 } as React.CSSProperties

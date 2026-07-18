@@ -4,6 +4,7 @@ export default function Page() {
   return (
     <div className="mx-auto flex min-h-screen w-full flex-col items-center">
       <Banner>
+        {/* Copy swaps per breakpoint: short text on small screens, longer text on larger. */}
         <span className="font-semibold">Summer Sale is live</span>
         <span className="hidden sm:inline"> — up to 40% off on all plans.</span>
         <span className="sm:hidden"> · Up to 40% off </span>

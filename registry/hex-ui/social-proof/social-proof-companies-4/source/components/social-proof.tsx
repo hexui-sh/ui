@@ -31,6 +31,7 @@ export function SocialProof() {
             </div>
 
             {/* Logos */}
+            {/* Logos scroll in a seamless marquee. `unoptimized` bypasses the Next image optimizer. */}
             <Marquee className="w-full">
                 {logos.map((logo) => (
                     <Image

@@ -33,6 +33,7 @@ const MODEL_OPTIONS = [
 export function AppHeader() {
     const [selectedModel, setSelectedModel] = React.useState<string>(MODEL_OPTIONS[0].value)
 
+    // Keep the displayed model metadata in sync with the selected value (fallback to the first).
     const activeModel =
         MODEL_OPTIONS.find((model) => model.value === selectedModel) ?? MODEL_OPTIONS[0]
 

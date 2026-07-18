@@ -47,6 +47,7 @@ export function SiteFooter() {
     <footer className="w-full border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-12 md:px-8 md:pb-16 md:pt-12">
         <div className="flex flex-col gap-8 sm:gap-12 xl:flex-row">
+          {/* Brand + newsletter column takes 1/3 on xl; the nav links take the remaining 2/3. */}
           <div className="space-y-6 xl:w-1/3 xl:max-w-sm">
             <Link
               href="#"

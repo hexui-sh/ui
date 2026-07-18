@@ -43,6 +43,8 @@ const footerSections = [
 export function SiteFooter() {
   return (
     <footer className="relative w-full overflow-visible pt-0 xl:pt-32">
+      {/* Decorative oversized gradient wordmark, shown only on xl+ and shifted up so it
+          overflows behind the footer bar. Marked aria-hidden as it's purely visual. */}
       <div
         aria-hidden
         className="hidden xl:flex absolute inset-x-0 z-0 translate-y-[-62.5%]"
@@ -50,6 +52,8 @@ export function SiteFooter() {
         <FluidGradientText text="Acme" />
       </div>
 
+      {/* Footer bar sits above the gradient (z-10); backdrop-blur with a translucent bg
+          where supported, falling back to a solid background otherwise. */}
       <div className="relative z-10 border-t border-border bg-background backdrop-blur-3xl supports-backdrop-filter:bg-background/60">
         <div className="mx-auto max-w-7xl px-6 py-8 md:px-8 md:pb-16 md:pt-12">
           <div className="flex flex-col xl:flex-row gap-8 sm:gap-12">

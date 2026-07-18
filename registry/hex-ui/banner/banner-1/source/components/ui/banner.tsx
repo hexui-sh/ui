@@ -11,6 +11,7 @@ export interface BannerProps {
 }
 
 export function Banner({ children, className }: BannerProps) {
+  // Local-only dismiss state: the banner stays hidden until the component remounts.
   const [dismissed, setDismissed] = useState(false)
 
   if (dismissed) return null

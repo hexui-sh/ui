@@ -30,6 +30,8 @@ export function FluidGradientText({
   svgViewBoxWidth = 1200,
   svgViewBoxHeight = 300,
 }: FluidGradientTextProps) {
+  // Track pointer x as 0..1 across the container, then spring-smooth it into the
+  // gradient's start x so the highlight follows the cursor with easing.
   const gradientX1Raw = useMotionValue(0.5)
   const gradientX1 = useSpring(
     useTransform(gradientX1Raw, [0, 1], [0, svgViewBoxWidth]),
@@ -88,6 +90,7 @@ export function FluidGradientText({
             y2={svgViewBoxHeight}
             gradientUnits="userSpaceOnUse"
           >
+            {/* Gradient fades from transparent to currentColor, producing the directional wipe. */}
             <stop offset="0.625" stopColor="currentColor" stopOpacity="0" />
             <stop offset="1" stopColor="currentColor" />
           </motion.linearGradient>

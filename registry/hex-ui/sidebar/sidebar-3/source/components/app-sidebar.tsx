@@ -85,6 +85,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     )
 }
 
+// Renders the sidebar header per state: mobile drawer, collapsed (icon-only), and expanded.
+// Each branch returns its own layout and controls.
 function SidebarHeaderContent() {
     const { isMobile, setOpenMobile, state, toggleSidebar } = useSidebar()
     const isCollapsed = state === "collapsed"
@@ -111,6 +113,7 @@ function SidebarHeaderContent() {
     if (isCollapsed) {
         return (
             <div className="flex h-8 items-center justify-start">
+                {/* On hover the brand fades out and the expand icon fades in (RTL-flipped). */}
                 <button
                     type="button"
                     className="group flex size-8 items-center justify-center transition-colors"

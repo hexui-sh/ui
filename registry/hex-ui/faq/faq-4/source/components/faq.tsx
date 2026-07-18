@@ -70,6 +70,7 @@ export function FAQ() {
           </p>
         </div>
 
+        {/* Two-column grid of Q&A items. Each item gets an `id` so it can be deep-linked. */}
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           {faqItems.map((item, index) => (
             <div

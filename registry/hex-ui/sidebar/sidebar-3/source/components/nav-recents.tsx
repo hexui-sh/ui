@@ -33,6 +33,7 @@ function NavRecentsContent({ items }: NavRecentsProps) {
     const isCollapsed = state === "collapsed"
 
     return (
+        // Whole group hides (and ignores pointer events) when the sidebar is icon-only.
         <SidebarGroup className="p-0 transition-opacity duration-200 ease-linear delay-100 group-data-[collapsible=icon]:pointer-events-none group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:delay-0">
             <SidebarGroupLabel className="px-2 delay-100 group-data-[collapsible=icon]:delay-0 group-data-[collapsible=icon]:mt-0!">Recent</SidebarGroupLabel>
 
@@ -53,4 +54,5 @@ function NavRecentsContent({ items }: NavRecentsProps) {
     )
 }
 
+// Memoized: the conversation list is static, so we skip re-renders when the sidebar toggles.
 export const NavRecents = React.memo(NavRecentsContent)

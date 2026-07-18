@@ -27,6 +27,7 @@ export function WorkSpaceSwitcher({
         plan: string
     }[]
 }) {
+    // Default to the first workspace; guard against an empty `workspaces` array.
     const [activeWorkspace, setActiveWorkspace] = React.useState(workspaces[0])
 
     if (!activeWorkspace) {
@@ -38,6 +39,7 @@ export function WorkSpaceSwitcher({
             <SidebarMenuItem>
                 <DropdownMenu>
                     <DropdownMenuTrigger
+                        // `render` composes the trigger with a SidebarMenuButton so it adopts sidebar styling.
                         render={<SidebarMenuButton className="w-fit px-1.5" />}
                     >
                         <div className="flex aspect-square size-5 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">

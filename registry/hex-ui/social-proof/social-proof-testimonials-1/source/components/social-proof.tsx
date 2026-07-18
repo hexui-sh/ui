@@ -87,6 +87,8 @@ export function SocialProof() {
 
     return (
         <section className="flex items-center w-full min-h-dvh bg-background">
+            {/* Scoped CSS: swaps the mobile/desktop grid via media queries, and applies a
+                bottom fade mask to the mobile grid while it's collapsed. */}
             <style jsx>{`
                 .testimonials-grid-collapsed {
                     -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
@@ -147,6 +149,7 @@ export function SocialProof() {
                                 key={testimonial.name}
                                 initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
                                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                // Skip animation under reduced-motion; otherwise stagger newly loaded cards.
                                 transition={
                                     prefersReducedMotion
                                         ? { duration: 0 }
@@ -168,7 +171,7 @@ export function SocialProof() {
                         <Button
                             type="button"
                             variant="secondary"
-                            className="min-h-11 rounded-4xl px-5"
+                            className="rounded-4xl px-5"
                             aria-controls={TESTIMONIALS_GRID_ID}
                             aria-expanded={hasExpandedTestimonials}
                             onClick={loadMoreTestimonials}
@@ -181,7 +184,7 @@ export function SocialProof() {
                         <Button
                             type="button"
                             variant="secondary"
-                            className="min-h-11 rounded-4xl px-5"
+                            className="rounded-4xl px-5"
                             aria-controls={TESTIMONIALS_GRID_ID}
                             aria-expanded="true"
                             onClick={showFewerTestimonials}

@@ -10,6 +10,7 @@ const NAV_ITEMS = [
 
 export function SiteHeader() {
     return (
+        // Fixed header overlays the hero (which is why the hero anchors content at the bottom).
         <header className="fixed inset-x-0 top-0 z-50 w-full">
             <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-8 py-4">
                 <div className="flex gap-6">
@@ -18,6 +19,7 @@ export function SiteHeader() {
                         <span className="text-base font-semibold tracking-tight">Acme Inc.</span>
                     </Link>
 
+                    {/* Desktop nav; on mobile this is hidden and a menu button is shown instead. */}
                     <nav className="hidden items-center gap-6 md:flex">
                         {NAV_ITEMS.map((item) => (
                             <Link

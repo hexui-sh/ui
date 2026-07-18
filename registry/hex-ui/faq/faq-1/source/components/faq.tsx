@@ -51,6 +51,7 @@ const faqItems: ReadonlyArray<FAQItem> = [
   },
 ]
 
+// Support team avatars; `className` z-indexes control their overlap order in AvatarGroup.
 const supportAvatars: ReadonlyArray<SupportAvatar> = [
   {
     src: "/demo/avatars/avatar-1.svg",

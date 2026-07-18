@@ -15,6 +15,8 @@ export function SiteFooter() {
         <footer className="w-full border-t border-border">
             <div className="mx-auto text-muted-foreground max-w-7xl px-8 py-2 md:py-4 xl:py-5">
                 <div className="flex flex-col items-center md:flex-row md:items-center md:justify-between gap-8 sm:gap-12">
+                    {/* Signature sits in the middle on desktop; `md:contents` lets its children
+                        participate in the footer's flex order (1 = copyright, 2 = signature, 3 = sns). */}
                     <div className="order-1 text-secondary-foreground md:order-2">
                         {/* 
                            This signature is for the Spell UI.

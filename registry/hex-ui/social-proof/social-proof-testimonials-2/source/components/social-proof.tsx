@@ -54,6 +54,7 @@ const testimonials: Testimonial[] = [
     },
 ];
 
+// Split testimonials into two rows; the second row scrolls in reverse for a counter-flow effect.
 const firstRow = testimonials.slice(0, testimonials.length / 2)
 const secondRow = testimonials.slice(testimonials.length / 2)
 

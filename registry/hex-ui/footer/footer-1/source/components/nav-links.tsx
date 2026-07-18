@@ -20,6 +20,7 @@ export function NavLinks({ sections }: NavLinksProps) {
       {sections.map((section) => (
         <div key={section.title}>
           <h3 className="text-sm font-semibold text-foreground">{section.title}</h3>
+          {/* role="list" keeps list semantics; Tailwind preflight strips default list styles. */}
           <ul role="list" className="mt-4 space-y-2 sm:space-y-3">
             {section.links.map((item) => (
               <li key={item.label}>

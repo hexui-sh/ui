@@ -18,6 +18,7 @@ export function SiteHeader() {
                         <span className="text-base font-semibold tracking-tight">Acme Inc.</span>
                     </Link>
 
+                    {/* Desktop nav; on mobile this is hidden and a menu button is shown instead. */}
                     <nav className="hidden items-center gap-6 md:flex">
                         {NAV_ITEMS.map((item) => (
                             <Link

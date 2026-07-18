@@ -26,9 +26,10 @@ import { NavPrivate, type NavPrivateItem } from "./nav-private"
 import { NavSecondary, type NavSecondaryItem } from "./nav-secondary"
 import { WorkSpaceSwitcher } from "./workspaces-switcher"
 
+// Derive the workspace item type from the switcher's props so sample data stays in sync.
 type WorkspaceItem = React.ComponentProps<typeof WorkSpaceSwitcher>["workspaces"][number]
 
-// This is sample data.
+// Sample data. `satisfies` validates each section against its nav component's item type.
 const data = {
     workspaces: [
         {

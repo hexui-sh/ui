@@ -33,6 +33,8 @@ export function Cta() {
             </div>
           </div>
           <div className="relative h-64 w-full self-stretch lg:h-full">
+            {/* `priority` preloads this image (it's the LCP element on this section);
+               `sizes` lets Next pick an appropriately sized srcset per viewport. */}
             <Image
               src="/demo/devices/homescreen_zoom_top.png"
               alt="App preview on a mobile phone"

@@ -24,6 +24,8 @@ export function SocialProof() {
             </div>
 
             {/* Logos */}
+            {/* On hover the logos recede (scale down, blur, fade) and the "Meet our customers"
+                link fades in. Logos are inverted in light mode (white-on-transparent SVGs). */}
             <div className="group relative grid grid-cols-2 md:grid-cols-4 w-full">
                 {logos.map((logo) => (
                     <div

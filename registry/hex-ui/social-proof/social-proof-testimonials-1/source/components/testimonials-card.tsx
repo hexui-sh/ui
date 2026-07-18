@@ -11,6 +11,7 @@ interface Testimonial {
 
 interface TestimonialsCardProps {
     testimonial: Testimonial;
+    /** When true, the card is hidden on mobile but still shown on desktop (md+). */
     hidden?: boolean;
 }
 
@@ -21,6 +22,7 @@ export function TestimonialsCard({ testimonial, hidden = false }: TestimonialsCa
             <div className="flex items-center border-b pb-3 text-xs text-muted-foreground">
                 <Avatar className="w-7 h-7 bg-muted-foreground/36 mr-2 inline-block">
                     <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                    {/* Fallback initials: first letter of each name part (e.g. "Sarah Anderson" -> "SA"). */}
                     <AvatarFallback>{testimonial.name.split(' ').map((n) => n[0]).join('')}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col">

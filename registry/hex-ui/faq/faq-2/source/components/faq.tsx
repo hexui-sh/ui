@@ -12,6 +12,7 @@ type FAQItem = {
   answer: string
 }
 
+// FAQs grouped by category; each category renders its own Accordion section.
 type FAQCategory = {
   title: string
   items: FAQItem[]
@@ -71,6 +72,7 @@ const faqCategories: FAQCategory[] = [
   },
 ]
 
+// Support team avatars; `className` z-indexes control their overlap order in AvatarGroup.
 const supportAvatars: ReadonlyArray<SupportAvatar> = [
   {
     src: "/demo/avatars/avatar-1.svg",

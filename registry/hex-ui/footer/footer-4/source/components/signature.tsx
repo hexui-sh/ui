@@ -30,8 +30,10 @@ type SignatureFont = {
 const SVG_HEIGHT = 100;
 const PATH_DELAY_STEP = 0.2;
 const OPACITY_DELAY_OFFSET = 0.01;
+// Module-level font cache avoids re-fetching/parsing the same .otf on every render.
 const fontCache = new Map<string, SignatureFont>();
 
+// Normalize the path to an absolute URL so different string forms share one cache entry.
 function getFontCacheKey(path: string): string {
   try {
     return new URL(path, window.location.origin).href;
@@ -40,6 +42,7 @@ function getFontCacheKey(path: string): string {
   }
 }
 
+// Per-path transition: each glyph starts after the previous one (staggered draw-on effect).
 function getPathTransition(index: number, duration: number, delay: number) {
   const pathDelay = delay + index * PATH_DELAY_STEP;
 
@@ -50,12 +53,14 @@ function getPathTransition(index: number, duration: number, delay: number) {
       ease: "easeInOut" as const,
     },
     opacity: {
+      // Slight offset so a path becomes visible just before it starts drawing.
       delay: pathDelay + OPACITY_DELAY_OFFSET,
       duration: 0.01,
     },
   };
 }
 
+// Try each path in order; return and cache the first font that loads successfully.
 async function loadFontFromPaths(fontPaths: string[]): Promise<SignatureFont> {
   for (const path of fontPaths) {
     try {
@@ -87,6 +92,8 @@ async function loadFontFromPaths(fontPaths: string[]): Promise<SignatureFont> {
   );
 }
 
+// Convert each character to an SVG path using opentype.js, advancing the pen by the
+// glyph's advanceWidth scaled to the requested font size.
 async function buildSignaturePaths({
   text,
   fontSize,
@@ -108,6 +115,7 @@ async function buildSignaturePaths({
     const path = glyph.getPath(x, baseline, fontSize);
     nextPaths.push(path.toPathData(3));
 
+    // Advance the pen; fall back to unitsPerEm if the glyph has no advance width.
     const advanceWidth = glyph.advanceWidth ?? font.unitsPerEm;
     x += advanceWidth * (fontSize / font.unitsPerEm);
   }
@@ -151,6 +159,7 @@ function renderMotionPaths({
   ));
 }
 
+// Motion variants: paths animate from zero length (hidden) to fully drawn (visible).
 const PATH_VARIANTS = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: { pathLength: 1, opacity: 1 },
@@ -180,11 +189,14 @@ export function Signature({
   const [paths, setPaths] = useState<string[]>([]);
   const [width, setWidth] = useState<number>(300);
   const horizontalPadding = fontSize * 0.1;
+  // Vertically center the text within the fixed SVG height.
   const topMargin = Math.max(5, (SVG_HEIGHT - fontSize) / 2);
   const baseline = Math.min(SVG_HEIGHT - 5, topMargin + fontSize);
+  // useId may contain ":" which is invalid in CSS selectors; strip them for the mask id.
   const maskId = `signature-reveal-${useId().replace(/:/g, "")}`;
 
   useEffect(() => {
+    // Guard prevents setting state after the effect is cleaned up (unmount/dep change).
     let isCancelled = false;
 
     async function loadSignaturePaths() {
@@ -207,6 +219,7 @@ export function Signature({
           return;
         }
 
+        // Fallback: estimate width if the font fails to load so layout doesn't collapse.
         setPaths([]);
         setWidth(text.length * fontSize * 0.6);
       }
@@ -221,6 +234,7 @@ export function Signature({
 
   return (
     <motion.svg
+      // Remount when the number of paths changes so the draw animation restarts cleanly.
       key={paths.length}
       width={width}
       height={SVG_HEIGHT}
@@ -228,11 +242,13 @@ export function Signature({
       fill="none"
       className={className}
       initial="hidden"
+      // Animate on view (once) when `inView`, otherwise animate immediately on mount.
       whileInView={inView ? "visible" : undefined}
       animate={inView ? undefined : "visible"}
       viewport={{ once }}
     >
       <defs>
+        {/* White stroke paths form a mask that "reveals" the colored fill as it draws. */}
         <mask id={maskId} maskUnits="userSpaceOnUse">
           {renderMotionPaths({
             paths,

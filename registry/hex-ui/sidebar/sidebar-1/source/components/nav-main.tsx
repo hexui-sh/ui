@@ -24,6 +24,7 @@ export function NavMain({ items }: { items: NavMainItem[] }) {
                         <SidebarMenuItem key={subItem.title}>
                             <SidebarMenuButton isActive={subItem.isActive}>
                                 <a className="flex items-center gap-2" href={subItem.url}>
+                                    {/* Render either a Lucide icon or an emoji glyph (mutually exclusive). */}
                                     {subItem.icon ? <subItem.icon className="size-4" /> : null}
                                     {subItem.emoji ? (
                                         <span aria-hidden="true" className="text-[14px] leading-none">

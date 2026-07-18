@@ -5,6 +5,7 @@ import { WaitlistForm } from "./waitlist-form"
 export function SiteHero() {
     return (
         <section className="relative flex w-full pt-16 justify-center">
+            {/* Two-column layout on xl: copy column is narrower (1fr), image column wider (1.4fr). */}
             <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] items-center gap-14 mx-auto w-full h-full text-center xl:text-left">
                 <div className="flex flex-col items-center xl:items-start text-left pb-8 gap-3 md:gap-4 xl:gap-5">
                     <div className="inline-flex items-center gap-2 rounded-4xl bg-accent px-4 py-1 text-xs text-accent-foreground lg:text-sm">
@@ -31,6 +32,7 @@ export function SiteHero() {
                     alt="mockup"
                     width={864}
                     height={1080}
+                    // `unoptimized` bypasses the Next image optimizer (useful for animated/AVIF-hostile assets).
                     unoptimized
                     className="h-200 rounded-4xl border-2 border-border object-cover"
                 />

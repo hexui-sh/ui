@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input"
 
 export function LoginForm() {
+  // Toggles password visibility between masked (••••) and plaintext.
   const [showPassword, setShowPassword] = useState(false)
 
   return (
@@ -59,6 +60,7 @@ export function LoginForm() {
                 className="pr-6"
                 required
               />
+              {/* Eye toggle overlays the input's right edge; aria-pressed/label reflect visibility state. */}
               <Button
                 type="button"
                 variant="ghost"
@@ -81,6 +83,7 @@ export function LoginForm() {
           <Field className="grid grid-cols-2 gap-4">
             <Button variant="outline" type="button">
               <SiApple />
+              {/* Label is visually hidden on xl+ so the button becomes icon-only on wide screens. */}
               <span className="xl:sr-only font-normal">Apple</span>
             </Button>
             <Button variant="outline" type="button">

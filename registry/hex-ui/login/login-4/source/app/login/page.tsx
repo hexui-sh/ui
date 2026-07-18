@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function Page() {
   return (
+    // Two-column split on lg: form (4 cols) + image panel (6 cols) with a testimonial overlay.
     <div className="grid min-h-svh w-full lg:grid-cols-10">
       <div className="flex col-span-4 items-center justify-center">
         <div className="w-full max-w-xs">
@@ -17,10 +18,13 @@ export default function Page() {
             height={1600}
             src="/demo/backgrounds/sky.png"
             alt="Background"
+            // Darken and desaturate the photo in dark mode so it doesn't compete with the form.
             className="h-full w-full object-cover dark:brightness-[0.3] dark:grayscale"
           />
+          {/* Gradient scrim improves text contrast; stronger in dark mode. */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent dark:from-black/80 dark:via-black/40 dark:to-black/20" />
         </div>
+        {/* Testimonial pinned to the bottom of the image, above the scrim (z-10). */}
         <div className="relative z-10 flex h-full flex-col justify-end p-10">
           <div className="space-y-2 text-white">
             <blockquote className="text-2xl font-medium leading-snug">

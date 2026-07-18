@@ -2,6 +2,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppHeader } from "../../components/app-header"
 import { AppSidebar } from "../../components/app-sidebar"
 
+// Customize the expanded sidebar width via the `--sidebar-width` CSS variable.
 const SIDEBAR_PROVIDER_STYLE = {
     "--sidebar-width": "14rem",
 } as React.CSSProperties

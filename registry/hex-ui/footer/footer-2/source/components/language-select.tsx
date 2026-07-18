@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Languages } from "lucide-react"
-import { Select, SelectPopup, SelectItem, SelectTrigger } from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select"
 
 const items = [
     { label: "English", value: "en" },
@@ -13,6 +13,7 @@ const items = [
 
 export function LanguageSelect() {
     const [selectedValue, setSelectedValue] = useState("en")
+    // Derive the human-readable label shown in the trigger from the selected value.
     const selectedLabel = items.find((item) => item.value === selectedValue)?.label || "English"
 
     return (
@@ -25,13 +26,14 @@ export function LanguageSelect() {
                     <span className="truncate text-sm">{selectedLabel}</span>
                 </div>
             </SelectTrigger>
-            <SelectPopup side="top" sideOffset={8} align="start" alignItemWithTrigger={false}>
+            {/* Opens upward: this select sits near the page bottom, so a downward popup would overflow. */}
+            <SelectContent side="top" sideOffset={8} align="start" alignItemWithTrigger={false}>
                 {items.map((item) => (
                     <SelectItem key={item.value} value={item.value}>
                         {item.label}
                     </SelectItem>
                 ))}
-            </SelectPopup>
+            </SelectContent>
         </Select>
     )
 }
