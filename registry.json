@@ -175,7 +175,7 @@
       "registryDependencies": [
         "avatar",
         "button",
-        "@coss/accordion"
+        "accordion"
       ],
       "dependencies": [],
       "files": [
@@ -207,7 +207,7 @@
       "registryDependencies": [
         "avatar",
         "button",
-        "@coss/accordion"
+        "accordion"
       ],
       "dependencies": [],
       "files": [
@@ -325,7 +325,7 @@
       "description": "A simple footer with social media buttons and language switching",
       "registryDependencies": [
         "button",
-        "@coss/select"
+        "select"
       ],
       "dependencies": [
         "@icons-pack/react-simple-icons",
