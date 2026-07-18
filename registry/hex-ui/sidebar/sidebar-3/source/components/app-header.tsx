@@ -38,59 +38,47 @@ export function AppHeader() {
         MODEL_OPTIONS.find((model) => model.value === selectedModel) ?? MODEL_OPTIONS[0]
 
     return (
-        <header className="flex h-12 shrink-0 items-center justify-between gap-3 px-3 sm:px-4">
-            <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-                <SidebarTrigger className="shrink-0 sm:hidden" />
+        <header className="flex h-12 shrink-0 items-center gap-2 sm:gap-3 px-3 sm:px-4">
+            <SidebarTrigger className="shrink-0 sm:hidden" />
 
-                <DropdownMenu>
-                    <DropdownMenuTrigger
-                        render={
-                            <Button
-                                type="button"
-                                variant="ghost"
-                                className="h-9 min-w-0 max-w-55 justify-start gap-2 px-2.5 sm:max-w-65"
-                            />
-                        }
+            <DropdownMenu>
+                <DropdownMenuTrigger
+                    render={
+                        <Button
+                            type="button"
+                            variant="ghost"
+                            className="h-9 min-w-0 max-w-55 justify-start gap-2 px-2.5 sm:max-w-65"
+                        />
+                    }
+                >
+                    <span className="truncate text-base font-medium">{activeModel.label}</span>
+                    <ChevronDown className="size-4 shrink-0 text-muted-foreground" />
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent align="start" className="w-72">
+                    <DropdownMenuRadioGroup
+                        value={selectedModel}
+                        onValueChange={setSelectedModel}
                     >
-                        <span className="truncate text-base font-medium">{activeModel.label}</span>
-                        <ChevronDown className="size-4 shrink-0 text-muted-foreground" />
-                    </DropdownMenuTrigger>
-
-                    <DropdownMenuContent align="start" className="w-72">
-                        <DropdownMenuRadioGroup
-                            value={selectedModel}
-                            onValueChange={setSelectedModel}
-                        >
-                            {MODEL_OPTIONS.map((model) => (
-                                <DropdownMenuRadioItem
-                                    key={model.value}
-                                    value={model.value}
-                                    className="py-2"
-                                >
-                                    <div className="flex min-w-0 flex-col gap-0.5 pr-4">
-                                        <span className="truncate font-medium text-foreground">
-                                            {model.label}
-                                        </span>
-                                        <span className="text-xs text-muted-foreground">
-                                            {model.description}
-                                        </span>
-                                    </div>
-                                </DropdownMenuRadioItem>
-                            ))}
-                        </DropdownMenuRadioGroup>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </div>
-
-            <Button
-                type="button"
-                size="icon"
-                variant={"ghost"}
-                className="shrink-0"
-                aria-label="User menu"
-            >
-                <HatGlasses className="size-4.5" aria-hidden="true" />
-            </Button>
+                        {MODEL_OPTIONS.map((model) => (
+                            <DropdownMenuRadioItem
+                                key={model.value}
+                                value={model.value}
+                                className="py-2"
+                            >
+                                <div className="flex min-w-0 flex-col gap-0.5 pr-4">
+                                    <span className="truncate font-medium text-foreground">
+                                        {model.label}
+                                    </span>
+                                    <span className="text-xs text-muted-foreground">
+                                        {model.description}
+                                    </span>
+                                </div>
+                            </DropdownMenuRadioItem>
+                        ))}
+                    </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+            </DropdownMenu>
         </header>
     )
 }
