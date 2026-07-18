@@ -142,7 +142,6 @@ export function BlockPreviewPanel({
               <Button
                 size="icon"
                 variant="ghost"
-                nativeButton={false}
                 render={<Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer" />}
               >
                 <Maximize className="text-neutral-700 dark:text-neutral-300" />
@@ -221,7 +220,6 @@ export function BlockPreviewPanel({
                       <Button
                         size="icon"
                         variant="ghost"
-                        nativeButton={false}
                         render={<Link href={openInNewTabUrl} target="_blank" rel="noopener noreferrer" />}
                       />
                     }
