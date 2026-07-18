@@ -29,68 +29,68 @@ const plans: {
   color?: Color;
   features: { name: string; description: string }[];
 }[] = [
-  {
-    name: "Individual",
-    description: "For users who want to use just one template",
-    price: "$49",
-    billing: "/one-time",
-    cta: "Buy Template",
-    href: "/templates",
-    features: [
-      {
-        name: "Selected Template",
-        description:
-          "Access to a template built with your preferred stack of React, Next.js, and Tailwind CSS.",
-      },
-      {
-        name: "Commercial Use",
-        description:
-          "Templates can be used for commercial projects. Reselling the code is prohibited.",
-      },
-      {
-        name: "Lifetime License",
-        description: "The template is yours to keep forever.",
-      },
-      {
-        name: "Lifetime Updates",
-        description: "Access all future updates at no extra cost.",
-      },
-    ],
-  },
-  {
-    name: "Full Access",
-    description: "For all template users",
-    price: "$179",
-    billing: "/one-time",
-    cta: "Buy Full Access",
-    color: "blue",
-    features: [
-      {
-        name: "All Templates",
-        description:
-          "Gain access to every template built with React, Next.js, and Tailwind CSS.",
-      },
-      {
-        name: "Commercial Use",
-        description:
-          "Templates can be used for commercial projects. Reselling the code is prohibited.",
-      },
-      {
-        name: "Lifetime License",
-        description: "The templates are yours to keep forever.",
-      },
-      {
-        name: "Lifetime Updates",
-        description: "Access all future updates at no extra cost.",
-      },
-      {
-        name: "Lifetime Access",
-        description:
-          "Get access to all currently available content, plus everything added in the future.",
-      },
-    ],
-  },
-];
+    {
+      name: "Individual",
+      description: "For users who want to use just one template",
+      price: "$49",
+      billing: "/one-time",
+      cta: "Buy Template",
+      href: "/templates",
+      features: [
+        {
+          name: "Selected Template",
+          description:
+            "Access to a template built with your preferred stack of React, Next.js, and Tailwind CSS.",
+        },
+        {
+          name: "Commercial Use",
+          description:
+            "Templates can be used for commercial projects. Reselling the code is prohibited.",
+        },
+        {
+          name: "Lifetime License",
+          description: "The template is yours to keep forever.",
+        },
+        {
+          name: "Lifetime Updates",
+          description: "Access all future updates at no extra cost.",
+        },
+      ],
+    },
+    {
+      name: "Early Bird",
+      description: "For early supporters",
+      price: "$79",
+      billing: "/one-time",
+      cta: "Buy Early Bird",
+      color: "blue",
+      features: [
+        {
+          name: "All Templates",
+          description:
+            "Gain access to every template built with React, Next.js, and Tailwind CSS.",
+        },
+        {
+          name: "Commercial Use",
+          description:
+            "Templates can be used for commercial projects. Reselling the code is prohibited.",
+        },
+        {
+          name: "Lifetime License",
+          description: "The templates are yours to keep forever.",
+        },
+        {
+          name: "Lifetime Updates",
+          description: "Access all future updates at no extra cost.",
+        },
+        {
+          name: "Lifetime Access",
+          description:
+            "Get access to all currently available content, plus everything added in the future.",
+        }
+      ],
+    },
+  ];
 
 const faq = [
   {
@@ -149,6 +149,12 @@ const faq = [
     trigger: "I'd like to develop using AI, is this suitable for that?",
     content:
       "Yes, Hex UI templates come with design documents, which can be loaded into AI to enable stable AI-assisted development.",
+  },
+  {
+    value: "item-10",
+    trigger: "What is the Early Bird plan?",
+    content:
+      "Early Bird is a limited-time plan for early supporters of Hex UI. It gives you Full Access at a lower price than the future Full Access plan, including all currently available templates and every template released in the future at no additional cost. Once the Early Bird offer ends, Full Access will no longer be available at this price.",
   },
 ];
 
@@ -222,13 +228,15 @@ export default async function PricingPage() {
               {plan.href ? (
                 <>
                   <RichButton disabled>
-                    <Link href={plan.href}>{plan.cta}</Link>
+                    <Link href={plan.href}>
+                      Coming Soon
+                    </Link>
                   </RichButton>
                 </>
               ) : (
                 <>
                   <RichButton color={plan.color} disabled>
-                    {plan.cta}
+                    Coming Soon
                   </RichButton>
                   <label className="text-xs text-neutral-500 mt-2 block">
                     Payments handled by Whop.
