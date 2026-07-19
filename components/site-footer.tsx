@@ -1,13 +1,5 @@
 import Link from "next/link";
 
-const footerNav = [
-  { title: "Docs", href: "/docs/introduction" },
-  { title: "Blocks", href: "/blocks" },
-  { title: "Pricing", href: "/pricing" },
-  { title: "Templates", href: "/templates" },
-  { title: "GitHub", href: "https://github.com/ri0n-dev/hex-ui" },
-];
-
 export function SiteFooter() {
   return (
     <footer className="mt-24 flex flex-col items-center">
