@@ -20,16 +20,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/pricing`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
       url: `${SITE_URL}/templates`,
       lastModified: now,
       changeFrequency: "yearly",
-      priority: 0.3,
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/sponsor`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
   ]
 
@@ -38,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}/blocks/${group.categorySlug}`,
     lastModified: now,
     changeFrequency: "weekly",
-    priority: 0.8,
+    priority: 0.9,
   }))
 
   const docEntries = await getDocFileEntries()
@@ -46,7 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}/docs/${entry.slug}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.8,
   }))
 
   return [...staticRoutes, ...blockRoutes, ...docRoutes]
