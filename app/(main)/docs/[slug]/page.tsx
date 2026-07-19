@@ -7,7 +7,7 @@ import { MdxHeaderActions } from "@/components/mdx-header-actions"
 import { MdxNavActions } from "@/components/mdx-nav-actions"
 import { buildGitHubEditUrl, buildGitHubIssueUrl } from "@/lib/github-links"
 import { getDocFileEntries, getDocFrontmatter, getDocNavigationContext, resolveDocFile } from "@/lib/content"
-import { slugifyHeading } from "@/lib/heading"
+import { HeadingSlugger } from "@/lib/heading"
 import { pageMetadata, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo"
 import { JsonLd } from "@/components/json-ld"
 
@@ -39,6 +39,7 @@ function getTocHeadings(source: string): TocHeading[] {
 
     const headingPattern = /^(#{2,3})\s+(.+?)\s*#*\s*$/gm
     const tocHeadings: TocHeading[] = []
+    const slugger = new HeadingSlugger()
     let match: RegExpExecArray | null = null
 
     while ((match = headingPattern.exec(contentWithoutCodeBlocks)) !== null) {
@@ -49,7 +50,7 @@ function getTocHeadings(source: string): TocHeading[] {
         }
 
         tocHeadings.push({
-            id: slugifyHeading(title),
+            id: slugger.slug(title),
             title,
             level,
         })
