@@ -2,8 +2,7 @@
 
 import * as React from "react"
 import {
-  ButtonGroup,
-  ButtonGroupSeparator,
+  ButtonGroup
 } from "@/components/ui/button-group"
 import { Button } from "@/components/ui/button"
 import {
@@ -92,9 +91,9 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
 
   return (
     <div className="hidden md:flex items-center gap-2">
-      <ButtonGroup>
+      <div className="inline-flex overflow-hidden items-center bg-neutral-200/70 dark:bg-neutral-800 rounded-md">
         <Button
-          className="flex gap-1.5 bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 px-3.5 py-3.5"
+          className="flex gap-1.5 rounded-r-none bg-neutral-200/70 dark:bg-neutral-800 hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] text-neutral-700 dark:text-neutral-200 px-3.5 py-3.5"
           size="sm"
           onClick={handleCopyMarkdown}
         >
@@ -110,29 +109,35 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
           </span>
           Copy Page
         </Button>
+        <div className="h-5 w-px bg-neutral-300 dark:bg-neutral-700" />
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
               <Button
-                className="bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 py-3.5 rounded-l-none!"
+                className="bg-neutral-200/70 dark:bg-neutral-800 hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] text-neutral-700 dark:text-neutral-200 h-7 rounded-l-none!"
                 size="sm"
                 aria-label="More Options"
               />
             }
           >
-            <ChevronDown />
+            <ChevronDown className="size-4" />
           </DropdownMenuTrigger>
+
           <DropdownMenuContent align="end" className="w-43">
             <DropdownMenuGroup className="flex flex-col gap-2">
-              <DropdownMenuItem
-                onSelect={handleViewAsMarkdown}
-              >
+              <DropdownMenuItem onSelect={handleViewAsMarkdown}>
                 <SiMdx />
                 View as Markdown
               </DropdownMenuItem>
+
               {openInEntries.map(({ id, label, url, Icon }) => (
                 <DropdownMenuItem key={id}>
-                  <a className="flex items-center gap-2" href={url} target="_blank" rel="noopener noreferrer">
+                  <a
+                    className="flex w-full items-center gap-2"
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Icon />
                     Open in {label}
                   </a>
@@ -141,7 +146,7 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
-      </ButtonGroup>
+      </div>
     </div>
   )
 }
