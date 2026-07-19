@@ -115,7 +115,7 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
             render={
               <Button
                 className="bg-neutral-200/70 dark:bg-neutral-800 hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] text-neutral-700 dark:text-neutral-200 h-7 rounded-l-none!"
-                size="sm"
+                size="icon"
                 aria-label="More Options"
               />
             }
