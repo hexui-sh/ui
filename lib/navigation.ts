@@ -20,9 +20,9 @@ export type MobileNavData = {
 
 export const HEADER_NAV_ITEMS: NavItem[] = [
   { title: "Docs", url: "/docs/introduction" },
-  { title: "Pricing", url: "/pricing" },
-  { title: "Blocks", url: "/blocks/banner" },
+  { title: "Blocks", url: "/blocks/" },
   { title: "Templates", url: "/templates", disabled: true },
+    { title: "Sponsor", url: "/sponsor", disabled: true },
 ]
 
 export function getHeaderNavItems(): NavItem[] {
