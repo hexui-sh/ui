@@ -3,9 +3,9 @@ import { Signature } from "./signature"
 import { SiX, SiGithub, SiYoutube } from "@icons-pack/react-simple-icons"
 
 const socialLinks = [
-    { href: "#", Icon: SiX },
-    { href: "#", Icon: SiGithub },
-    { href: "#", Icon: SiYoutube },
+    { href: "#", Icon: SiX, label: "X" },
+    { href: "#", Icon: SiGithub, label: "GitHub" },
+    { href: "#", Icon: SiYoutube, label: "YouTube" },
 ]
 
 const currentYear = new Date().getFullYear()

@@ -25,7 +25,7 @@ export function Banner({ children, className }: BannerProps) {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 text-sm font-medium">
-        <div className="text-balance text-center text-sm leading-snug">
+        <div className="text-balance text-center leading-snug">
           {children}
         </div>
         <button

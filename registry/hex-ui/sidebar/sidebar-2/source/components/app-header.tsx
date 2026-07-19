@@ -10,7 +10,7 @@ export function AppHeader() {
 
             <div className="ml-auto flex items-center gap-1">
                 <Avatar className="size-7">
-                    <AvatarImage src="https://avatars.githubusercontent.com/u/114809507" />
+                    <AvatarImage src="https://avatars.githubusercontent.com/u/114809507" alt="User avatar" />
                     <AvatarFallback>R</AvatarFallback>
                 </Avatar>
             </div>

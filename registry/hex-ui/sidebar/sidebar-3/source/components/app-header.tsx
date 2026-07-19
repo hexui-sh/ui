@@ -10,7 +10,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import { ChevronDown, HatGlasses } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 
 const MODEL_OPTIONS = [
     {

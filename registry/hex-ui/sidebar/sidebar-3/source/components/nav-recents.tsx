@@ -1,21 +1,11 @@
-import { Ellipsis, Star, Pencil, GalleryVerticalEnd, Trash2 } from "lucide-react"
 import React from "react"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import {
     SidebarGroup,
     SidebarGroupContent,
     SidebarGroupLabel,
     SidebarMenu,
-    SidebarMenuAction,
     SidebarMenuButton,
     SidebarMenuItem,
-    useSidebar,
 } from "@/components/ui/sidebar"
 
 export type ConversationItem = {
@@ -29,9 +19,6 @@ type NavRecentsProps = {
 }
 
 function NavRecentsContent({ items }: NavRecentsProps) {
-    const { state } = useSidebar()
-    const isCollapsed = state === "collapsed"
-
     return (
         // Whole group hides (and ignores pointer events) when the sidebar is icon-only.
         <SidebarGroup className="p-0 transition-opacity duration-200 ease-linear delay-100 group-data-[collapsible=icon]:pointer-events-none group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:delay-0">

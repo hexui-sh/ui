@@ -48,12 +48,12 @@ export function SiteFooter() {
                 <div className="w-full flex items-start justify-between gap-8 sm:gap-12">
                     <NavLinks sections={footerSections} />
 
-                    <Link href="#" className="flex items-center gap-2">
+                    <Link href="#" aria-label="Acme Inc. home" className="flex items-center gap-2">
                         <Command />
                     </Link>
                 </div>
 
-                <div className="w-full h-full text-shadow text-black/90 dark:text-white/90">
+                <div className="w-full h-full text-black/90 dark:text-white/90">
                     <Typographic />
                 </div>
             </div>

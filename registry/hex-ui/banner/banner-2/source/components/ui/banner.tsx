@@ -27,7 +27,7 @@ export function Banner({ children, className }: BannerProps) {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-start text-sm font-medium sm:justify-center">
-        <div className="text-balance text-center text-sm leading-snug">
+        <div className="text-balance text-center leading-snug">
           {children}
         </div>
       </div>

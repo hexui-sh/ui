@@ -43,14 +43,14 @@ export function NavPrivate({ items }: { items: NavPrivateItem[] }) {
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                     ))}
+                    <SidebarMenuItem>
+                        <SidebarMenuButton className="text-sidebar-foreground/70" aria-label="More private pages">
+                            <MoreHorizontal aria-hidden="true" />
+                            <span>More</span>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarGroupContent>
-            <SidebarMenuItem>
-                <SidebarMenuButton className="text-sidebar-foreground/70" aria-label="More private pages">
-                    <MoreHorizontal aria-hidden="true" />
-                    <span>More</span>
-                </SidebarMenuButton>
-            </SidebarMenuItem>
         </SidebarGroup>
     )
 }

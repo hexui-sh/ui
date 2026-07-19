@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Blocks } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export function SiteHero() {
     return (
-        <section className="relative flex h-screen w-full items-end justify-start">
+        <section className="relative flex h-dvh w-full items-end justify-start">
             <div className="relative max-w-xl z-10 flex flex-col items-start gap-6 pb-24 text-left">
                 <h1 className="text-balance text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-foreground">
                     The Fastest Way to Get Things Done

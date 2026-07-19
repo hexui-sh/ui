@@ -43,14 +43,14 @@ export function NavRecents({ items }: { items: NavRecentsItem[] }) {
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                     ))}
+                    <SidebarMenuItem>
+                        <SidebarMenuButton className="text-sidebar-foreground/70" aria-label="More recents">
+                            <MoreHorizontal aria-hidden="true" />
+                            <span>More</span>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarGroupContent>
-            <SidebarMenuItem>
-                <SidebarMenuButton className="text-sidebar-foreground/70" aria-label="More recents">
-                    <MoreHorizontal aria-hidden="true" />
-                    <span>More</span>
-                </SidebarMenuButton>
-            </SidebarMenuItem>
         </SidebarGroup>
     )
 }

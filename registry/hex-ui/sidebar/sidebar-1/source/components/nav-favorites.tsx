@@ -43,14 +43,14 @@ export function NavFavorites({ items }: { items: NavFavoritesItem[] }) {
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                     ))}
+                    <SidebarMenuItem>
+                        <SidebarMenuButton className="text-sidebar-foreground/70" aria-label="More favorites">
+                            <MoreHorizontal aria-hidden="true" />
+                            <span>More</span>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarGroupContent>
-            <SidebarMenuItem>
-                <SidebarMenuButton className="text-sidebar-foreground/70" aria-label="More favorites">
-                    <MoreHorizontal aria-hidden="true" />
-                    <span>More</span>
-                </SidebarMenuButton>
-            </SidebarMenuItem>
         </SidebarGroup>
     )
 }

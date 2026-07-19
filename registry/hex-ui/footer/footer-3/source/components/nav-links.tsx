@@ -16,7 +16,7 @@ type NavLinksProps = {
 
 export function NavLinks({ sections }: NavLinksProps) {
   return (
-    <div className="grid gap-6 sm:gap-8 col-span-2 grid-cols-2 md:w-2/3 md:flex-1 md:grid-cols-4">
+    <div className="grid gap-6 sm:gap-8 grid-cols-2 md:w-2/3 md:flex-1 md:grid-cols-4">
       {sections.map((section) => (
         <div key={section.title}>
           <h3 className="text-sm font-semibold text-foreground">{section.title}</h3>

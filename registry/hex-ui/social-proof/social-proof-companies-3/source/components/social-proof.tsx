@@ -43,7 +43,7 @@ export function SocialProof() {
                         </div>
                     </div>
                 ))}
-                <div className="absolute inset-0 z-10 flex items-center justify-center">
+                <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
                     <Link href="#" className="cursor-pointer pointer-events-auto">
                         <span className="flex items-center gap-1 translate-y-2 opacity-0 text-shadow-xs text-sm xl:text-base font-semibold tracking-wide transition-all duration-500 ease-out hover:text-muted-foreground group-hover:translate-y-0 group-hover:opacity-100">
                             Meet our customers <ArrowUpRight size={16} />
