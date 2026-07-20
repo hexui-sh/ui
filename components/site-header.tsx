@@ -25,7 +25,7 @@ export async function SiteHeader() {
                 <MobileNavigation data={mobileNavData} />
               </div>
               <Link href="/" aria-label="Hex UI home">
-                <HexUI className="invert-90 dark:invert-0" size={25} />
+                <HexUI className="invert dark:invert-0" size={25} />
               </Link>
               <nav className="hidden md:block" aria-label="Main">
                 <ul className="flex items-center gap-7 text-sm text-neutral-600 dark:text-neutral-400">
