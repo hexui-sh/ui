@@ -545,7 +545,7 @@
       "name": "hero-3",
       "type": "registry:block",
       "title": "Hero-3",
-      "description": "A simple horizontally aligned hero sections",
+      "description": "A simple horizontally aligned hero section",
       "registryDependencies": [
         "button"
       ],
@@ -676,7 +676,7 @@
       "name": "login-2",
       "type": "registry:block",
       "title": "Login-2",
-      "description": "A simple login form",
+      "description": "A login form with social sign-in options below the credentials",
       "registryDependencies": [
         "button",
         "field",
