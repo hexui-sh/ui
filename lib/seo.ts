@@ -38,7 +38,7 @@ export function pageMetadata({
     description,
     alternates: { canonical: url },
     openGraph: {
-      title: ogTitle,
+      title,
       description,
       url,
       siteName: SITE_NAME,
