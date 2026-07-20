@@ -59,7 +59,7 @@ export function MdxPre({ children }: MdxPreProps) {
       <div className="absolute top-2.5 right-2.5 z-10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 focus-within:opacity-100">
         <CodeSnippetCopyButton />
       </div>
-      <div className="max-h-80 w-full max-w-full min-w-0 overflow-x-auto overflow-y-auto rounded-md border bg-foreground/2">
+      <div className="max-h-80 w-full max-w-full min-w-0 overflow-x-auto overflow-y-auto rounded-md border bg-transparent dark:bg-foreground/2">
         <CodeSnippetBody className="w-full max-w-full min-w-0">
           {(item) => (
             <CodeSnippetItem

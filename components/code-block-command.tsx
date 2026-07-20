@@ -60,7 +60,7 @@ export function CodeBlockCommand({
 
   return (
     <Snippet
-      className="bg-foreground/2 rounded-md"
+      className="bg-transparent dark:bg-foreground/2 rounded-md"
       value={selectedPM}
       onValueChange={handlePMChange}
     >

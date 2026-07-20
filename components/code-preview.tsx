@@ -42,7 +42,7 @@ export function CodePreview({ files }: CodePreviewProps) {
                 selectedFile={selectedFile}
                 onSelect={setSelectedFile}
             />
-            <SidebarInset className="flex flex-col min-w-0 overflow-hidden h-full">
+            <SidebarInset className="flex flex-col min-w-0 overflow-hidden bg-neutral-50 dark:bg-neutral-950 h-full">
                 <header className="flex w-full h-12 shrink-0 justify-between items-center border-b px-4">
                     <span className="font-mono text-sm text-muted-foreground">
                         /{activeFile?.path ?? ""}
@@ -55,7 +55,7 @@ export function CodePreview({ files }: CodePreviewProps) {
                             <CodeSnippetBody>
                                 {(item) => (
                                     <CodeSnippetItem key={item.language} value={item.language}>
-                                        <CodeSnippetContent language={item.language as BundledLanguage}>
+                                        <CodeSnippetContent className="bg-neutral-50 dark:bg-neutral-950" language={item.language as BundledLanguage}>
                                             {item.code}
                                         </CodeSnippetContent>
                                     </CodeSnippetItem>
