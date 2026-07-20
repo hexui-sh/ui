@@ -125,7 +125,7 @@ export function MdxHeaderActions(props: MdxHeaderActionsProps) {
 
           <DropdownMenuContent align="end" className="w-43">
             <DropdownMenuGroup className="flex flex-col gap-2">
-              <DropdownMenuItem onSelect={handleViewAsMarkdown}>
+              <DropdownMenuItem onClick={handleViewAsMarkdown}>
                 <SiMdx />
                 View as Markdown
               </DropdownMenuItem>
