@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     canonical: "https://hexui.sh",
   },
   openGraph: {
-    title: "Copy. Customize. Launch. - Hex UI",
+    title: "Copy. Customize. Launch.",
     description:
       "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
     url: "https://hexui.sh",
