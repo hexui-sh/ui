@@ -22,6 +22,12 @@ type PageMetadataOptions = {
   description: string
   path: string
   type?: "website" | "article"
+  /**
+   * Optional description used only for social sharing metadata
+   * (Open Graph and Twitter). When omitted, `description` is used.
+   * The browser tab title and the standard meta `description` are unaffected.
+   */
+  socialDescription?: string
 }
 
 export function pageMetadata({
@@ -29,9 +35,11 @@ export function pageMetadata({
   description,
   path,
   type = "website",
+  socialDescription,
 }: PageMetadataOptions): Metadata {
   const url = absoluteUrl(path)
   const ogTitle = `${title} - ${SITE_NAME}`
+  const shareDescription = socialDescription ?? description
 
   return {
     title,
@@ -39,7 +47,7 @@ export function pageMetadata({
     alternates: { canonical: url },
     openGraph: {
       title,
-      description,
+      description: shareDescription,
       url,
       siteName: SITE_NAME,
       locale: "en_US",
@@ -56,10 +64,43 @@ export function pageMetadata({
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
-      description,
+      description: shareDescription,
       creator: SITE_TWITTER_CREATOR,
       images: [absoluteUrl(SITE_OG_IMAGE)],
     },
+  }
+}
+
+export function defaultOpenGraph(
+  description: string = SITE_DESCRIPTION
+): NonNullable<Metadata["openGraph"]> {
+  return {
+    title: SITE_TAGLINE,
+    description,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: SITE_OG_IMAGE,
+        width: SITE_OG_IMAGE_WIDTH,
+        height: SITE_OG_IMAGE_HEIGHT,
+        alt: `${SITE_NAME} - ${SITE_TAGLINE}`,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  }
+}
+
+export function defaultTwitter(
+  description: string = SITE_DESCRIPTION
+): NonNullable<Metadata["twitter"]> {
+  return {
+    card: "summary_large_image",
+    title: `${SITE_TAGLINE} - ${SITE_NAME}`,
+    description,
+    creator: SITE_TWITTER_CREATOR,
+    images: [absoluteUrl(SITE_OG_IMAGE)],
   }
 }
 

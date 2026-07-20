@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { JsonLd } from "@/components/json-ld";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { organizationJsonLd, websiteJsonLd, defaultOpenGraph, defaultTwitter } from "@/lib/seo";
 import "./globals.css"
 
 const geistSans = Geist({
@@ -29,31 +29,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://hexui.sh",
   },
-  openGraph: {
-    title: "Copy. Customize. Launch.",
-    description:
-      "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
-    url: "https://hexui.sh",
-    siteName: "Hex UI",
-    images: [
-      {
-        url: "/ogp.webp",
-        width: 1200,
-        height: 630,
-        alt: "Hex UI - Copy. Customize. Launch.",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Copy. Customize. Launch. - Hex UI",
-    description:
-      "Accelerate your section development. Get free, high-quality sections to copy, paste, and customize to your liking. Open Source. Open Code.",
-    creator: "@ri0n_dev",
-    images: ["https://hexui.sh/ogp.webp"],
-  },
+  openGraph: defaultOpenGraph(),
+  twitter: defaultTwitter(),
   icons: {
     icon: "/favicon.ico",
   },

@@ -5,6 +5,7 @@ import { BlockViewer } from "@/components/block-viewer"
 import { MdxNavActions } from "@/components/mdx-nav-actions"
 import { getBlockCategoryNavigationContext, getBlockCategoryStaticParams, getBlockEntriesByCategory } from "@/lib/blocks"
 import type { BlockEntry } from "@/lib/blocks"
+import { getBlockCategoryDescription } from "@/lib/block-categories"
 import { readCodePath } from "@/lib/read-code-path"
 import { pageMetadata, collectionPageJsonLd, breadcrumbJsonLd } from "@/lib/seo"
 import { JsonLd } from "@/components/json-ld"
@@ -31,6 +32,7 @@ export async function generateMetadata({
     title: `${result.category} Blocks`,
     description: `Free ${result.category.toLowerCase()} UI blocks for React, Next.js, and Tailwind CSS. Copy and paste or install with the shadcn CLI. ${result.blocks.length} open-source ${result.category.toLowerCase()} sections ready to customize.`,
     path: `/blocks/${slug}`,
+    socialDescription: getBlockCategoryDescription(slug),
   })
 }
 
