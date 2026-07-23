@@ -43,7 +43,7 @@ hex-ui/
 │   ├── blocks.ts              # Block data access and navigation
 │   ├── content.ts             # MDX docs resolution (source of truth: docs/)
 │   └── read-code-path.ts      # Reads block source files for the code viewer
-├── registry/hex-ui/           # Block source files
+├── registry/blocks/           # Block source files
 │   └── <category>/<slug>/
 │       └── source/            # app/<category>/page.tsx + components/*.tsx
 ├── scripts/                   # Build scripts
@@ -61,7 +61,7 @@ hex-ui/
 A few important notes:
 
 - `registry.json` is the **source of truth** for every registry item and block metadata field. It lists each item with its `title`, `description`, `dependencies`, `registryDependencies`, `files`, `categories`, `installCommand`, and `v0Url`.
-- `registry/hex-ui/` holds the source files for every block. Each block's `source/` folder mirrors the structure users get when they install it (`app/<category>/page.tsx` and `components/*.tsx`).
+- `registry/blocks/` holds the source files for every block. Each block's `source/` folder mirrors the structure users get when they install it (`app/<category>/page.tsx` and `components/*.tsx`).
 - `app/(view)/view/[slug]/preview-map.ts` and `components/block-category-preview-map.ts` are **auto-generated** by `pnpm generate`. Do not edit them by hand.
 
 ## Local Development
@@ -103,14 +103,14 @@ The site is available at the URL printed in your terminal (typically `http://loc
 
 ## Adding or Updating Blocks and Components
 
-This section describes the actual workflow used by Hex UI. Use an existing block (for example `registry/hex-ui/hero/hero-1/`) as a reference while you work.
+This section describes the actual workflow used by Hex UI. Use an existing block (for example `registry/blocks/hero/hero-1/`) as a reference while you work.
 
 ### 1. Create the block source files
 
-Blocks are grouped by category under `registry/hex-ui/<category>/<slug>/`. Create a new folder with a `source/` directory:
+Blocks are grouped by category under `registry/blocks/<category>/<slug>/`. Create a new folder with a `source/` directory:
 
 ```text
-registry/hex-ui/hero/hero-6/
+registry/blocks/hero/hero-6/
 └── source/
     ├── app/hero/page.tsx        # Preview page (also imported by the site)
     └── components/              # Block components
@@ -135,12 +135,12 @@ Add a new entry to the `items` array in the root [`registry.json`](./registry.js
   "dependencies": ["lucide-react"],
   "files": [
     {
-      "path": "registry/hex-ui/hero/hero-6/source/app/hero/page.tsx",
+      "path": "registry/blocks/hero/hero-6/source/app/hero/page.tsx",
       "type": "registry:page",
       "target": "app/hero/page.tsx"
     },
     {
-      "path": "registry/hex-ui/hero/hero-6/source/components/app-hero.tsx",
+      "path": "registry/blocks/hero/hero-6/source/components/app-hero.tsx",
       "type": "registry:component"
     }
   ],
@@ -152,7 +152,7 @@ Add a new entry to the `items` array in the root [`registry.json`](./registry.js
 - **`dependencies`** — npm packages the block requires (e.g. `lucide-react`, `motion`).
 - **`registryDependencies`** — other registry items the block depends on, referenced by their registry name (e.g. `button`, `accordion`, `@coss/select`). These resolve to other entries in `registry.json` or to configured external registries in `components.json`.
 - **`files`** — each file the CLI should copy into the user's project, with its `type` (`registry:page`, `registry:component`, `registry:ui`, `registry:file`) and optional `target`.
-- **`categories`** — the category the block belongs to (matches the folder name under `registry/hex-ui/`).
+- **`categories`** — the category the block belongs to (matches the folder name under `registry/blocks/`).
 - **`installCommand`** and **`v0Url`** — optional custom values. When omitted, the site derives default links from the item name.
 
 ### 3. Generate the preview maps

@@ -2,53 +2,53 @@
 import type React from "react"
 
 // Banner Blocks
-import Banner1Preview from "@/registry/hex-ui/banner/banner-1/source/app/banner/page"
-import Banner2Preview from "@/registry/hex-ui/banner/banner-2/source/app/banner/page"
+import Banner1Preview from "@/registry/blocks/banner/banner-1/source/app/banner/page"
+import Banner2Preview from "@/registry/blocks/banner/banner-2/source/app/banner/page"
 
 // Cta Blocks
-import Cta1Preview from "@/registry/hex-ui/cta/cta-1/source/app/cta/page"
-import Cta2Preview from "@/registry/hex-ui/cta/cta-2/source/app/cta/page"
-import Cta3Preview from "@/registry/hex-ui/cta/cta-3/source/app/cta/page"
-import Cta4Preview from "@/registry/hex-ui/cta/cta-4/source/app/cta/page"
+import Cta1Preview from "@/registry/blocks/cta/cta-1/source/app/cta/page"
+import Cta2Preview from "@/registry/blocks/cta/cta-2/source/app/cta/page"
+import Cta3Preview from "@/registry/blocks/cta/cta-3/source/app/cta/page"
+import Cta4Preview from "@/registry/blocks/cta/cta-4/source/app/cta/page"
 
 // Faq Blocks
-import Faq1Preview from "@/registry/hex-ui/faq/faq-1/source/app/faq/page"
-import Faq2Preview from "@/registry/hex-ui/faq/faq-2/source/app/faq/page"
-import Faq3Preview from "@/registry/hex-ui/faq/faq-3/source/app/faq/page"
-import Faq4Preview from "@/registry/hex-ui/faq/faq-4/source/app/faq/page"
+import Faq1Preview from "@/registry/blocks/faq/faq-1/source/app/faq/page"
+import Faq2Preview from "@/registry/blocks/faq/faq-2/source/app/faq/page"
+import Faq3Preview from "@/registry/blocks/faq/faq-3/source/app/faq/page"
+import Faq4Preview from "@/registry/blocks/faq/faq-4/source/app/faq/page"
 
 // Footer Blocks
-import Footer1Preview from "@/registry/hex-ui/footer/footer-1/source/app/footer/page"
-import Footer2Preview from "@/registry/hex-ui/footer/footer-2/source/app/footer/page"
-import Footer3Preview from "@/registry/hex-ui/footer/footer-3/source/app/footer/page"
-import Footer4Preview from "@/registry/hex-ui/footer/footer-4/source/app/footer/page"
-import Footer5Preview from "@/registry/hex-ui/footer/footer-5/source/app/footer/page"
+import Footer1Preview from "@/registry/blocks/footer/footer-1/source/app/footer/page"
+import Footer2Preview from "@/registry/blocks/footer/footer-2/source/app/footer/page"
+import Footer3Preview from "@/registry/blocks/footer/footer-3/source/app/footer/page"
+import Footer4Preview from "@/registry/blocks/footer/footer-4/source/app/footer/page"
+import Footer5Preview from "@/registry/blocks/footer/footer-5/source/app/footer/page"
 
 // Hero Blocks
-import Hero1Preview from "@/registry/hex-ui/hero/hero-1/source/app/hero/page"
-import Hero2Preview from "@/registry/hex-ui/hero/hero-2/source/app/hero/page"
-import Hero3Preview from "@/registry/hex-ui/hero/hero-3/source/app/hero/page"
-import Hero4Preview from "@/registry/hex-ui/hero/hero-4/source/app/hero/page"
-import Hero5Preview from "@/registry/hex-ui/hero/hero-5/source/app/hero/page"
+import Hero1Preview from "@/registry/blocks/hero/hero-1/source/app/hero/page"
+import Hero2Preview from "@/registry/blocks/hero/hero-2/source/app/hero/page"
+import Hero3Preview from "@/registry/blocks/hero/hero-3/source/app/hero/page"
+import Hero4Preview from "@/registry/blocks/hero/hero-4/source/app/hero/page"
+import Hero5Preview from "@/registry/blocks/hero/hero-5/source/app/hero/page"
 
 // Login Blocks
-import Login1Preview from "@/registry/hex-ui/login/login-1/source/app/login/page"
-import Login2Preview from "@/registry/hex-ui/login/login-2/source/app/login/page"
-import Login3Preview from "@/registry/hex-ui/login/login-3/source/app/login/page"
-import Login4Preview from "@/registry/hex-ui/login/login-4/source/app/login/page"
+import Login1Preview from "@/registry/blocks/login/login-1/source/app/login/page"
+import Login2Preview from "@/registry/blocks/login/login-2/source/app/login/page"
+import Login3Preview from "@/registry/blocks/login/login-3/source/app/login/page"
+import Login4Preview from "@/registry/blocks/login/login-4/source/app/login/page"
 
 // Sidebar Blocks
-import Sidebar1Preview from "@/registry/hex-ui/sidebar/sidebar-1/source/app/sidebar/page"
-import Sidebar2Preview from "@/registry/hex-ui/sidebar/sidebar-2/source/app/sidebar/page"
-import Sidebar3Preview from "@/registry/hex-ui/sidebar/sidebar-3/source/app/sidebar/page"
+import Sidebar1Preview from "@/registry/blocks/sidebar/sidebar-1/source/app/sidebar/page"
+import Sidebar2Preview from "@/registry/blocks/sidebar/sidebar-2/source/app/sidebar/page"
+import Sidebar3Preview from "@/registry/blocks/sidebar/sidebar-3/source/app/sidebar/page"
 
 // Social Proof Blocks
-import SocialProofCompanies1Preview from "@/registry/hex-ui/social-proof/social-proof-companies-1/source/app/social-proof/page"
-import SocialProofCompanies2Preview from "@/registry/hex-ui/social-proof/social-proof-companies-2/source/app/social-proof/page"
-import SocialProofCompanies3Preview from "@/registry/hex-ui/social-proof/social-proof-companies-3/source/app/social-proof/page"
-import SocialProofCompanies4Preview from "@/registry/hex-ui/social-proof/social-proof-companies-4/source/app/social-proof/page"
-import SocialProofTestimonials1Preview from "@/registry/hex-ui/social-proof/social-proof-testimonials-1/source/app/social-proof/page"
-import SocialProofTestimonials2Preview from "@/registry/hex-ui/social-proof/social-proof-testimonials-2/source/app/social-proof/page"
+import SocialProofCompanies1Preview from "@/registry/blocks/social-proof/social-proof-companies-1/source/app/social-proof/page"
+import SocialProofCompanies2Preview from "@/registry/blocks/social-proof/social-proof-companies-2/source/app/social-proof/page"
+import SocialProofCompanies3Preview from "@/registry/blocks/social-proof/social-proof-companies-3/source/app/social-proof/page"
+import SocialProofCompanies4Preview from "@/registry/blocks/social-proof/social-proof-companies-4/source/app/social-proof/page"
+import SocialProofTestimonials1Preview from "@/registry/blocks/social-proof/social-proof-testimonials-1/source/app/social-proof/page"
+import SocialProofTestimonials2Preview from "@/registry/blocks/social-proof/social-proof-testimonials-2/source/app/social-proof/page"
 
 export const previewMap: Record<string, React.ComponentType> = {
   // Banner
