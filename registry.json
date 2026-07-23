@@ -1012,7 +1012,7 @@
           "type": "registry:component"
         },
         {
-          "path": "registry/blocks/marquee.tsx",
+          "path": "registry/components/marquee.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1079,7 +1079,7 @@
           "type": "registry:component"
         },
         {
-          "path": "registry/blocks/marquee.tsx",
+          "path": "registry/components/marquee.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1098,7 +1098,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/blocks/marquee.tsx",
+          "path": "registry/components/marquee.tsx",
           "type": "registry:ui"
         }
       ]
