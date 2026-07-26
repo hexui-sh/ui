@@ -15,14 +15,15 @@ export type NavGroup = {
 export type MobileNavData = {
   header: NavItem[]
   docs: NavGroup[]
+  templates: NavGroup[]
   blocks: NavGroup[]
 }
 
 export const HEADER_NAV_ITEMS: NavItem[] = [
   { title: "Docs", url: "/docs/introduction" },
   { title: "Blocks", url: "/blocks/" },
-  { title: "Templates", url: "/templates", disabled: true },
-    { title: "Sponsor", url: "/sponsor", disabled: true },
+  { title: "Templates", url: "/templates" },
+  { title: "Sponsor", url: "/sponsor", disabled: true },
 ]
 
 export function getHeaderNavItems(): NavItem[] {
@@ -37,15 +38,21 @@ export async function getBlocksNavGroups(): Promise<NavGroup[]> {
   return getBlockNavigationGroups()
 }
 
+export async function getTemplatesNavGroups(): Promise<NavGroup[]> {
+  return getContentNavigation("templates")
+}
+
 export async function getMobileNavData(): Promise<MobileNavData> {
-  const [docs, blocks] = await Promise.all([
+  const [docs, templates, blocks] = await Promise.all([
     getDocsNavGroups(),
+    getTemplatesNavGroups(),
     getBlocksNavGroups(),
   ])
 
   return {
     header: getHeaderNavItems(),
     docs,
+    templates,
     blocks,
   }
 }
