@@ -18,12 +18,13 @@ import {
     CommandPanel,
     CommandSeparator,
 } from "@/components/ui/command";
-import { Search, ArrowDownIcon, ArrowUpIcon, CornerDownLeftIcon, Book, Cuboid } from "lucide-react"
+import { Search, ArrowDownIcon, ArrowUpIcon, CornerDownLeftIcon, Book, Cuboid, PanelsTopLeft } from "lucide-react"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
 import type { SearchGroup, SearchItem, SearchItemType } from "@/lib/search"
 
 const searchItemIcon: Record<SearchItemType, typeof Book> = {
   docs: Book,
+  templates: PanelsTopLeft,
   blocks: Cuboid,
 }
 
@@ -66,7 +67,7 @@ export function SearchBar({ groups }: SearchBarProps) {
             <CommandDialogTrigger>
                 <div
                     role="search"
-                    aria-label="Search documentation and blocks"
+                    aria-label="Search documentation, templates, and blocks"
                     className="flex items-center text-neutral-500 dark:text-neutral-400 border border-neutral-300 dark:border-neutral-800 w-64 py-1.5 pl-2.5 pr-1.5 rounded-md justify-between cursor-pointer max-w-xs"
                 >
                     <div className="flex items-center gap-2">
@@ -78,7 +79,7 @@ export function SearchBar({ groups }: SearchBarProps) {
             </CommandDialogTrigger>
             <CommandDialogPopup>
                 <Command items={groups}>
-                    <CommandInput placeholder="Search docs and blocks..." />
+                    <CommandInput placeholder="Search docs, templates, and blocks..." />
                     <CommandPanel>
                         <CommandEmpty>No results found.</CommandEmpty>
                         <CommandList>

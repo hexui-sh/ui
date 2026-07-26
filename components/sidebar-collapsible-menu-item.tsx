@@ -1,3 +1,5 @@
+"use client"
+
 import {
   SidebarMenuItem,
   SidebarMenuSub,
@@ -6,7 +8,9 @@ import {
 } from "@/components/ui/sidebar"
 import { Minus, Plus } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { isNavItemActive } from "@/lib/navigation-utils"
 
 type NavigationItem = {
   title: string
@@ -25,9 +29,17 @@ export function SidebarCollapsibleMenuItem({
   items,
   defaultOpen = false,
 }: SidebarCollapsibleMenuItemProps) {
+  const pathname = usePathname()
+  const hasActiveItem = items.some((item) =>
+    isNavItemActive(pathname, item.url)
+  )
+
   return (
     <SidebarMenuItem key={title}>
-      <details className="group/collapsible" open={defaultOpen}>
+      <details
+        className="group/collapsible"
+        open={defaultOpen || hasActiveItem}
+      >
         <summary
           data-slot="sidebar-menu-button"
           data-sidebar="menu-button"
@@ -45,13 +57,25 @@ export function SidebarCollapsibleMenuItem({
 
         {items.length ? (
           <SidebarMenuSub>
-            {items.map((subItem) => (
-              <SidebarMenuSubItem key={subItem.url}>
-                <SidebarMenuSubButton>
-                  <Link href={subItem.url}>{subItem.title}</Link>
-                </SidebarMenuSubButton>
-              </SidebarMenuSubItem>
-            ))}
+            {items.map((subItem) => {
+              const isActive = isNavItemActive(pathname, subItem.url)
+
+              return (
+                <SidebarMenuSubItem key={subItem.url}>
+                  <SidebarMenuSubButton
+                    isActive={isActive}
+                    render={
+                      <Link
+                        href={subItem.url}
+                        aria-current={isActive ? "page" : undefined}
+                      />
+                    }
+                  >
+                    {subItem.title}
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+              )
+            })}
           </SidebarMenuSub>
         ) : null}
       </details>
