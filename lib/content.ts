@@ -1,34 +1,92 @@
 import { readdir, readFile, stat } from "node:fs/promises"
 import path from "node:path"
 import { getBlockNavigationGroups } from "@/lib/blocks"
+import { getTemplateBySlug, getTemplates, getTemplateSummary } from "@/lib/templates"
 
-type ContentEntry = {
+export const CONTENT_SECTIONS = ["docs", "templates"] as const
+
+export type ContentSection = (typeof CONTENT_SECTIONS)[number]
+
+export type ContentFrontmatter = {
+  title?: string
+  description?: string
+  category?: string
+  order?: number
+}
+
+export type ContentEntry = {
   slug: string[]
   title: string
   description?: string
   category?: string
+  order?: number
 }
 
-type ContentGroup = {
+export type ContentFileEntry = {
+  slug: string
+  relativePath: string
+  importPath: string
   title: string
-  items: Array<{
-    title: string
-    url: string
-  }>
-}
-
-const DOCS_DIR_NAME = "docs"
-const CONTENT_EXTENSIONS = new Set([".mdx"])
-const FRONTMATTER_BLOCK_PATTERN = /^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n|$)/
-
-type Frontmatter = {
-  title?: string
   description?: string
   category?: string
+  order?: number
 }
 
-function getDocsRoot() {
-  return path.join(process.cwd(), DOCS_DIR_NAME)
+export type ContentNavigationItem = {
+  title: string
+  url: string
+  count?: number
+}
+
+export type ContentNavigationGroup = {
+  title: string
+  items: ContentNavigationItem[]
+}
+
+export type ContentNavigationContext = {
+  previous?: {
+    title: string
+    href: string
+  }
+  next?: {
+    title: string
+    href: string
+  }
+}
+
+export type ContentPageData = {
+  file: ContentFileEntry
+  frontmatter: ContentFrontmatter
+  source: string
+  navigation: ContentNavigationContext
+}
+
+const CONTENT_SECTION_CONFIG: Record<
+  ContentSection,
+  { defaultCategory: string }
+> = {
+  docs: {
+    defaultCategory: "General",
+  },
+  templates: {
+    defaultCategory: "Templates",
+  },
+}
+
+const CONTENT_EXTENSIONS = new Set([".mdx"])
+const FRONTMATTER_BLOCK_PATTERN =
+  /^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n|$)/
+
+export function isContentSection(value: string): value is ContentSection {
+  return CONTENT_SECTIONS.includes(value as ContentSection)
+}
+
+export function getContentRoot(section: ContentSection) {
+  if (section === "docs") {
+    return path.join(process.cwd(), "docs")
+  }
+
+  return path.join(process.cwd(), "templates")
 }
 
 function normalizeFrontmatterValue(value: string) {
@@ -44,16 +102,15 @@ function normalizeFrontmatterValue(value: string) {
   return trimmed
 }
 
-function parseFrontmatter(content: string): Frontmatter {
+function parseFrontmatter(content: string): ContentFrontmatter {
   const match = content.match(FRONTMATTER_BLOCK_PATTERN)
   if (!match) {
     return {}
   }
 
-  const lines = match[1].split(/\r?\n/)
-  const frontmatter: Frontmatter = {}
+  const frontmatter: ContentFrontmatter = {}
 
-  for (const line of lines) {
+  for (const line of match[1].split(/\r?\n/)) {
     const item = line.match(/^([a-zA-Z0-9_-]+)\s*:\s*(.+)\s*$/)
     if (!item) {
       continue
@@ -64,13 +121,23 @@ function parseFrontmatter(content: string): Frontmatter {
 
     if (key === "title" || key === "description" || key === "category") {
       frontmatter[key] = value
+      continue
+    }
+
+    if (key === "order" || key === "displayOrder" || key === "display_order") {
+      const order = Number(value)
+      if (Number.isFinite(order)) {
+        frontmatter.order = order
+      }
     }
   }
 
   return frontmatter
 }
 
-async function readFrontmatterFromFile(filePath: string): Promise<Frontmatter> {
+async function readFrontmatterFromFile(
+  filePath: string
+): Promise<ContentFrontmatter> {
   try {
     const raw = await readFile(filePath, "utf8")
     return parseFrontmatter(raw)
@@ -86,39 +153,46 @@ function toTitle(value: string) {
     .replace(/\b\w/g, (char) => char.toUpperCase())
 }
 
-function deriveDocSlugAndCategory(relativePath: string) {
+function deriveContentFile(
+  section: ContentSection,
+  relativePath: string
+) {
   const normalizedPath = relativePath.replace(/\\/g, "/")
   const parsed = path.posix.parse(normalizedPath)
   if (!CONTENT_EXTENSIONS.has(parsed.ext)) {
     return null
   }
 
-  const dirSegments = parsed.dir ? parsed.dir.split("/").filter(Boolean) : []
+  const directorySegments = parsed.dir
+    ? parsed.dir.split("/").filter(Boolean)
+    : []
   const folderCategory =
-    dirSegments.length > 0 ? toTitle(dirSegments.join(" ")) : undefined
+    directorySegments.length > 0
+      ? toTitle(directorySegments.join(" "))
+      : undefined
 
-  const slug = [DOCS_DIR_NAME, parsed.name]
-
-  return { slug, folderCategory }
-}
-
-function makeUrl(slug: string[]) {
-  return `/${slug.join("/")}`
-}
-
-function makeItemTitle(slug: string[]) {
-  if (slug.length === 0) {
-    return "Home"
+  return {
+    slug: parsed.name,
+    folderCategory,
+    importPath: normalizedPath.replace(/\.mdx$/, ""),
+    section,
   }
-  if (slug.length === 1 && slug[0] === DOCS_DIR_NAME) {
-    return "Get Started"
-  }
-  return toTitle(slug[slug.length - 1])
 }
 
-async function collectContentFiles(rootDir: string, currentDir = rootDir): Promise<string[]> {
+function makeUrl(section: ContentSection, slug: string) {
+  return `/${section}/${slug}`
+}
+
+async function collectContentFiles(
+  rootDir: string,
+  currentDir = rootDir
+): Promise<string[]> {
   const entries = await readdir(currentDir, { withFileTypes: true })
   const files: string[] = []
+
+  entries.sort((a, b) =>
+    a.name.localeCompare(b.name, "en", { sensitivity: "base" })
+  )
 
   for (const entry of entries) {
     const fullPath = path.join(currentDir, entry.name)
@@ -127,11 +201,9 @@ async function collectContentFiles(rootDir: string, currentDir = rootDir): Promi
       continue
     }
 
-    if (!entry.isFile()) {
-      continue
+    if (entry.isFile()) {
+      files.push(path.relative(rootDir, fullPath))
     }
-
-    files.push(path.relative(rootDir, fullPath))
   }
 
   return files
@@ -141,210 +213,307 @@ function compareByTitle(a: { title: string }, b: { title: string }) {
   return a.title.localeCompare(b.title, "en", { sensitivity: "base" })
 }
 
+function compareContentEntries(
+  a: { title: string; order?: number },
+  b: { title: string; order?: number }
+) {
+  const orderDifference =
+    (a.order ?? Number.POSITIVE_INFINITY) -
+    (b.order ?? Number.POSITIVE_INFINITY)
+
+  return orderDifference || compareByTitle(a, b)
+}
+
 function compareGroups(a: { title: string }, b: { title: string }) {
   if (a.title === "Get Started") return -1
   if (b.title === "Get Started") return 1
   return compareByTitle(a, b)
 }
 
-export async function getContentEntries() {
-  const docsRoot = getDocsRoot()
-  let files: string[] = []
-  try {
-    files = await collectContentFiles(docsRoot)
-  } catch {
-    return []
-  }
-  const routeMap = new Map<string, ContentEntry>()
-
-  for (const filePath of files) {
-    if (!filePath.endsWith(".mdx")) {
-      continue
-    }
-
-    const derived = deriveDocSlugAndCategory(filePath)
-    if (!derived) {
-      continue
-    }
-
-    const routeKey = derived.slug.join("/")
-    const frontmatter = await readFrontmatterFromFile(path.join(docsRoot, filePath))
-
-    routeMap.set(routeKey, {
-      slug: derived.slug,
-      title: frontmatter.title ?? makeItemTitle(derived.slug),
-      description: frontmatter.description,
-      category: frontmatter.category ?? derived.folderCategory,
-    })
+export async function getContentFileEntries(
+  section: ContentSection
+): Promise<ContentFileEntry[]> {
+  if (section === "templates") {
+    return getTemplates().map((template, index) => ({
+      slug: template.slug,
+      relativePath: "templates.json",
+      importPath: "",
+      title: template.title,
+      description: getTemplateSummary(template),
+      order: index + 1,
+    }))
   }
 
-  return Array.from(routeMap.values()).sort((a, b) => compareByTitle(a, b))
-}
-
-export async function getDocFileEntries() {
-  const docsRoot = getDocsRoot()
+  const contentRoot = getContentRoot(section)
   let files: string[] = []
+
   try {
-    files = await collectContentFiles(docsRoot)
+    files = await collectContentFiles(contentRoot)
   } catch {
     return []
   }
 
-  const entries: Array<{
-    slug: string
-    relativePath: string
-    importPath: string
-    category?: string
-  }> = []
+  const entries: ContentFileEntry[] = []
   const seen = new Set<string>()
 
   for (const filePath of files) {
-    if (!filePath.endsWith(".mdx")) {
+    const derived = deriveContentFile(section, filePath)
+    if (!derived || seen.has(derived.slug)) {
       continue
     }
-    const derived = deriveDocSlugAndCategory(filePath)
-    if (!derived || derived.slug.length !== 2) {
-      continue
-    }
-    const slug = derived.slug[1]
-    if (seen.has(slug)) {
-      continue
-    }
-    seen.add(slug)
-    const relativePath = filePath.replace(/\\/g, "/")
+
+    seen.add(derived.slug)
+    const frontmatter = await readFrontmatterFromFile(
+      path.join(contentRoot, filePath)
+    )
+
     entries.push({
-      slug,
-      relativePath,
-      importPath: relativePath.replace(/\.mdx$/, ""),
-      category: derived.folderCategory,
+      slug: derived.slug,
+      relativePath: filePath.replace(/\\/g, "/"),
+      importPath: derived.importPath,
+      title: frontmatter.title ?? toTitle(derived.slug),
+      description: frontmatter.description,
+      category: frontmatter.category ?? derived.folderCategory,
+      order: frontmatter.order,
     })
   }
 
-  return entries
+  return entries.sort(compareContentEntries)
 }
 
-export async function getContentNavigation(section: string) {
-  if (section === "blocks") {
-    return getBlockNavigationGroups()
-  }
-
-  const entries = await getContentEntries()
-  const grouped = new Map<string, ContentGroup>()
-  const sectionEntries = entries.filter(
-    (entry) => entry.slug[0] === section && entry.slug.length >= 2
+export async function getContentEntries(
+  section?: ContentSection
+): Promise<ContentEntry[]> {
+  const sections = section ? [section] : [...CONTENT_SECTIONS]
+  const sectionEntries = await Promise.all(
+    sections.map(async (contentSection) => {
+      const entries = await getContentFileEntries(contentSection)
+      return entries.map((entry) => ({
+        slug: [contentSection, entry.slug],
+        title: entry.title,
+        description: entry.description,
+        category: entry.category,
+        order: entry.order,
+      }))
+    })
   )
 
-  for (const entry of sectionEntries) {
-    const groupTitle = entry.category?.trim() || "General"
-    const groupKey = groupTitle.toLowerCase()
-    const fallbackItemTitle =
-      entry.slug.length === 1 ? groupTitle : entry.slug.slice(1).map(toTitle).join(" / ")
-    const itemTitle = entry.title || fallbackItemTitle
+  return sectionEntries.flat()
+}
 
+export async function getContentNavigation(
+  section: ContentSection
+): Promise<ContentNavigationGroup[]> {
+  const entries = await getContentFileEntries(section)
+  const grouped = new Map<
+    string,
+    ContentNavigationGroup & { orderedItems: ContentFileEntry[] }
+  >()
+
+  for (const entry of entries) {
+    const groupTitle =
+      entry.category?.trim() ||
+      CONTENT_SECTION_CONFIG[section].defaultCategory
+    const groupKey = groupTitle.toLowerCase()
     const group = grouped.get(groupKey) ?? {
       title: groupTitle,
       items: [],
+      orderedItems: [],
     }
 
-    group.items.push({
-      title: itemTitle,
-      url: makeUrl(entry.slug),
-    })
-
+    group.orderedItems.push(entry)
     grouped.set(groupKey, group)
   }
 
   return Array.from(grouped.values())
     .sort(compareGroups)
-    .map((group) => ({
-      ...group,
-      items: group.items.sort(compareByTitle),
+    .map(({ title, orderedItems }) => ({
+      title,
+      items: orderedItems.sort(compareContentEntries).map((entry) => ({
+        title: entry.title,
+        url: makeUrl(section, entry.slug),
+      })),
     }))
 }
 
-export async function getUnifiedNavigation() {
-  const entries = await getContentEntries()
-  const docsEntries = entries
-    .filter((entry) => entry.slug[0] === DOCS_DIR_NAME && entry.slug.length >= 2)
-    .map((entry) => ({
-      title: entry.title || entry.slug.slice(1).map(toTitle).join(" / "),
-      url: makeUrl(entry.slug),
-    }))
-    .sort(compareByTitle)
+async function getSectionNavigationItems(section: ContentSection) {
+  const groups = await getContentNavigation(section)
+  return groups.flatMap((group) => group.items)
+}
 
-  const blocksNav = await getBlockNavigationGroups()
-  const blocksItems = blocksNav.flatMap((group) => group.items)
+export async function getUnifiedNavigation(): Promise<
+  ContentNavigationGroup[]
+> {
+  const [docsItems, templateItems, blocksNav] = await Promise.all([
+    getSectionNavigationItems("docs"),
+    getSectionNavigationItems("templates"),
+    getBlockNavigationGroups(),
+  ])
 
   return [
     {
       title: "Getting Started",
-      items: docsEntries,
+      items: docsItems,
+    },
+    {
+      title: "Templates",
+      items: templateItems,
     },
     {
       title: "Blocks",
-      items: blocksItems,
+      items: blocksNav.flatMap((group) => group.items),
     },
   ]
 }
 
-export async function getDocFrontmatter(slug: string | string[]) {
-  const slugSegments = Array.isArray(slug) ? slug : [slug]
-  const docSlug = slugSegments[slugSegments.length - 1]
-  const docsRoot = getDocsRoot()
+export async function getContentFrontmatter(
+  section: ContentSection,
+  slug: string
+): Promise<ContentFrontmatter> {
+  if (section === "templates") {
+    const template = getTemplateBySlug(slug)
 
-  const entries = await getDocFileEntries()
-  const match = entries.find((entry) => entry.slug === docSlug)
-  if (!match) {
+    return template
+      ? {
+          title: template.title,
+          description: getTemplateSummary(template),
+        }
+      : {}
+  }
+
+  const entry = await resolveContentFile(section, slug)
+  if (!entry) {
     return {}
   }
 
-  const frontmatter = await readFrontmatterFromFile(path.join(docsRoot, match.relativePath))
-  if (frontmatter.title || frontmatter.description) {
-    return frontmatter
-  }
-
-  return {}
+  return readFrontmatterFromFile(
+    path.join(getContentRoot(section), entry.relativePath)
+  )
 }
 
-export async function resolveDocFile(slug: string) {
-  const entries = await getDocFileEntries()
+export async function resolveContentFile(
+  section: ContentSection,
+  slug: string
+) {
+  const entries = await getContentFileEntries(section)
   return entries.find((entry) => entry.slug === slug) ?? null
 }
 
-export async function getDocNavigationContext(slug: string) {
-  const groups = await getContentNavigation(DOCS_DIR_NAME)
-  const items = groups.flatMap((group) =>
-    group.items.map((item) => ({ title: item.title, href: item.url }))
+export async function getContentNavigationContext(
+  section: ContentSection,
+  slug: string
+): Promise<ContentNavigationContext> {
+  const items = await getSectionNavigationItems(section)
+  const index = items.findIndex(
+    (item) => item.url === makeUrl(section, slug)
   )
-  const index = items.findIndex((item) => item.href === `/docs/${slug}`)
 
   return {
-    previous: index > 0 ? items[index - 1] : undefined,
-    next: index < items.length - 1 ? items[index + 1] : undefined,
+    previous:
+      index > 0
+        ? { title: items[index - 1].title, href: items[index - 1].url }
+        : undefined,
+    next:
+      index >= 0 && index < items.length - 1
+        ? { title: items[index + 1].title, href: items[index + 1].url }
+        : undefined,
   }
 }
 
-export async function resolveDocSourcePath(segments: string[]): Promise<string | null> {
-  if (segments.length === 0) {
-    return null
-  }
-  if (segments.some((segment) => segment === ".." || segment === "." || segment === "")) {
+export async function getContentPageData(
+  section: ContentSection,
+  slug: string
+): Promise<ContentPageData | null> {
+  const file = await resolveContentFile(section, slug)
+  if (!file) {
     return null
   }
 
-  const docsRoot = getDocsRoot()
+  const [source, frontmatter, navigation] = await Promise.all([
+    readFile(path.join(getContentRoot(section), file.relativePath), "utf8"),
+    getContentFrontmatter(section, slug),
+    getContentNavigationContext(section, slug),
+  ])
+
+  return {
+    file,
+    frontmatter,
+    source,
+    navigation,
+  }
+}
+
+export async function resolveContentSourcePath(
+  section: ContentSection,
+  segments: string[]
+): Promise<string | null> {
+  if (
+    segments.length === 0 ||
+    segments.some(
+      (segment) => segment === ".." || segment === "." || segment === ""
+    )
+  ) {
+    return null
+  }
+
+  const contentRoot = getContentRoot(section)
   const directRelative = `${segments.join("/")}.mdx`
-  const directStats = await stat(path.join(docsRoot, directRelative)).catch(() => null)
+  const directStats = await stat(
+    path.join(contentRoot, directRelative)
+  ).catch(() => null)
+
   if (directStats?.isFile()) {
     return directRelative
   }
 
   if (segments.length === 1) {
-    const entry = await resolveDocFile(segments[0])
-    if (entry) {
-      return entry.relativePath
-    }
+    const entry = await resolveContentFile(section, segments[0])
+    return entry?.relativePath ?? null
   }
 
   return null
+}
+
+export async function getDocFileEntries() {
+  return getContentFileEntries("docs")
+}
+
+export async function getTemplateFileEntries() {
+  return getContentFileEntries("templates")
+}
+
+export async function getTemplateFrontmatter(slug: string | string[]) {
+  const slugSegments = Array.isArray(slug) ? slug : [slug]
+  return getContentFrontmatter(
+    "templates",
+    slugSegments[slugSegments.length - 1]
+  )
+}
+
+export async function resolveTemplateFile(slug: string) {
+  return resolveContentFile("templates", slug)
+}
+
+export async function getTemplateNavigationContext(slug: string) {
+  return getContentNavigationContext("templates", slug)
+}
+
+export async function getDocFrontmatter(slug: string | string[]) {
+  const slugSegments = Array.isArray(slug) ? slug : [slug]
+  return getContentFrontmatter(
+    "docs",
+    slugSegments[slugSegments.length - 1]
+  )
+}
+
+export async function resolveDocFile(slug: string) {
+  return resolveContentFile("docs", slug)
+}
+
+export async function getDocNavigationContext(slug: string) {
+  return getContentNavigationContext("docs", slug)
+}
+
+export async function resolveDocSourcePath(segments: string[]) {
+  return resolveContentSourcePath("docs", segments)
 }
