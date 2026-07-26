@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/seo"
 import { getBlockGroups } from "@/lib/blocks"
-import { getDocFileEntries } from "@/lib/content"
+import { getDocFileEntries, getTemplateFileEntries } from "@/lib/content"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
@@ -41,7 +41,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
-  const docEntries = await getDocFileEntries()
+  const [docEntries, templateEntries] = await Promise.all([
+    getDocFileEntries(),
+    getTemplateFileEntries(),
+  ])
   const docRoutes: MetadataRoute.Sitemap = docEntries.map((entry) => ({
     url: `${SITE_URL}/docs/${entry.slug}`,
     lastModified: now,
@@ -49,5 +52,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  return [...staticRoutes, ...blockRoutes, ...docRoutes]
+  const templateRoutes: MetadataRoute.Sitemap = templateEntries.map(
+    (entry) => ({
+      url: `${SITE_URL}/templates/${entry.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    })
+  )
+
+  return [
+    ...staticRoutes,
+    ...blockRoutes,
+    ...docRoutes,
+    ...templateRoutes,
+  ]
 }
