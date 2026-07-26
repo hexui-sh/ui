@@ -1,7 +1,7 @@
 import { categoryToSlug, getBlockGroups } from "@/lib/blocks"
 import { getContentEntries } from "@/lib/content"
 
-export type SearchItemType = "docs" | "blocks"
+export type SearchItemType = "docs" | "templates" | "blocks"
 
 export type SearchItem = {
   value: string
@@ -34,6 +34,19 @@ export async function getSearchGroups(): Promise<SearchGroup[]> {
 
   if (docItems.length > 0) {
     groups.push({ value: "Docs", items: docItems })
+  }
+
+  const templateItems: SearchItem[] = contentEntries
+    .filter((entry) => entry.slug[0] === "templates")
+    .map((entry) => ({
+      value: `template:${entry.slug.join("/")}`,
+      label: entry.title,
+      type: "templates" as const,
+      url: `/${entry.slug.join("/")}`,
+    }))
+
+  if (templateItems.length > 0) {
+    groups.push({ value: "Templates", items: templateItems })
   }
 
   for (const group of blockGroups) {
