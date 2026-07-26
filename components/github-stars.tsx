@@ -3,7 +3,7 @@ import { SiGithub } from "@icons-pack/react-simple-icons";
 
 async function getGitHubStars(): Promise<number> {
   try {
-    const res = await fetch("https://api.github.com/repos/ri0n-dev/hex-ui", {
+    const res = await fetch("https://api.github.com/repos/hexui-sh/ui", {
       next: { revalidate: 3600 },
       headers: {
         Accept: "application/vnd.github.v3+json",
