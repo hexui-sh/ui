@@ -60,7 +60,7 @@ export default async function BlockCategoryPage({
   )
 
   return (
-    <div className="mx-auto mt-16 flex w-full max-docs-content-width flex-col gap-5">
+    <div className="mx-auto mt-15 flex w-full max-docs-content-width flex-col gap-5">
       <JsonLd
         data={collectionPageJsonLd({
           name: `${category} Blocks`,
