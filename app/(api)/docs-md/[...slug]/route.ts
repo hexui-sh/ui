@@ -1,35 +1,23 @@
 import { readFile } from "node:fs/promises"
 import path from "node:path"
-import {
-  getContentRoot,
-  isContentSection,
-  resolveContentSourcePath,
-} from "@/lib/content"
+import { resolveDocSourcePath } from "@/lib/content"
 
 export async function GET(
   _request: Request,
-  {
-    params,
-  }: {
-    params: Promise<{ section: string; slug: string[] }>
-  }
+  { params }: { params: Promise<{ slug: string[] }> }
 ) {
-  const { section, slug } = await params
-  if (
-    !isContentSection(section) ||
-    !slug ||
-    slug.length === 0
-  ) {
+  const { slug } = await params
+  if (!slug || slug.length === 0) {
     return new Response("Not Found", { status: 404 })
   }
 
-  const relativePath = await resolveContentSourcePath(section, slug)
+  const relativePath = await resolveDocSourcePath(slug)
   if (!relativePath) {
     return new Response("Not Found", { status: 404 })
   }
 
   const content = await readFile(
-    path.join(getContentRoot(section), relativePath),
+    path.join(process.cwd(), "docs", relativePath),
     "utf8"
   )
 
