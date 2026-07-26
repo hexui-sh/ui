@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   flattenNavGroups,
+  isNavItemActive,
   type MobileNavData,
   type NavItem,
 } from "@/lib/navigation-utils";
@@ -22,13 +23,6 @@ type MobileNavigationProps = {
   data: MobileNavData;
 };
 
-function isItemActive(pathname: string, url: string): boolean {
-  if (url.includes("#")) {
-    return pathname === url.split("#")[0];
-  }
-  return pathname === url;
-}
-
 function FlatNavList({
   items,
   pathname,
@@ -39,7 +33,7 @@ function FlatNavList({
   return (
     <ul className="flex flex-col gap-2">
       {items.map((item) => {
-        const active = isItemActive(pathname, item.url);
+        const active = isNavItemActive(pathname, item.url);
         return (
           <li key={item.url}>
             {item.disabled ? (
@@ -59,6 +53,7 @@ function FlatNavList({
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "flex h-9 w-full items-center justify-between gap-2 rounded-md px-3 text-3xl font-medium text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-muted hover:text-foreground",
+                      active && "bg-muted text-foreground",
                     )}
                   />
                 }
@@ -83,6 +78,7 @@ export function MobileNavigation({ data }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
 
   const docsItems = flattenNavGroups(data.docs);
+  const templateItems = flattenNavGroups(data.templates);
   const blocksItems = flattenNavGroups(data.blocks);
 
   return (
@@ -127,6 +123,18 @@ export function MobileNavigation({ data }: MobileNavigationProps) {
                 Docs
               </h2>
               <FlatNavList items={docsItems} pathname={pathname} />
+            </section>
+          ) : null}
+
+          {templateItems.length > 0 ? (
+            <section aria-labelledby="mobile-templates-heading">
+              <h2
+                id="mobile-templates-heading"
+                className="px-3 pb-1 text-base font-medium text-muted-foreground/70"
+              >
+                Templates
+              </h2>
+              <FlatNavList items={templateItems} pathname={pathname} />
             </section>
           ) : null}
 
