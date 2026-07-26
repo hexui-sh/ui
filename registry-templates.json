@@ -1,0 +1,52 @@
+{
+  "templates": [
+    {
+      "slug": "overview",
+      "title": "Docs Template",
+      "previewUrl": "https://docs-template.hexui.sh/",
+      "screenshotUrl": "https://image.thum.io/get/width/1600/crop/900/noanimate/https://docs-template.hexui.sh/",
+      "repoUrl": "https://github.com/hexui-sh/docs-template",
+      "description": {
+        "templateType": "A stylish documentation template built with Fumadocs.",
+        "about": "This template provides a solid foundation for building beautiful documentation websites with Fumadocs, Next.js 16, and Tailwind CSS. It includes a modern layout, responsive navigation, MDX support, search, and sensible defaults, so you can focus on writing documentation instead of building the infrastructure.",
+        "audience": "This template is designed for developers, open-source maintainers, SaaS teams, and anyone who needs a fast, customizable documentation site. Whether you're documenting an API, product, library, or internal project, this template gives you a production-ready starting point.",
+        "included": [
+          "Fumadocs for documentation and MDX",
+          "MDX-based documentation",
+          "Light and dark color themes",
+          "Built-in documentation search",
+          "Responsive layout for desktop and mobile",
+          "Type-safe project configuration",
+          "Sidebar navigation and table of contents"
+        ],
+        "packages": [
+          {
+            "name": "Next.js",
+            "version": "16.2"
+          },
+          {
+            "name": "Tailwind CSS",
+            "version": "4.3"
+          },
+          {
+            "name": "Fumadocs",
+            "version": "16.12"
+          },
+          {
+            "name": "next-themes",
+            "version": "0.4.6"
+          },
+          {
+            "name": "TypeScript"
+          },
+          {
+            "name": "Base UI"
+          },
+          {
+            "name": "shadcn/ui"
+          }
+        ]
+      }
+    }
+  ]
+}
