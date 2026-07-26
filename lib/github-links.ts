@@ -1,5 +1,5 @@
-export const GITHUB_REPO_OWNER = "ri0n-dev"
-export const GITHUB_REPO_NAME = "hex-ui"
+export const GITHUB_REPO_OWNER = "hexui-sh"
+export const GITHUB_REPO_NAME = "ui"
 export const GITHUB_REPO_BRANCH = "main"
 
 const REPO_BASE_URL = `https://github.com/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}`
