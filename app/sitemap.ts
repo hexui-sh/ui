@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/seo"
 import { getBlockGroups } from "@/lib/blocks"
+import { getBlogCover, getBlogPosts } from "@/lib/blog"
 import { getDocFileEntries, getTemplateFileEntries } from "@/lib/content"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -23,14 +24,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${SITE_URL}/templates`,
       lastModified: now,
       changeFrequency: "yearly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${SITE_URL}/sponsor`,
+      url: `${SITE_URL}/blog`,
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }
   ]
 
   const blockGroups = getBlockGroups()
@@ -41,9 +42,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
-  const [docEntries, templateEntries] = await Promise.all([
+  const [docEntries, templateEntries, blogPosts] = await Promise.all([
     getDocFileEntries(),
     getTemplateFileEntries(),
+    getBlogPosts(),
   ])
   const docRoutes: MetadataRoute.Sitemap = docEntries.map((entry) => ({
     url: `${SITE_URL}/docs/${entry.slug}`,
@@ -61,10 +63,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   )
 
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(
+      post.frontmatter.updated ?? post.frontmatter.date
+    ),
+    changeFrequency: "monthly",
+    priority: 0.7,
+    images: [getBlogCover(post)],
+  }))
+
   return [
     ...staticRoutes,
     ...blockRoutes,
     ...docRoutes,
     ...templateRoutes,
+    ...blogRoutes,
   ]
 }
