@@ -27,6 +27,7 @@ export async function generateMetadata({
   return pageMetadata({
     title: template.title,
     description: getTemplateSummary(template),
+    socialDescription: template.description.templateType,
     path: `/templates/${slug}`,
     type: "article",
   })
