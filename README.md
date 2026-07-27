@@ -1,7 +1,7 @@
 ![hexui.sh](https://github.com/hexui-sh/ui/blob/main/public/readme-image.png?raw=true)
 
 <h3 align="center">Hex UI</h1>
-<p align="center">Check out these beautiful and sophisticated UI blocks and templates. You can easily integrate them into your own project using copy-and-paste.<p>
+<p align="center">A Beautiful Collection of Modern React Blocks & Templates<p>
 
 <div align="center">
   <a href="https://github.com/hexui-sh/ui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hexui-sh/ui"></a>
@@ -19,7 +19,13 @@ Please read the [contributing guide](https://github.com/ri0n-dev/hex-ui/blob/mai
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ri0n-dev/hex-ui&type=Date)](https://www.star-history.com/#ri0n-dev/hex-ui&Date)
+<a href="https://www.star-history.com/?repos=hexui-sh%2Fui&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=hexui-sh/ui&type=date&theme=dark&legend=top-left&sealed_token=k03NdU-qGy1ywfm287wN-L1wUhgUDZidy77pgsSK4FK20hH7Bg8stcG6Qyii3zvoJxWKKHlvkZr6RRswH9iXHloh0iFJqGUV07jjRLnq_v0O_Y0tye_LiVUCa5eCprgDFF0KGYmRQhnsOzYGi3WtPOpxmyyBSe9NzFd54wK3ujbcRBTPt91v3KroVaTl" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=hexui-sh/ui&type=date&legend=top-left&sealed_token=k03NdU-qGy1ywfm287wN-L1wUhgUDZidy77pgsSK4FK20hH7Bg8stcG6Qyii3zvoJxWKKHlvkZr6RRswH9iXHloh0iFJqGUV07jjRLnq_v0O_Y0tye_LiVUCa5eCprgDFF0KGYmRQhnsOzYGi3WtPOpxmyyBSe9NzFd54wK3ujbcRBTPt91v3KroVaTl" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=hexui-sh/ui&type=date&legend=top-left&sealed_token=k03NdU-qGy1ywfm287wN-L1wUhgUDZidy77pgsSK4FK20hH7Bg8stcG6Qyii3zvoJxWKKHlvkZr6RRswH9iXHloh0iFJqGUV07jjRLnq_v0O_Y0tye_LiVUCa5eCprgDFF0KGYmRQhnsOzYGi3WtPOpxmyyBSe9NzFd54wK3ujbcRBTPt91v3KroVaTl" />
+ </picture>
+</a>
 
 ## License
 
