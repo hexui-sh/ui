@@ -28,18 +28,6 @@ export default function HeroSection() {
           </Link>
         </div>
       </div>
-
-      {/*
-        <div className="mt-18 rounded-lg bg-[url('/assets/hexui-wallpaper.png')] bg-cover bg-center px-2 pt-20 md:px-4 md:pt-4 xl:px-12 xl:pt-12">
-          <img
-            src="/demo/screenshots/dashboard.png"
-            alt="Dashboard preview"
-            width={1200}
-            height={800}
-            className="h-full w-full rounded-md rounded-b-xs"
-          />
-        </div>
-        */}
     </div>
   );
 }
