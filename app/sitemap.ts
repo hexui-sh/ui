@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { SITE_URL } from "@/lib/seo"
+import { absoluteUrl, SITE_URL } from "@/lib/seo"
 import { getBlockGroups } from "@/lib/blocks"
 import { getBlogCover, getBlogPosts } from "@/lib/blog"
 import { getDocFileEntries, getTemplateFileEntries } from "@/lib/content"
@@ -70,7 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
     changeFrequency: "monthly",
     priority: 0.7,
-    images: [getBlogCover(post)],
+    images: [absoluteUrl(getBlogCover(post))],
   }))
 
   return [
