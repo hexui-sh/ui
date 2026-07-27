@@ -1,0 +1,191 @@
+---
+title: Getting Started with Hex UI — Stop Building Every UI from Scratch
+description: Learn how to choose a Hex UI block, install it with the shadcn CLI, and shape it into a section that feels native to your product.
+date: 2026-07-27
+updated: 2026-07-27
+tags:
+  - Hex UI
+  - Next.js
+  - Tailwind CSS
+locale: en
+cover: "/ogp.webp"
+published: true
+---
+
+How often do you rebuild the same hero, FAQ, or call-to-action section from
+scratch?
+
+Hex UI is a collection of polished interface sections for React, Next.js, and
+Tailwind CSS. Instead of locking you into a visual package, it brings the code
+into your project so you can inspect it, change it, and make it your own.
+
+<Callout>
+  By the end of this guide, you will have chosen a Hex UI block, added it to
+  your project, and adapted it into a section that feels native to your product.
+</Callout>
+
+## What is Hex UI?
+
+Hex UI provides reusable blocks for common product and marketing pages.
+
+<Cards>
+  <Card
+    title="Copy"
+    description="The code lives in your project, so you are never trapped behind a package API."
+  />
+  <Card
+    title="Customize"
+    description="Change the content, colors, spacing, and component structure to match your product."
+  />
+  <Card
+    title="Launch"
+    description="Start from a responsive foundation and spend more time refining what makes your product distinct."
+  />
+  <Card
+    title="Open source"
+    description="Blocks are free to use. Read the implementation, learn from it, and keep only what you need."
+  />
+</Cards>
+
+Hex UI is not a library of finished pages that must remain unchanged. It is a
+high-quality starting point that you can shape into your own design.
+
+## Should you choose a Block or a Template?
+
+Start by choosing the right level of structure for your project.
+
+- A **Block** is one section of a page, such as a hero, pricing table, FAQ, or
+  CTA. Choose a block when you want to add one focused section to an existing
+  site.
+- A **Template** combines several sections into a complete page foundation.
+  Choose a template when you want to launch a new site quickly.
+
+For your first experience, start with a block. The smaller scope makes the code
+easier to understand and gives you a clear place to learn how Hex UI approaches
+layout and styling.
+
+## Add your first Block in five minutes
+
+This walkthrough uses `cta-1` as an example. Before you begin, make sure
+shadcn/ui is configured in your project.
+
+<Steps>
+  <Step>
+    ### 1. Find a Block
+
+    Open [Blocks](/blocks) and browse the previews. Look for a block whose
+    **layout and information hierarchy** match your goal. The sample colors and
+    copy do not need to be a perfect fit—you will replace them shortly.
+  </Step>
+  <Step>
+    ### 2. Install it with the CLI
+
+    Run the following command from your project root:
+
+    ```bash
+    pnpm dlx shadcn@latest add https://hexui.sh/r/cta-1.json
+    ```
+
+    If you use npm, replace `pnpm dlx` with `npx`.
+  </Step>
+  <Step>
+    ### 3. Add it to a page
+
+    Import the generated component and place it where you want the section to
+    appear.
+
+    ```tsx
+    import { CTA } from "@/components/cta"
+
+    export default function Page() {
+      return (
+        <main>
+          {/* Existing content */}
+          <CTA />
+        </main>
+      )
+    }
+    ```
+  </Step>
+  <Step>
+    ### 4. Check it in the browser
+
+    Start the development server and inspect the section at desktop and mobile
+    widths. Treat the copied block as a strong foundation, not the finished
+    result.
+  </Step>
+</Steps>
+
+## Make it feel like your product
+
+Customizing in a deliberate order makes the process faster and keeps layout
+problems easy to diagnose.
+
+### 1. Replace the sample content
+
+Change the heading, description, and button labels first. Real content changes
+line breaks and element heights, so it should come before detailed spacing
+adjustments.
+
+A useful CTA describes what happens next. Prefer a specific label such as
+“Start for free” or “Browse blocks” over a vague phrase like “Learn more.”
+
+### 2. Match your design tokens
+
+Next, align the background, text colors, corner radius, and spacing with your
+project. Because the Tailwind CSS classes are part of your codebase, you can use
+your existing tokens directly.
+
+```tsx
+<section className="bg-background text-foreground">
+  <div className="mx-auto max-w-6xl px-6 py-24">
+    {/* Content */}
+  </div>
+</section>
+```
+
+Role-based colors such as `background`, `foreground`, `muted`, and `primary`
+usually scale better than adding a new one-off color for every section. They
+also make dark mode easier to maintain.
+
+### 3. Review every interaction state
+
+Finally, check hover, focus, active, and disabled states. Keyboard focus and
+comfortable touch targets are especially easy to overlook when reviewing only
+with a mouse on a large display.
+
+## Three principles for working with Hex UI
+
+- **Start with the closest structure.** Choose a block by its information
+  hierarchy instead of searching for an exact visual match.
+- **Understand before removing.** Before deleting a class or wrapper, check
+  whether it supports responsive behavior or accessibility.
+- **Adopt one section at a time.** Finish one block and establish your token and
+  naming conventions before adding the next one.
+
+<Callout>
+  Hex UI does not remove every design decision. It moves your decisions away
+  from rebuilding foundations and toward the details that make your product
+  recognizable.
+</Callout>
+
+## Pre-launch checklist
+
+Before publishing your first block, verify that:
+
+- the heading makes sense when read on its own;
+- button labels clearly describe the next action;
+- there is no horizontal scrolling around a 375px viewport width;
+- links and buttons are reachable with the Tab key and have a visible focus
+  state;
+- meaningful images have appropriate alternative text;
+- light and dark modes both provide sufficient contrast; and
+- unused sample data and unnecessary dependencies have been removed.
+
+## Choose one Block and make it yours
+
+The fastest way to understand Hex UI is to put one block into a real page.
+
+[Browse the Blocks](/blocks), choose a section that fits your next task, and
+start by rewriting it in your product’s voice. A strong foundation makes the
+rest of the design process move surprisingly quickly.
