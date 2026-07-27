@@ -1,6 +1,14 @@
 import type { ReactNode } from "react"
 import type { MDXComponents } from "mdx/types"
 import { MdxPre } from "@/components/mdx-pre"
+import {
+  Cards,
+  MdxCard,
+  MdxImage,
+  Step,
+  Steps,
+} from "@/components/mdx-content"
+import { Callout } from "@/components/ui/callout"
 import { HeadingSlugger } from "@/lib/heading"
 
 function extractTextFromChildren(children: ReactNode): string {
@@ -29,10 +37,16 @@ export function useMDXComponents(): MDXComponents {
   const slugger = new HeadingSlugger()
 
   return {
+    Callout,
+    Steps,
+    Step,
+    Cards,
+    Card: MdxCard,
+    Image: MdxImage,
     h2: ({ children, ...props }) => {
       return (
         <h2
-          className="scroll-m-20 border-t pt-10 mt-10 text-2xl font-semibold tracking-tight first:mt-0 text-neutral-700 dark:text-neutral-200"
+          className="mt-10 scroll-m-20 border-t pt-10 text-balance text-2xl font-semibold tracking-tight text-neutral-700 first:mt-0 dark:text-neutral-200"
           {...props}
           id={props.id ?? slugger.slug(extractTextFromChildren(children))}
         >
@@ -43,7 +57,7 @@ export function useMDXComponents(): MDXComponents {
     h3: ({ children, ...props }) => {
       return (
         <h3
-          className="scroll-m-20 border-b pb-2 mt-4 text-xl font-semibold tracking-tight first:mt-0 text-neutral-700 dark:text-neutral-200"
+          className="mt-8 scroll-m-20 border-b pb-2 text-balance text-xl font-semibold tracking-tight text-neutral-700 first:mt-0 dark:text-neutral-200"
           {...props}
           id={props.id ?? slugger.slug(extractTextFromChildren(children))}
         >
@@ -54,7 +68,7 @@ export function useMDXComponents(): MDXComponents {
     p: ({ children, ...props }) => {
       return (
         <p
-          className="leading-7 not-first:mt-6 text-neutral-600 dark:text-neutral-300"
+          className="text-pretty leading-7 text-neutral-600 not-first:mt-6 dark:text-neutral-300"
           {...props}
         >
           {children}
@@ -64,7 +78,7 @@ export function useMDXComponents(): MDXComponents {
     a: ({ children, ...props }) => {
       return (
         <a
-          className="underline"
+          className="font-medium underline decoration-neutral-400 underline-offset-4 transition-colors hover:text-neutral-950 dark:decoration-neutral-600 dark:hover:text-white"
           {...props}
         >
           {children}
@@ -97,7 +111,7 @@ export function useMDXComponents(): MDXComponents {
     blockquote: ({ children, ...props }) => {
       return (
         <blockquote
-          className="mt-6 border-l-2 pl-6 italic"
+          className="mt-6 border-l-2 pl-6 text-pretty italic text-neutral-600 dark:text-neutral-300"
           {...props}
         >
           {children}
@@ -117,7 +131,7 @@ export function useMDXComponents(): MDXComponents {
       }
       return (
         <code
-          className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold"
+          className="relative rounded-lg bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold"
           {...props}
         >
           {children}
@@ -126,8 +140,15 @@ export function useMDXComponents(): MDXComponents {
     },
     hr: ({ children, ...props }) => {
       return (
-        <hr {...props} className="mt-6" />
+        <hr {...props} className="my-10" />
       );
+    },
+    img: ({ src, alt, ...props }) => {
+      if (typeof src !== "string") {
+        return null
+      }
+
+      return <MdxImage src={src} alt={alt ?? ""} {...props} />
     },
   }
 }
