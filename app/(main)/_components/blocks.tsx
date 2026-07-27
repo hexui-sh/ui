@@ -14,8 +14,8 @@ export default async function Blocks() {
 
         return (
           <Link key={category} href={`/blocks/${categorySlug}`}>
-            <Card className="w-full cursor-pointer overflow-hidden rounded-xs bg-transparent py-0 ring-0">
-              <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border-3 bg-neutral-50 p-3 dark:bg-neutral-950">
+            <Card className="w-full cursor-pointer overflow-hidden rounded-md bg-transparent py-0 ring-0">
+              <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border-3 bg-neutral-50 p-3 dark:bg-neutral-950">
                 <CategoryPreview
                   category={category}
                   categorySlug={categorySlug}

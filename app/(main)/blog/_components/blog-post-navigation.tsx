@@ -19,7 +19,7 @@ export function BlogPostNavigation({
       {navigation.previous ? (
         <Link
           href={`/blog/${navigation.previous.slug}`}
-          className="group rounded-lg bg-transparent hover:bg-muted/30 p-4"
+          className="group rounded-md bg-transparent hover:bg-muted/30 p-4"
         >
           <span className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400">
             <ArrowLeft className="size-3.5" />
@@ -36,7 +36,7 @@ export function BlogPostNavigation({
       {navigation.next ? (
         <Link
           href={`/blog/${navigation.next.slug}`}
-          className="group rounded-lg text-right bg-transparent hover:bg-muted/30 p-4"
+          className="group rounded-md text-right bg-transparent hover:bg-muted/30 p-4"
         >
           <span className="flex items-center justify-end gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400">
             Next article

@@ -137,7 +137,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       <Link
         href="/blog"
-        className="inline-flex min-h-11 items-center gap-1.5 rounded-lg pr-3 text-sm font-medium text-neutral-500 outline-none transition-[color,scale] duration-150 ease-out hover:text-neutral-950 active:scale-[0.96] focus-visible:ring-3 focus-visible:ring-neutral-400/50 dark:text-neutral-400 dark:hover:text-white"
+        className="inline-flex min-h-11 items-center gap-1.5 rounded-md pr-3 text-sm font-medium text-neutral-500 outline-none transition-[color,scale] duration-150 ease-out hover:text-neutral-950 active:scale-[0.96] focus-visible:ring-3 focus-visible:ring-neutral-400/50 dark:text-neutral-400 dark:hover:text-white"
       >
         <ArrowLeft className="size-4" />
         All articles
@@ -185,7 +185,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
 
-        <div className="relative mt-10 aspect-1200/630 overflow-hidden rounded-lg bg-neutral-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_12px_40px_-24px_rgba(0,0,0,0.28)] dark:bg-neutral-900 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)]">
+        <div className="relative mt-10 aspect-1200/630 overflow-hidden rounded-md bg-neutral-100 shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_12px_40px_-24px_rgba(0,0,0,0.28)] dark:bg-neutral-900 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)]">
           <Image
             src={getBlogCover(post)}
             alt=""

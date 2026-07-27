@@ -11,7 +11,7 @@ interface PropsTableProps {
 
 export function PropsTable({ props }: PropsTableProps) {
     return (
-        <div className="w-full mt-1.5 overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+        <div className="w-full mt-1.5 overflow-hidden rounded-md border border-neutral-200 dark:border-neutral-800">
             <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                     <thead>
@@ -38,19 +38,19 @@ export function PropsTable({ props }: PropsTableProps) {
                             >
                                 <td className="px-4 py-3">
                                     <div className="flex items-center gap-2">
-                                        <code className="rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-xs dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300">
+                                        <code className="rounded-md bg-neutral-100 px-1.5 py-0.5 font-mono text-xs dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300">
                                             {prop.name}
                                         </code>
                                     </div>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <code className="rounded bg-blue-50 px-1.5 py-0.5 font-mono text-xs text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                    <code className="rounded-md bg-blue-50 px-1.5 py-0.5 font-mono text-xs text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
                                         {prop.type}
                                     </code>
                                 </td>
                                 <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
                                     {prop.defaultValue ? (
-                                        <code className="rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-xs dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
+                                        <code className="rounded-md bg-neutral-100 px-1.5 py-0.5 font-mono text-xs dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
                                             {prop.defaultValue}
                                         </code>
                                     ) : (

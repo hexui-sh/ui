@@ -103,7 +103,7 @@ export default async function TemplatePage({
           </div>
         </header>
 
-        <div className="relative aspect-video overflow-hidden rounded-lg bg-neutral-950 border-2">
+        <div className="relative aspect-video overflow-hidden rounded-md bg-neutral-950 border-2">
           <Image
             src={template.screenshotUrl}
             alt={`Screenshot of ${template.title}`}

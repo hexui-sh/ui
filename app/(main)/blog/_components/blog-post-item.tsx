@@ -48,12 +48,12 @@ export function BlogPostCard({ post }: { post: BlogPost }) {
 
         {/* Content column */}
         <div className="flex flex-1 flex-col gap-6">
-          <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted">
+          <div className="relative aspect-video w-full overflow-hidden rounded-md bg-muted">
             <Image
               src={getBlogCover(post)}
               alt=""
               fill
-              className="object-cover rounded-lg"
+              className="object-cover rounded-md"
               sizes="(max-width: 768px) 100vw, 640px"
             />
           </div>

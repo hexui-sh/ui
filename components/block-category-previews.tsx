@@ -16,7 +16,7 @@ function PreviewShell({ children }: { children: ReactNode }) {
 
 function CardPreviewShell({ className, children }: { className?: string; children: ReactNode }) {
   return (
-    <div className={`rounded-lg mx-auto border border-border/70 shadow-[0_0_0_0.5px_rgba(255,255,255,0.06)_inset,0_1px_0_0_rgba(255,255,255,0.08)_inset,0_1px_3px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] bg-card ${className}`}>
+    <div className={`rounded-md mx-auto border border-border/70 shadow-[0_0_0_0.5px_rgba(255,255,255,0.06)_inset,0_1px_0_0_rgba(255,255,255,0.08)_inset,0_1px_3px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] bg-card ${className}`}>
       {children}
     </div>
   )
@@ -107,7 +107,7 @@ export function FooterCategoryPreview(props: BlockCategoryPreviewProps) {
       <div className="flex flex-1 items-center overflow-hidden">
         <div className="flex flex-col w-full min-w-0 justify-center items-center gap-2">
           <Text className="mx-auto">Footer</Text>
-          <CardPreviewShell className="w-full max-w-80 sm:max-w-full grid grid-cols-4 gap-1.5 rounded-xl p-3 overflow-hidden">
+          <CardPreviewShell className="w-full max-w-80 sm:max-w-full grid grid-cols-4 gap-1.5 rounded-md p-3 overflow-hidden">
             <div className="col-span-1 space-y-2 min-w-0">
               <MiniLine className="w-full max-w-12" />
               <MiniLine className="w-4/5 max-w-10" />
@@ -136,7 +136,7 @@ export function HeroCategoryPreview(props: BlockCategoryPreviewProps) {
           <MiniLine size="lg" className="w-3/4" />
           <MiniLine size="xl" className="mt-4 w-18" />
         </div>
-        <div className="relative aspect-square rounded-lg bg-muted-foreground/15 dark:bg-muted/50" />
+        <div className="relative aspect-square rounded-md bg-muted-foreground/15 dark:bg-muted/50" />
       </div>
     </PreviewShell>
   )
@@ -149,15 +149,15 @@ export function LoginCategoryPreview(props: BlockCategoryPreviewProps) {
         <div className="grid flex-1 grid-cols-[1.1fr_0.9fr] items-center gap-3">
           <div className="flex flex-col space-y-2">
             <Text>Login</Text>
-            <div className="flex items-center px-2 h-6 w-full rounded-lg border">
+            <div className="flex items-center px-2 h-6 w-full rounded-md border">
               <MiniLine size="xs" className="w-20" />
             </div>
-            <div className="flex items-center px-2 h-6 w-full rounded-lg border">
+            <div className="flex items-center px-2 h-6 w-full rounded-md border">
               <span className="text-muted-foreground/25">{"••••••••••••"}</span>
             </div>
             <MiniLine size="xl" className="mt-1 w-18" />
           </div>
-          <div className="relative aspect-square rounded-lg bg-muted-foreground/15 dark:bg-muted/50" />
+          <div className="relative aspect-square rounded-md bg-muted-foreground/15 dark:bg-muted/50" />
         </div>
       </div>
     </PreviewShell>
@@ -201,7 +201,7 @@ export function GenericCategoryPreview(props: BlockCategoryPreviewProps) {
     <PreviewShell {...props}>
       <div className="grid flex-1 grid-cols-3 gap-2">
         {[0, 1, 2, 3, 4, 5].map((item) => (
-          <div key={item} className="rounded-lg border border-border bg-muted/60 p-2">
+          <div key={item} className="rounded-md border border-border bg-muted/60 p-2">
             <MiniLine className="mb-2 w-8 bg-foreground/25" />
             <MiniLine className="w-full" />
           </div>

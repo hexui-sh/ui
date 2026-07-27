@@ -167,7 +167,7 @@ export function BlockPreviewPanel({
           </div>
         </div>
         <div className="mx-auto mt-4 w-full">
-          <div className="h-[70vh] max-h-180 w-full overflow-hidden rounded-lg border-2 border-border bg-neutral-50 dark:bg-neutral-950">
+          <div className="h-[70vh] max-h-180 w-full overflow-hidden rounded-md border-2 border-border bg-neutral-50 dark:bg-neutral-950">
             {hasPreview ? (
               previewChildren
             ) : (
@@ -273,7 +273,7 @@ export function BlockPreviewPanel({
         </div>
 
         <TabsContent value="preview">
-          <div className="max-docs-content-width h-175 overflow-hidden rounded-lg border-2">
+          <div className="max-docs-content-width h-175 overflow-hidden rounded-md border-2">
             {hasPreview ? (
               <div className="flex justify-start items-center h-full
 bg-[repeating-linear-gradient(45deg,rgba(0,0,0,0.05),rgba(0,0,0,0.05)_1px,transparent_3px,transparent_9px)]
@@ -296,7 +296,7 @@ dark:bg-[repeating-linear-gradient(45deg,rgba(255,255,255,0.05),rgba(255,255,255
         </TabsContent>
 
         <TabsContent value="code">
-          <div className="h-175 max-docs-content-width overflow-hidden rounded-lg border-2">
+          <div className="h-175 max-docs-content-width overflow-hidden rounded-md border-2">
             {codeFiles.length > 0 ? (
               <CodePreview files={codeFiles} />
             ) : (
