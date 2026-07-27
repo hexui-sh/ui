@@ -252,6 +252,69 @@ export function articleJsonLd({
   }
 }
 
+export function blogPostingJsonLd({
+  title,
+  description,
+  path,
+  image,
+  datePublished,
+  dateModified,
+  author,
+  tags,
+  wordCount,
+  readingMinutes,
+}: {
+  title: string
+  description: string
+  path: string
+  image: string
+  datePublished: string
+  dateModified?: string
+  author: string
+  tags: string[]
+  wordCount: number
+  readingMinutes: number
+}): JsonLd {
+  const url = absoluteUrl(path)
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    image,
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    inLanguage: "en",
+    author: {
+      "@type": "Person",
+      name: author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/favicon.ico"),
+      },
+    },
+    keywords: tags.join(", "),
+    wordCount,
+    timeRequired: `PT${readingMinutes}M`,
+    isPartOf: {
+      "@type": "Blog",
+      name: `${SITE_NAME} Blog`,
+      url: absoluteUrl("/blog"),
+    },
+  }
+}
+
 export function faqPageJsonLd(faqs: Array<{ question: string; answer: string }>): JsonLd {
   return {
     "@context": "https://schema.org",
