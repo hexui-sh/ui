@@ -1,5 +1,7 @@
-# Hex UI
-Check out these beautiful and sophisticated UI blocks and templates. You can easily integrate them into your own project using copy-and-paste.
+![hexui.sh](https://github.com/hexui-sh/ui/blob/main/public/readme-image.png?raw=true)
+
+<h1 align="center">Hex UI</h1>
+<p align="center">Check out these beautiful and sophisticated UI blocks and templates. You can easily integrate them into your own project using copy-and-paste.<p>
 
 ## Documentation
 Visit [docs](https://hexui.sh/docs) to view the documation.
