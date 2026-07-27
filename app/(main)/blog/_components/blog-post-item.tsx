@@ -11,7 +11,7 @@ export function BlogPostCard({ post }: { post: BlogPost }) {
   const { frontmatter } = post
 
   return (
-    <article className="relative overflow-hidden">
+    <article className="group relative overflow-hidden" lang={frontmatter.locale}>
       <Link
         href={`/blog/${post.slug}`}
         className="flex flex-col gap-6 py-8 md:flex-row md:gap-10"
@@ -25,7 +25,7 @@ export function BlogPostCard({ post }: { post: BlogPost }) {
                 dateTime={frontmatter.updated}
                 className="font-mono text-sm text-foreground"
               >
-                {formatBlogDate(frontmatter.updated)}
+                {formatBlogDate(frontmatter.updated, frontmatter.locale)}
               </time>
             ) : null}
             <span className="flex items-center gap-1.5 font-mono text-sm text-muted-foreground">
@@ -48,12 +48,12 @@ export function BlogPostCard({ post }: { post: BlogPost }) {
 
         {/* Content column */}
         <div className="flex flex-1 flex-col gap-6">
-          <div className="relative aspect-video w-full overflow-hidden rounded-md bg-muted">
+          <div className="relative aspect-video w-full overflow-hidden rounded-md bg-muted shadow-[0_0_0_1px_rgba(0,0,0,0.1)] transition-[box-shadow] duration-200 ease-out group-hover:shadow-[0_0_0_1px_rgba(0,0,0,0.14),0_14px_30px_-22px_rgba(0,0,0,0.35)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)] dark:group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.16)]">
             <Image
               src={getBlogCover(post)}
               alt=""
               fill
-              className="object-cover rounded-md"
+              className="rounded-md object-cover transition-transform duration-300 ease-out group-hover:scale-[1.015]"
               sizes="(max-width: 768px) 100vw, 640px"
             />
           </div>

@@ -9,7 +9,6 @@ import {
   SnippetTabsList,
   SnippetTabsTrigger,
 } from "@/components/ui/snippet";
-import { cn } from "@/lib/utils";
 
 type PackageManager = "pnpm" | "npm" | "yarn" | "bun";
 
@@ -18,12 +17,10 @@ const STORAGE_KEY = "hex-ui:package-manager";
 
 type CodeBlockCommandProps = {
   commands: Partial<Record<PackageManager, string>>;
-  className?: string;
 };
 
 export function CodeBlockCommand({
   commands,
-  className,
 }: CodeBlockCommandProps) {
   const [selectedPM, setSelectedPM] = useState<PackageManager>(
     PACKAGE_MANAGER_ORDER.find((pm) => pm in commands) ?? "pnpm",

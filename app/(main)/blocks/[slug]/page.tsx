@@ -105,7 +105,6 @@ export default async function BlockCategoryPage({
             <BlockPreviewPanel
               hasPreview={Boolean(block.path)}
               slug={block.slug}
-              centerVertically
               installCommand={block.installCommand}
               v0Url={block.v0Url}
               codeFiles={block.codeFiles}

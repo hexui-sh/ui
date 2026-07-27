@@ -50,7 +50,7 @@ export async function createRssFeed() {
   <dc:creator>${escapeXml(SITE_AUTHOR)}</dc:creator>
   <description>${escapeXml(post.frontmatter.description)}</description>
   ${categories}
-  <media:content url="${escapeXml(getBlogCover(post))}" medium="image" />
+  <media:content url="${escapeXml(absoluteUrl(getBlogCover(post)))}" medium="image" />
 </item>`
     })
     .join("\n")
@@ -82,7 +82,7 @@ export async function createAtomFeed() {
   <title>${escapeXml(post.frontmatter.title)}</title>
   <id>${url}</id>
   <link href="${url}" rel="alternate" />
-  <link href="${escapeXml(getBlogCover(post))}" rel="enclosure" />
+  <link href="${escapeXml(absoluteUrl(getBlogCover(post)))}" rel="enclosure" />
   <published>${new Date(post.frontmatter.date).toISOString()}</published>
   <updated>${new Date(post.frontmatter.updated ?? post.frontmatter.date).toISOString()}</updated>
   <author><name>${escapeXml(SITE_AUTHOR)}</name></author>

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils"
 type BlockViewerProps = {
   slug: string
   className?: string
-  centerVertically?: boolean
   emulatedViewportWidth?: number
   disableScale?: boolean
   refreshKey?: number

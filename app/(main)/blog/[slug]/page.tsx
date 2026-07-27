@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, Bug, PenLine } from "lucide-react"
+import { Undo2 } from "lucide-react"
 import { BlogPostNavigation } from "@/app/(main)/blog/_components/blog-post-navigation"
 import { JsonLd } from "@/components/json-ld"
 import {
@@ -12,7 +12,6 @@ import {
   getBlogPost,
   getBlogPosts,
 } from "@/lib/blog"
-import { buildGitHubEditUrl, buildGitHubIssueUrl } from "@/lib/github-links"
 import {
   SITE_AUTHOR,
   SITE_NAME,
@@ -61,7 +60,7 @@ export async function generateMetadata({
       description: frontmatter.description,
       url,
       siteName: SITE_NAME,
-      locale: "en_US",
+      locale: frontmatter.locale === "ja" ? "ja_JP" : "en_US",
       publishedTime: frontmatter.date,
       modifiedTime: frontmatter.updated ?? frontmatter.date,
       tags: frontmatter.tags,
@@ -125,6 +124,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           tags: frontmatter.tags,
           wordCount: post.readingTime.words,
           readingMinutes: post.readingTime.minutes,
+          locale: frontmatter.locale,
         })}
       />
       <JsonLd
@@ -139,11 +139,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         href="/blog"
         className="inline-flex min-h-11 items-center gap-1.5 rounded-md pr-3 text-sm font-medium text-neutral-500 outline-none transition-[color,scale] duration-150 ease-out hover:text-neutral-950 active:scale-[0.96] focus-visible:ring-3 focus-visible:ring-neutral-400/50 dark:text-neutral-400 dark:hover:text-white"
       >
-        <ArrowLeft className="size-4" />
-        All articles
+        <Undo2 className="size-4" />
+        {frontmatter.locale === "ja" ? "記事一覧へ" : "Back"}
       </Link>
 
-      <article>
+      <article lang={frontmatter.locale}>
         <header className="mx-auto mt-8 max-w-3xl text-center">
           {frontmatter.tags.length > 0 ? (
             <ul
@@ -170,13 +170,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-neutral-400 dark:text-neutral-500">
             <time dateTime={frontmatter.date}>
-              Published {formatBlogDate(frontmatter.date)}
+              {frontmatter.locale === "ja" ? "公開" : "Published"}{" "}
+              {formatBlogDate(frontmatter.date, frontmatter.locale)}
             </time>
             {frontmatter.updated ? (
               <>
                 <span aria-hidden="true">·</span>
                 <time dateTime={frontmatter.updated}>
-                  Updated {formatBlogDate(frontmatter.updated)}
+                  {frontmatter.locale === "ja" ? "更新" : "Updated"}{" "}
+                  {formatBlogDate(frontmatter.updated, frontmatter.locale)}
                 </time>
               </>
             ) : null}

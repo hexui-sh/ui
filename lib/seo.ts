@@ -13,6 +13,10 @@ export const SITE_GITHUB_URL = "https://github.com/ri0n-dev/hex-ui"
 export const SITE_AUTHOR = "Rion"
 
 export function absoluteUrl(path = "/"): string {
+  if (/^https?:\/\//.test(path)) {
+    return path
+  }
+
   const normalized = path.startsWith("/") ? path : `/${path}`
   return new URL(normalized, SITE_URL).toString()
 }
@@ -263,6 +267,7 @@ export function blogPostingJsonLd({
   tags,
   wordCount,
   readingMinutes,
+  locale = "en",
 }: {
   title: string
   description: string
@@ -274,6 +279,7 @@ export function blogPostingJsonLd({
   tags: string[]
   wordCount: number
   readingMinutes: number
+  locale?: "en" | "ja"
 }): JsonLd {
   const url = absoluteUrl(path)
 
@@ -290,7 +296,7 @@ export function blogPostingJsonLd({
     image,
     datePublished,
     dateModified: dateModified ?? datePublished,
-    inLanguage: "en",
+    inLanguage: locale,
     author: {
       "@type": "Person",
       name: author,

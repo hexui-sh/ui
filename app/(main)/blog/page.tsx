@@ -43,7 +43,7 @@ export default async function BlogPage() {
   const posts = await getBlogPosts()
 
   return (
-    <main className="mx-auto w-full max-w-3xl pb-24 pt-30 sm:pt-36">
+    <main className="mx-auto w-full max-w-3xl pb-24 pt-24 sm:pt-36">
       <JsonLd
         data={collectionPageJsonLd({
           name: BLOG_TITLE,

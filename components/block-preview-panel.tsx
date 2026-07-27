@@ -33,7 +33,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 type BlockPreviewPanelProps = {
   hasPreview: boolean
   slug: string
-  centerVertically?: boolean
   installCommand: string
   v0Url?: string
   codeFiles: CodePreviewFile[]
@@ -92,7 +91,6 @@ const screenWidthLabelMap: Record<PreviewScreen, string> = {
 export function BlockPreviewPanel({
   hasPreview,
   slug,
-  centerVertically = false,
   installCommand,
   v0Url,
   codeFiles,

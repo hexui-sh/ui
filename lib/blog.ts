@@ -14,6 +14,7 @@ export type BlogFrontmatter = {
   updated?: string
   tags: string[]
   cover: string
+  locale: "en" | "ja"
   published: true
 }
 
@@ -35,9 +36,10 @@ export type BlogNavigationContext = {
 }
 
 type ParsedFrontmatter = Partial<
-  Omit<BlogFrontmatter, "tags" | "published">
+  Omit<BlogFrontmatter, "tags" | "published" | "locale">
 > & {
   tags?: string[]
+  locale?: string
   published?: boolean
 }
 
@@ -113,7 +115,8 @@ function parseFrontmatter(source: string): ParsedFrontmatter {
       key === "description" ||
       key === "date" ||
       key === "updated" ||
-      key === "cover"
+      key === "cover" ||
+      key === "locale"
     ) {
       values[key] = unquote(rawValue) || undefined
     }
@@ -133,7 +136,11 @@ function normalizeDate(value: string, field: "date" | "updated", fileName: strin
   return value
 }
 
-function normalizeExternalCover(value: string, fileName: string) {
+function normalizeCover(value: string, fileName: string) {
+  if (value.startsWith("/") && !value.startsWith("//")) {
+    return value
+  }
+
   let coverUrl: URL
 
   try {
@@ -155,6 +162,19 @@ function normalizeExternalCover(value: string, fileName: string) {
   }
 
   return coverUrl.toString()
+}
+
+function normalizeLocale(value: string | undefined, fileName: string) {
+  if (!value || value === "en") {
+    return "en" as const
+  }
+  if (value === "ja") {
+    return "ja" as const
+  }
+
+  throw new Error(
+    `Blog frontmatter "locale" in ${fileName} must be "en" or "ja".`
+  )
 }
 
 function validatePublishedFrontmatter(
@@ -190,7 +210,8 @@ function validatePublishedFrontmatter(
       ? normalizeDate(value.updated, "updated", fileName)
       : undefined,
     tags: value.tags ?? [],
-    cover: normalizeExternalCover(value.cover, fileName),
+    cover: normalizeCover(value.cover, fileName),
+    locale: normalizeLocale(value.locale, fileName),
     published: true,
   }
 }
@@ -209,16 +230,26 @@ function stripMdxForReadingTime(source: string) {
     .replace(/[#>*_`~|{}[\]()-]/g, " ")
 }
 
-function calculateReadingTime(source: string): BlogPost["readingTime"] {
+function calculateReadingTime(
+  source: string,
+  locale: BlogFrontmatter["locale"]
+): BlogPost["readingTime"] {
+  const plainText = stripMdxForReadingTime(source)
   const words =
-    stripMdxForReadingTime(source).match(/[\p{L}\p{N}][\p{L}\p{N}'’.-]*/gu)
+    plainText.match(/[\p{L}\p{N}][\p{L}\p{N}'’.-]*/gu)
       ?.length ?? 0
-  const minutes = Math.max(1, Math.ceil(words / WORDS_PER_MINUTE))
+  const japaneseCharacters =
+    plainText.match(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/gu)
+      ?.length ?? 0
+  const minutes =
+    locale === "ja"
+      ? Math.max(1, Math.ceil(japaneseCharacters / 500 + words / WORDS_PER_MINUTE))
+      : Math.max(1, Math.ceil(words / WORDS_PER_MINUTE))
 
   return {
     minutes,
     words,
-    text: `${minutes} min read`,
+    text: locale === "ja" ? `約${minutes}分` : `${minutes} min read`,
   }
 }
 
@@ -252,12 +283,14 @@ export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
         return null
       }
 
+      const frontmatter = validatePublishedFrontmatter(parsed, fileName)
+
       return {
         slug: path.parse(fileName).name,
         fileName,
         source,
-        frontmatter: validatePublishedFrontmatter(parsed, fileName),
-        readingTime: calculateReadingTime(source),
+        frontmatter,
+        readingTime: calculateReadingTime(source, frontmatter.locale),
       }
     })
   )
@@ -288,8 +321,11 @@ export async function getBlogNavigation(
   }
 }
 
-export function formatBlogDate(value: string) {
-  return new Intl.DateTimeFormat("en-US", {
+export function formatBlogDate(
+  value: string,
+  locale: BlogFrontmatter["locale"] = "en"
+) {
+  return new Intl.DateTimeFormat(locale === "ja" ? "ja-JP" : "en-US", {
     day: "numeric",
     month: "short",
     year: "numeric",
