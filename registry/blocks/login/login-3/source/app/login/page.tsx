@@ -17,7 +17,7 @@ export default function Page() {
           src="/demo/backgrounds/sky.png"
           alt="Background"
           // Darken and desaturate the photo in dark mode so it doesn't compete with the form.
-          className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>
     </div>

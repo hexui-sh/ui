@@ -79,17 +79,16 @@ export function LoginForm() {
               Login
             </Button>
           </Field>
-          <FieldSeparator>or</FieldSeparator>
-          <Field>
-            <Button variant="outline" type="button">
-              <SiGoogle />
-              Continue with Google
-            </Button>
-          </Field>
-          <Field>
+          <FieldSeparator>Or authorize with</FieldSeparator>
+          <Field className="grid grid-cols-2 gap-4">
             <Button variant="outline" type="button">
               <SiApple />
-              Continue with Apple
+              {/* Label is visually hidden on xl+ so the button becomes icon-only on wide screens. */}
+              <span className="xl:sr-only font-normal">Apple</span>
+            </Button>
+            <Button variant="outline" type="button">
+              <SiGoogle />
+              <span className="xl:sr-only font-normal">Google</span>
             </Button>
           </Field>
         </FieldGroup>
