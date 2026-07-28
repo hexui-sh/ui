@@ -106,7 +106,14 @@ export function BlockPreviewPanel({
   const orientation: PreviewOrientation =
     canRotate && isLandscape ? "landscape" : "portrait"
   const openInNewTabUrl = `/view/${slug}`
-  const packageName = installCommand.replace(/^pnpm\s+dlx\s+shadcn@\S+\s+add\s+/, "")
+  const displayCommand = installCommand.replace(
+    /^npx\s+shadcn@latest\s+/,
+    "npx shadcn "
+  )
+  const registryItem = installCommand.replace(
+    /^npx\s+shadcn@latest\s+add\s+/,
+    ""
+  )
 
   const previewChildren = Children.map(children, (child) => {
     if (!isValidElement(child) || typeof child.type === "string") {
@@ -134,7 +141,7 @@ export function BlockPreviewPanel({
     return (
       <div className="@container w-full">
         <div className="flex h-8 w-full min-w-0 items-center justify-between gap-2">
-          <p className="text-sm text-muted-foreground">{packageName}</p>
+          <p className="text-sm text-muted-foreground">{registryItem}</p>
           <div className="flex items-center h-8">
             {hasPreview ? (
               <Button
@@ -265,7 +272,7 @@ export function BlockPreviewPanel({
               </Tooltip>
             </ButtonGroup>
             <div className="hidden @5xl:flex mx-1.5 h-4.5 w-0.5 dark:bg-neutral-900" />
-            <CommandCopy value={installCommand} displayValue={packageName} />
+            <CommandCopy value={installCommand} displayValue={displayCommand} />
             <OpenInV0 url={v0Url} />
           </div>
         </div>
