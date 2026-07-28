@@ -68,7 +68,7 @@ export function SearchBar({ groups }: SearchBarProps) {
                 <div
                     role="search"
                     aria-label="Search documentation, templates, and blocks"
-                    className="flex items-center text-neutral-500 dark:text-neutral-400 border border-neutral-300 dark:border-neutral-800 w-64 py-1.5 pl-2.5 pr-1.5 rounded-md justify-between cursor-pointer max-w-xs"
+                    className="flex h-8 w-64 max-w-xs cursor-pointer items-center justify-between rounded-md border border-border pl-2.5 pr-1.5 text-neutral-500 dark:text-neutral-400"
                 >
                     <div className="flex items-center gap-2">
                         <Search size={16.5} />
