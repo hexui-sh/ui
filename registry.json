@@ -26,7 +26,7 @@
       "categories": [
         "banner"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/banner-1",
+      "installCommand": "npx shadcn@latest add @hexui/banner-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/banner-1.json"
     },
     {
@@ -52,7 +52,7 @@
       "categories": [
         "banner"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/banner-2",
+      "installCommand": "npx shadcn@latest add @hexui/banner-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/banner-2.json"
     },
     {
@@ -80,7 +80,7 @@
       "categories": [
         "cta"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/cta-1",
+      "installCommand": "npx shadcn@latest add @hexui/cta-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-1.json"
     },
     {
@@ -108,7 +108,7 @@
       "categories": [
         "cta"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/cta-2",
+      "installCommand": "npx shadcn@latest add @hexui/cta-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-2.json"
     },
     {
@@ -136,7 +136,7 @@
       "categories": [
         "cta"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/cta-3",
+      "installCommand": "npx shadcn@latest add @hexui/cta-3",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-3.json"
     },
     {
@@ -164,7 +164,7 @@
       "categories": [
         "cta"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/cta-4",
+      "installCommand": "npx shadcn@latest add @hexui/cta-4",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/cta-4.json"
     },
     {
@@ -196,7 +196,7 @@
       "categories": [
         "faq"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/faq-1",
+      "installCommand": "npx shadcn@latest add @hexui/faq-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-1.json"
     },
     {
@@ -228,7 +228,7 @@
       "categories": [
         "faq"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/faq-2",
+      "installCommand": "npx shadcn@latest add @hexui/faq-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-2.json"
     },
     {
@@ -252,7 +252,7 @@
       "categories": [
         "faq"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/faq-3",
+      "installCommand": "npx shadcn@latest add @hexui/faq-3",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-3.json"
     },
     {
@@ -278,7 +278,7 @@
       "categories": [
         "faq"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/faq-4",
+      "installCommand": "npx shadcn@latest add @hexui/faq-4",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/faq-4.json"
     },
     {
@@ -315,7 +315,7 @@
       "categories": [
         "footer"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/footer-1",
+      "installCommand": "npx shadcn@latest add @hexui/footer-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-1.json"
     },
     {
@@ -357,7 +357,7 @@
       "categories": [
         "footer"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/footer-2",
+      "installCommand": "npx shadcn@latest add @hexui/footer-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-2.json"
     },
     {
@@ -391,7 +391,7 @@
       "categories": [
         "footer"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/footer-3",
+      "installCommand": "npx shadcn@latest add @hexui/footer-3",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-3.json"
     },
     {
@@ -428,7 +428,7 @@
       "categories": [
         "footer"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/footer-4",
+      "installCommand": "npx shadcn@latest add @hexui/footer-4",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-4.json"
     },
     {
@@ -462,7 +462,7 @@
       "categories": [
         "footer"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/footer-5",
+      "installCommand": "npx shadcn@latest add @hexui/footer-5",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/footer-5.json"
     },
     {
@@ -502,7 +502,7 @@
       "categories": [
         "hero"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/hero-1",
+      "installCommand": "npx shadcn@latest add @hexui/hero-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-1.json"
     },
     {
@@ -538,7 +538,7 @@
       "categories": [
         "hero"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/hero-2",
+      "installCommand": "npx shadcn@latest add @hexui/hero-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-2.json"
     },
     {
@@ -574,7 +574,7 @@
       "categories": [
         "hero"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/hero-3",
+      "installCommand": "npx shadcn@latest add @hexui/hero-3",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-3.json"
     },
     {
@@ -606,7 +606,7 @@
       "categories": [
         "hero"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/hero-4",
+      "installCommand": "npx shadcn@latest add @hexui/hero-4",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-4.json"
     },
     {
@@ -638,7 +638,7 @@
       "categories": [
         "hero"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/hero-5",
+      "installCommand": "npx shadcn@latest add @hexui/hero-5",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/hero-5.json"
     },
     {
@@ -669,7 +669,7 @@
       "categories": [
         "login"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/login-1",
+      "installCommand": "npx shadcn@latest add @hexui/login-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-1.json"
     },
     {
@@ -700,7 +700,7 @@
       "categories": [
         "login"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/login-2",
+      "installCommand": "npx shadcn@latest add @hexui/login-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-2.json"
     },
     {
@@ -731,7 +731,7 @@
       "categories": [
         "login"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/login-3",
+      "installCommand": "npx shadcn@latest add @hexui/login-3",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-3.json"
     },
     {
@@ -763,7 +763,7 @@
       "categories": [
         "login"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/login-4",
+      "installCommand": "npx shadcn@latest add @hexui/login-4",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/login-4.json"
     },
     {
@@ -821,7 +821,7 @@
       "categories": [
         "sidebar"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/sidebar-1",
+      "installCommand": "npx shadcn@latest add @hexui/sidebar-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-1.json"
     },
     {
@@ -865,7 +865,7 @@
       "categories": [
         "sidebar"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/sidebar-2",
+      "installCommand": "npx shadcn@latest add @hexui/sidebar-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-2.json"
     },
     {
@@ -917,7 +917,7 @@
       "categories": [
         "sidebar"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/sidebar-3",
+      "installCommand": "npx shadcn@latest add @hexui/sidebar-3",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/sidebar-3.json"
     },
     {
@@ -941,7 +941,7 @@
       "categories": [
         "social-proof"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/social-proof-companies-1",
+      "installCommand": "npx shadcn@latest add @hexui/social-proof-companies-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-1.json"
     },
     {
@@ -965,7 +965,7 @@
       "categories": [
         "social-proof"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/social-proof-companies-2",
+      "installCommand": "npx shadcn@latest add @hexui/social-proof-companies-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-2.json"
     },
     {
@@ -991,7 +991,7 @@
       "categories": [
         "social-proof"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/social-proof-companies-3",
+      "installCommand": "npx shadcn@latest add @hexui/social-proof-companies-3",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-3.json"
     },
     {
@@ -1019,7 +1019,7 @@
       "categories": [
         "social-proof"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/social-proof-companies-4",
+      "installCommand": "npx shadcn@latest add @hexui/social-proof-companies-4",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-companies-4.json"
     },
     {
@@ -1051,7 +1051,7 @@
       "categories": [
         "social-proof"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/social-proof-testimonials-1",
+      "installCommand": "npx shadcn@latest add @hexui/social-proof-testimonials-1",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-testimonials-1.json"
     },
     {
@@ -1086,7 +1086,7 @@
       "categories": [
         "social-proof"
       ],
-      "installCommand": "pnpm dlx shadcn@latest add @hexui/social-proof-testimonials-2",
+      "installCommand": "npx shadcn@latest add @hexui/social-proof-testimonials-2",
       "v0Url": "https://v0.dev/chat/import?url=https://hexui.sh/r/social-proof-testimonials-2.json"
     },
     {
