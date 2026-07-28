@@ -32,7 +32,7 @@ export async function GitHubStars() {
   return (
     <Button variant="ghost" className="border border-border">
       <a
-        href="https://github.com/ri0n-dev/hex-ui"
+        href="https://github.com/hexui-sh/ui"
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${stars} stars on GitHub`}
