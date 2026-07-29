@@ -54,24 +54,30 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
+
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
+
   --font-heading: var(--font-sans);
   --animate-skeleton: skeleton 2s -1s infinite linear;
+
   @keyframes skeleton {
     to {
       background-position: -200% 0;
@@ -80,7 +86,7 @@
 }
 
 :root {
-  --card: oklch(1 0 0);
+  --card: oklch(97% 0 none);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);

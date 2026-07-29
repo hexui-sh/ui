@@ -17,7 +17,7 @@ interface TestimonialsCardProps {
 
 export function TestimonialsCard({ testimonial, hidden = false }: TestimonialsCardProps) {
     return (
-        <Card className={`p-6 flex flex-col border-0 ${hidden ? 'hidden md:flex' : ''}`}>
+        <Card className={`p-6 flex flex-col bg-card border-0 ${hidden ? 'hidden md:flex' : ''}`}>
             {/* Author Info */}
             <div className="flex items-center border-b pb-3 text-xs text-muted-foreground">
                 <Avatar className="w-7 h-7 bg-muted-foreground/36 mr-2 inline-block">
