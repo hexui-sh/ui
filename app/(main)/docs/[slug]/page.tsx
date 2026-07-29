@@ -10,6 +10,7 @@ import { getDocFileEntries, getDocFrontmatter, getDocNavigationContext, resolveD
 import { HeadingSlugger } from "@/lib/heading"
 import { pageMetadata, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo"
 import { JsonLd } from "@/components/json-ld"
+import { SiX } from "@icons-pack/react-simple-icons"
 
 type TocHeading = {
     id: string
@@ -151,7 +152,7 @@ export default async function DocsPage({
             </article>
 
             {tocHeadings.length > 0 ? (
-                <aside className="hidden min-w-64 pl-7 pr-1 lg:block">
+                <aside className="hidden min-w-64 pl-7 pr-1 xl:block">
                     <div className="sticky top-19">
                         <p className="mb-1.5 flex items-center gap-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300"><TextAlignStart size={14} />On This Page</p>
                         <nav aria-label="On this page table of contents">
@@ -172,7 +173,7 @@ export default async function DocsPage({
                         <hr className="my-6.5 border-neutral-200 dark:border-neutral-800" />
 
                         <nav aria-label="On this page table of contents">
-                            <ul className="space-y-1">
+                            <ul className="space-y-1.5">
                                 <li>
                                     <a
                                         href={issueUrl}
@@ -191,6 +192,16 @@ export default async function DocsPage({
                                         className="flex items-center gap-1.5 text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100"
                                     >
                                         <Pen size={13} /> Edit this page
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={"https://x.com/ri0n_dev"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-1.5 text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100"
+                                    >
+                                        <SiX size={13} /> Follow @ri0n_dev
                                     </a>
                                 </li>
                             </ul>
